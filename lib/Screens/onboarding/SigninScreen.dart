@@ -1,14 +1,14 @@
 import 'package:dotcoder1/Screens/GroceryShop/Vendormodule/registration_screen.dart';
 import 'package:dotcoder1/Screens/GroceryShop/homeScreen.dart';
 import 'package:dotcoder1/Screens/onboarding/RegisterAccount.dart';
+import 'package:dotcoder1/widgets/text/constants.dart';
 
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
 import '../../Providers/usertype.dart';
-import '../../widgets/text/BoldText.dart';
-import '../../widgets/text/thintext.dart';
+
 import '../../widgets/textfields/butons/Myfilledbutton.dart';
 import '../../widgets/textfields/butons/loginwithbutton.dart';
 import '../../widgets/textfields/textfield.dart';
@@ -46,32 +46,37 @@ class _SignInScreenState extends State<SignInScreen> {
 
     return SafeArea(
       child: Scaffold(
-          // backgroundColor: const Color(0xff23AA49).withOpacity(0.12),
+          backgroundColor: Colors.white,
           body: SizedBox(
             height: mediaquery.height,
             child: SingleChildScrollView(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  SizedBox(
-                    height: mediaquery.height * 0.02,
+                  const SizedBox(
+                    height: 30,
                   ),
-                  Image(
-                    image: const AssetImage('images/registerimage.png'),
-                    height: mediaquery.height * 0.2,
+                  const Stack(
+                    children: [
+
+                      Image(
+                        image: AssetImage('images/registerimage.png'),
+                        height:100,
+                      ),
+                    ],
                   ),
-                  SizedBox(
-                    height: mediaquery.height * 0.01,
+                  const SizedBox(
+                    height: 20,
                   ),
-                  const BoldText(text: "Sign In"),
-                  SizedBox(
-                    height: mediaquery.height * 0.005,
+                   Text( "Sign In",style: k24B600style,),
+                  const SizedBox(
+                    height: 5,
                   ),
-                  const Thintext(
-                      text:
-                          "Enter your information \n for accessing your sign in"),
-                  SizedBox(
-                    height: mediaquery.height * 0.03,
+                   Text(
+
+                          "   Enter your information \n for accessing your sign in",style: k14Grey400style,),
+                  const SizedBox(
+                    height: 50,
                   ),
                   MyTextFormField(
                     name: 'Email', // Assign a name to the form field
@@ -79,14 +84,14 @@ class _SignInScreenState extends State<SignInScreen> {
                     controller: _nameController,
                   ),
                   const SizedBox(
-                    height: 15,
+                    height: 5,
                   ),
                   MyTextFormField(
                     obscure: showpass,
                     name: 'Password', // Assign a name to the form field
                     labelText: 'Password',
                     controller: _passwordController,
-                    suffixicon: InkWell(
+                    suffixicon: GestureDetector(
                         onTap: () {
                           showpass = !showpass;
                           setState(() {});
@@ -104,29 +109,41 @@ class _SignInScreenState extends State<SignInScreen> {
                                   fit: BoxFit.cover,
                                 ),
                               )
-                            : const Icon(
-                                Icons.visibility,
-                                color: Colors.blue,
-                                size: 20,
-                              )),
+                            :  Container(
+                          height: 20,
+                          width: 20,
+                          alignment: Alignment.center,
+                          child: Image.asset(
+                            width:
+                            20, // Adjust the image width within the container
+                            height: 20,
+                            'images/filleye.png',
+                            fit: BoxFit.contain,
+                          ),
+                        ),
+                    ),
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: [
                       TextButton(
+                          style: ButtonStyle(
+                            splashFactory: NoSplash.splashFactory,
+                            overlayColor: MaterialStateProperty.all(Colors.white),
+                          ),
                           onPressed: () => Navigator.pushNamed(
                               context, ForgotScreen.routename),
                           child: Text(
                             'Forgot password',
                             style: TextStyle(
-                                color: Theme.of(context).primaryColor,
+                                color:const Color(0xff059F55).withOpacity(0.86),
                                 decoration: TextDecoration.underline,
                                 decorationColor: Theme.of(context).primaryColor),
                           )),
                     ],
                   ),
-                  SizedBox(
-                    height: mediaquery.height * 0.03,
+                  const SizedBox(
+                    height: 10,
                   ),
                   GradientElevatedButton(
                     text: 'Login',
@@ -134,13 +151,13 @@ class _SignInScreenState extends State<SignInScreen> {
                       Navigator.pushReplacement(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => whichuser.isuser!?const HomeScreen():const VendorhomeScreen())
+                              builder: (context) => whichuser.isuser!?const HomeScreen(): const VendorhomeScreen())
                           //  HomeScreen.routename
                           );
                     },
                   ),
                   const SizedBox(
-                    height: 15,
+                    height: 10,
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -150,26 +167,27 @@ class _SignInScreenState extends State<SignInScreen> {
                         style: GoogleFonts.poppins(
                           fontSize: 14,
                           fontWeight: FontWeight.w400,
+                          color: Colors.black
                         ),
                       )
                     ],
                   ),
                   const SizedBox(
-                    height: 15,
+                    height: 10,
                   ),
                   MyLoginWithButton(
                       onTap: () => print("button pressed"),
                       text: 'Continue with google',
                       iconUrl: 'images/google.png'),
                   const SizedBox(
-                    height: 20,
+                    height: 10,
                   ),
                   MyLoginWithButton(
                       onTap: () => print("button pressed"),
                       text: 'Continue with Facebook',
                       iconUrl: 'images/fb.png'),
-                  SizedBox(
-                    height: mediaquery.height * 0.01,
+                  const SizedBox(
+                    height: 38,
                   ),
                   SizedBox(
                     width: mediaquery.width,
@@ -178,12 +196,27 @@ class _SignInScreenState extends State<SignInScreen> {
                       children: [
                         Text(
                           'I don’t have an account?',
-                          style: GoogleFonts.poppins(
+                          style: GoogleFonts.quicksand(
+                            color: Colors.black,
                             decoration: TextDecoration.underline,
+                            fontSize: 14,
+                            fontWeight: FontWeight.w600
+
                           ),
                         ),
-                        TextButton(
-                          onPressed: () {
+                        GestureDetector(
+
+                          // style: ButtonStyle(
+                          //
+                          //   overlayColor: MaterialStateProperty.resolveWith((states) {
+                          //     if(states.contains(MaterialState.pressed))
+                          //       {
+                          //         return Colors.white;
+                          //       }
+                          //   }),
+                          //  // fixedSize: MaterialStateProperty.all(const Size(30, 40)),
+                          // ),
+                          onTap: () {
                             whichuser.isuser!?
                             Navigator.pushReplacementNamed(
                                 context, RegistrationScreen.routename):Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) {
@@ -191,12 +224,16 @@ class _SignInScreenState extends State<SignInScreen> {
                                 },));
                           },
                           child: Text(
-                            ' Sign up',
-                            style: TextStyle(
-                              color: Theme.of(context).primaryColor,
+                            'Sign up',
+                            style: GoogleFonts.quicksand(
+                              color: const Color(0xff059F55).withOpacity(0.86),
                               decoration: TextDecoration.underline,
-                              decorationColor: Theme.of(context).primaryColor,
-                            ),
+                              decorationColor: const Color(0xff059F55).withOpacity(0.86),
+                              fontSize: 14,
+                              fontWeight: FontWeight.w600
+
+
+                          ),
                           ),
                         ),
                       ],

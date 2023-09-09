@@ -14,7 +14,7 @@ class ReviewsBuilderScreen extends StatefulWidget {
 class _ReviewsBuilderScreenState extends State<ReviewsBuilderScreen> {
   List<ProductModel> list = [
     ProductModel(
-      title: 'Blazzing Store',
+      title: 'john wick',
       image:
           'https://th.bing.com/th/id/OIP.HVoahcVZ6UJSTse0w1fItAHaLH?pid=ImgDet&rs=1',
       rating: 3,
@@ -22,7 +22,7 @@ class _ReviewsBuilderScreenState extends State<ReviewsBuilderScreen> {
       isfav: false,
     ),
     ProductModel(
-      title: 'Blazzing Store',
+      title: 'john wick',
       image:
           'https://th.bing.com/th/id/OIP.HVoahcVZ6UJSTse0w1fItAHaLH?pid=ImgDet&rs=1',
       rating: 3,
@@ -30,7 +30,7 @@ class _ReviewsBuilderScreenState extends State<ReviewsBuilderScreen> {
       isfav: false,
     ),
     ProductModel(
-      title: 'Blazzing Store',
+      title: 'Peter Paker',
       image:
           'https://th.bing.com/th/id/OIP.HVoahcVZ6UJSTse0w1fItAHaLH?pid=ImgDet&rs=1',
       rating: 3,
@@ -38,7 +38,7 @@ class _ReviewsBuilderScreenState extends State<ReviewsBuilderScreen> {
       isfav: false,
     ),
     ProductModel(
-      title: 'Blazzing Store',
+      title: 'Peter Paker',
       image:
           'https://th.bing.com/th/id/OIP.HVoahcVZ6UJSTse0w1fItAHaLH?pid=ImgDet&rs=1',
       rating: 3,
@@ -46,7 +46,7 @@ class _ReviewsBuilderScreenState extends State<ReviewsBuilderScreen> {
       isfav: false,
     ),
     ProductModel(
-      title: 'Blazzing Store',
+      title: 'Peter Paker',
       image:
           'https://th.bing.com/th/id/OIP.HVoahcVZ6UJSTse0w1fItAHaLH?pid=ImgDet&rs=1',
       rating: 3,
@@ -54,7 +54,7 @@ class _ReviewsBuilderScreenState extends State<ReviewsBuilderScreen> {
       isfav: false,
     ),
     ProductModel(
-      title: 'Blazzing Store',
+      title: 'Peter Paker',
       image:
           'https://th.bing.com/th/id/OIP.HVoahcVZ6UJSTse0w1fItAHaLH?pid=ImgDet&rs=1',
       rating: 3,
@@ -62,7 +62,7 @@ class _ReviewsBuilderScreenState extends State<ReviewsBuilderScreen> {
       isfav: false,
     ),
     ProductModel(
-      title: 'Authentic Pantry',
+      title: 'Richard Algin ',
       image:
           'https://th.bing.com/th/id/OIP.HVoahcVZ6UJSTse0w1fItAHaLH?pid=ImgDet&rs=1',
       rating: 3,
@@ -70,7 +70,7 @@ class _ReviewsBuilderScreenState extends State<ReviewsBuilderScreen> {
       isfav: false,
     ),
     ProductModel(
-      title: 'Authentic Pantry',
+      title: ' Foster Garndi ',
       image:
           'https://th.bing.com/th/id/OIP.HVoahcVZ6UJSTse0w1fItAHaLH?pid=ImgDet&rs=1',
       rating: 3,
@@ -83,7 +83,7 @@ class _ReviewsBuilderScreenState extends State<ReviewsBuilderScreen> {
     final mediaquery = MediaQuery.of(context).size;
     return SafeArea(
       child: Scaffold(
-        // backgroundColor: const Color(0xff23AA49).withOpacity(0.12),
+        backgroundColor: const Color(0xffffffff),
         appBar: MYDetailsappbar(
           text: "All Reviews",
           onpressed: () => Navigator.pop(context),
@@ -96,7 +96,7 @@ class _ReviewsBuilderScreenState extends State<ReviewsBuilderScreen> {
             return Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16.0),
               child: Container(
-                height: 118,
+                height: 136,
                 decoration: BoxDecoration(
                   color: Colors.white, // Set the container background color
                   borderRadius: BorderRadius.circular(5),
@@ -123,7 +123,7 @@ class _ReviewsBuilderScreenState extends State<ReviewsBuilderScreen> {
                       Row(
                         children: [
                           Padding(
-                            padding: const EdgeInsets.all(8.0),
+                            padding: const EdgeInsets.only(left: 4.0,top: 8,bottom: 15),
                             child: CircleAvatar(
                               radius: 25,
                               backgroundImage: NetworkImage(
@@ -136,7 +136,7 @@ class _ReviewsBuilderScreenState extends State<ReviewsBuilderScreen> {
                             children: [
                               Padding(
                                 padding:
-                                    const EdgeInsets.only( left: 10),
+                                    const EdgeInsets.only( left: 10,bottom: 2),
                                 child: Text(
                                   list[index].title!,
                                   style: k12_8B500style,
@@ -151,6 +151,7 @@ class _ReviewsBuilderScreenState extends State<ReviewsBuilderScreen> {
                                       color: Color(0xff737373),
                                       size: 15,
                                     ),
+                                    const SizedBox(width: 3,),
                                     Text(
                                       list[index].location!,
                                       style: k10grey300style,
@@ -162,10 +163,10 @@ class _ReviewsBuilderScreenState extends State<ReviewsBuilderScreen> {
                           ),
                           const Spacer(),
                           Padding(
-                            padding: const EdgeInsets.only(right: 20.0),
+                            padding: const EdgeInsets.only(right: 20.0,bottom: 20),
                             child: Row(
                               children: [
-                                Image.asset('images/star1.png',width: 14.25,height:  14.25,),
+                                Image.asset('images/star1.png',color: const Color(0xffFFF743),width: 14.25,height:  14.25,),
                                 Padding(
                                   padding: const EdgeInsets.only(left: 5),
                                   child: Text(
@@ -181,7 +182,7 @@ class _ReviewsBuilderScreenState extends State<ReviewsBuilderScreen> {
                       Padding(
                         padding: const EdgeInsets.only(left:10.0),
                         child: Text(
-                          'Lorem ipsum dolor sit amet, Lorem \nipsum dolor sit amet, consectetur ',
+                          'Lorem ipsum dolor sit amet, Lorem ipsum dolor sit amet, consectetur adipiscing elit.consectetur adipiscing',
                           style: k12Grey400style,
                         ),
                       )

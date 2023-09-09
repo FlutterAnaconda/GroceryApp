@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class CartQuantityWidget extends StatelessWidget {
   final int initialquantity;
@@ -36,9 +37,9 @@ class CartQuantityWidget extends StatelessWidget {
           padding: const EdgeInsets.all(8.0),
           child: Text(
             initialquantity.toString(),
-            style: TextStyle(
-              color: Theme.of(context).primaryColor,
-              fontWeight: FontWeight.bold,
+            style: GoogleFonts.dmSans(
+              color: const Color(0xff06161C),
+              fontWeight: FontWeight.w700,
               fontSize: 18,
             ),
           ),

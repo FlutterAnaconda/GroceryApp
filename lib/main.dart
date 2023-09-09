@@ -43,7 +43,7 @@ class MyApp extends StatelessWidget {
               primaryColor: const Color(0xFF07CD6E),
               useMaterial3: true,
             ),
-            debugShowCheckedModeBanner: true,
+            debugShowCheckedModeBanner: false,
             home: const WelcomeScreen(),
             // home: const VendorhomeScreen(),
             routes: {

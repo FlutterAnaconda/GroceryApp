@@ -13,12 +13,21 @@ class _MyCheckboxListState extends State<MyCheckboxList> {
 
   List<String> list = [
     'All',
-    'Fruits (125)',
-    'Vegetables (150)',
-    'Dairy (75)',
-    'Meat (42)',
-    'Other (4)',
+    'Fruits',
+    'Vegetables',
+    'Dairy',
+    'Meat',
+    'Other',
   ];
+  List<String> quantitylist = [
+    '',
+    ' (125)',
+    ' (150)',
+    ' (75)',
+    ' (42)',
+    ' (4)',
+  ];
+
 
   @override
   Widget build(BuildContext context) {
@@ -79,12 +88,28 @@ class _MyCheckboxListState extends State<MyCheckboxList> {
                       ),
                     ),
                     const SizedBox(width: 16),
-                    Text(
-                      list[index],
-                      style: GoogleFonts.poppins(
-                        color: isSelected ? Colors.green : Colors.black,
-                        fontSize: 14,
-                        fontWeight: FontWeight.w500,
+                    SizedBox(
+                      width: 200,
+                      child: Row(
+
+                        children: [
+                          Text(
+                            list[index],
+                            style: GoogleFonts.poppins(
+                              color: isSelected ? Colors.green : Colors.black,
+                              fontSize: 14,
+                              fontWeight: FontWeight.w500,
+                            ),
+                          ),
+                          Text(
+                            quantitylist[index],
+                            style: GoogleFonts.poppins(
+                              color: isSelected ? Colors.green : const Color(0xffB1BCB4),
+                              fontSize: 14,
+                              fontWeight: FontWeight.w400,
+                            ),
+                          ),
+                        ],
                       ),
                     ),
                   ],

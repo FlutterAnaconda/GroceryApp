@@ -1,8 +1,8 @@
+import 'package:dotcoder1/widgets/text/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-import '../../widgets/text/BoldText.dart';
-import '../../widgets/text/thintext.dart';
+
 import '../../widgets/textfields/butons/Myfilledbutton.dart';
 import '../../widgets/textfields/textfield.dart';
 import 'SigninScreen.dart';
@@ -37,32 +37,32 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
     final mediaquery = MediaQuery.of(context).size;
     return SafeArea(
       child: Scaffold(
-          // backgroundColor: const Color(0xff23AA49).withOpacity(0.12),
+          backgroundColor: Colors.white,
           body: SizedBox(
             height: mediaquery.height,
             child: SingleChildScrollView(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  SizedBox(
-                    height: mediaquery.height * 0.07,
-                  ),
-                  Image(
-                    image: const AssetImage('images/registerimage.png'),
-                    height: mediaquery.height * 0.2,
-                  ),
-                  SizedBox(
-                    height: mediaquery.height * 0.02,
-                  ),
-                  const BoldText(text: "Register Account"),
-                  SizedBox(
-                    height: mediaquery.height * 0.02,
-                  ),
-                  const Thintext(
-                      text:
-                          "Welcome here, Enter your information\n           for creating your account"),
                   const SizedBox(
                     height: 30,
+                  ),
+                  const Image(
+                    image: AssetImage('images/registerimage.png'),
+                    height: 100,
+                  ),
+                  const SizedBox(
+                    height: 15,
+                  ),
+                  Text( "Register Account",style: k24B600style,),
+                  const SizedBox(
+                    height:10,
+                  ),
+                   Text(
+
+                          "Welcome here, Enter your information\n           for creating your account",style: k14Grey400style,),
+                  const SizedBox(
+                    height: 50,
                   ),
                   MyTextFormField(
                     name: 'name', // Assign a name to the form field
@@ -85,7 +85,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                     name: 'Password', // Assign a name to the form field
                     labelText: 'Password',
                     controller: _passwordController,
-                    suffixicon: InkWell(
+                    suffixicon: GestureDetector(
                         onTap: () {
                           showpass = !showpass;
                           setState(() {});
@@ -103,11 +103,18 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                                   fit: BoxFit.cover,
                                 ),
                               )
-                            : const Icon(
-                                Icons.visibility,
-                                color: Colors.blue,
-                                size: 20,
-                              )),
+                            :  Container(
+                          height: 20,
+                          width: 20,
+                          alignment: Alignment.center,
+                          child: Image.asset(
+                            width:
+                            20, // Adjust the image width within the container
+                            height: 20,
+                            'images/filleye.png',
+                            fit: BoxFit.contain,
+                          ),
+                        ),),
                   ),
                   const SizedBox(
                     height: 20,
@@ -117,7 +124,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                     name: 'ConfirmPassword', // Assign a name to the form field
                     labelText: 'ConfirmPassword',
                     controller: _confirmPasswordController,
-                    suffixicon: InkWell(
+                    suffixicon: GestureDetector(
                         onTap: () {
                           showpass1 = !showpass1;
                           setState(() {});
@@ -135,11 +142,18 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                                   fit: BoxFit.cover,
                                 ),
                               )
-                            : const Icon(
-                                Icons.visibility,
-                                color: Colors.blue,
-                                size: 20,
-                              )),
+                            :  Container(
+                          height: 20,
+                          width: 20,
+                          alignment: Alignment.center,
+                          child: Image.asset(
+                            width:
+                            20, // Adjust the image width within the container
+                            height: 20,
+                            'images/filleye.png',
+                            fit: BoxFit.contain,
+                          ),
+                        ),),
                   ),
                   const SizedBox(
                     height: 20,
@@ -149,6 +163,9 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                     onPressed: () {
                       // Perform form submission
                     },
+                  ),
+                  const SizedBox(
+                    height: 20,
                   ),
                   // SizedBox(
                   //   height: mediaquery.height * 0.01,
@@ -160,22 +177,32 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                       children: [
                         Text(
                           'Already have an account?',
-                          style: GoogleFonts.poppins(
-                            decoration: TextDecoration.underline,
+                          style: GoogleFonts.quicksand(
+                             color: Colors.black,
+                              decoration: TextDecoration.underline,
+
+                              fontSize: 14,
+                              fontWeight: FontWeight.w600
+
+
                           ),
                         ),
-                        TextButton(
-                          onPressed: () {
+                        GestureDetector(
+                          onTap: () {
                             Navigator.pushReplacementNamed(
                                 context, SignInScreen.routename);
                           },
                           child: Text(
                             'Sign In',
-                            style: TextStyle(
-                              color: Theme.of(context).primaryColor,
-                              decoration: TextDecoration.underline,
-                              decorationColor: Theme.of(context).primaryColor,
-                            ),
+                             style: GoogleFonts.quicksand(
+                          color: const Color(0xff059F55).withOpacity(0.86),
+                            decoration: TextDecoration.underline,
+                            decorationColor: const Color(0xff059F55).withOpacity(0.86),
+                            fontSize: 14,
+                            fontWeight: FontWeight.w600
+
+
+                        ),
                           ),
                         ),
                       ],

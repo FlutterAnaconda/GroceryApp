@@ -89,7 +89,7 @@ class MySalesTabCard extends StatelessWidget {
       padding: const EdgeInsets.all(8.0),
       child: Container(
         height: 85,
-        width: MediaQuery.of(context).size.width * 0.9,
+        width: MediaQuery.of(context).size.width * 0.85,
         decoration: cardcontainerdecorationradius15,
         child: Row(
 crossAxisAlignment: CrossAxisAlignment.center,

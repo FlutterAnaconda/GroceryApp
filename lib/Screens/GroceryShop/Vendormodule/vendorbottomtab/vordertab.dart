@@ -53,6 +53,7 @@ class _VordertabState extends State<Vordertab>
     return DefaultTabController(
         length: 4,
         child: Scaffold(
+          backgroundColor: Colors.white,
           appBar: MYDetailsappbar(text: 'My Orders', onpressed: () {}),
           body: Column(
             children: [

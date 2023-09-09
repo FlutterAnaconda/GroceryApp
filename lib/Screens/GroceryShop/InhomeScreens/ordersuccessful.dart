@@ -1,4 +1,5 @@
-import 'package:dotcoder1/Screens/GroceryShop/Bottomtab/hometab.dart';
+
+import 'package:dotcoder1/Screens/GroceryShop/homeScreen.dart';
 import 'package:dotcoder1/widgets/textfields/butons/Myfilledbutton.dart';
 import 'package:flutter/material.dart';
 
@@ -10,37 +11,55 @@ class OrderScuccessfull extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-
-        body: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-
+      backgroundColor: Colors.white,
+        body: Stack(
           children: [
-            const SizedBox(height: 40,),
-            Image.asset('images/orderdone.png',height: 199,width:223 ,),
-            const SizedBox(height: 40,),
-            Text(
-              'You place the Order\n      Successfully',
-              style: k22B500style,
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+
+              children: [
+                const SizedBox(height: 90,),
+                Image.asset('images/orderdone.png',height: 199,width:223 ,fit: BoxFit.contain,),
+                const SizedBox(height: 40,),
+                Padding(
+                  padding: const EdgeInsets.only(left: 20.0),
+                  child: Text(
+                    'You place the Order\n      Successfully',
+                    style: k22B500style,
+                  ),
+                ),
+                const SizedBox(height:35),
+                Padding(
+                  padding: const EdgeInsets.only(left: 15.0),
+                  child: Text(
+                    'Your order is placed nicely. We start\n   our delivery process and you will\n           receive your item soon',
+                    style: k14Grey7C300style,
+                  ),
+                ),
+                const SizedBox(height: 80,),
+                Padding(
+                  padding: const EdgeInsets.only(left: 15.0),
+                  child: GradientElevatedButton(
+                    text: 'Back To Home',
+                    onPressed: () {
+                      Navigator.pushReplacement(
+                        context,
+                        MaterialPageRoute(builder: (c) => const HomeScreen()),
+                      );
+                    },
+                  ),
+                ),
+              ],
             ),
-            const SizedBox(height:25),
-            Padding(
-              padding: const EdgeInsets.only(left: 15.0),
-              child: Text(
-                'Your order is placed nicely. We start\n   our delivery process and you will\n        receive your item soon',
-                style: k14Grey300style,
-              ),
-            ),
-            const SizedBox(height: 50,),
-            Padding(
-              padding: const EdgeInsets.only(left: 15.0),
-              child: GradientElevatedButton(
-                text: 'Back To Home',
-                onPressed: () {
-                  Navigator.pushReplacement(
-                    context,
-                    MaterialPageRoute(builder: (c) => const HomeTab()),
-                  );
-                },
+             Positioned(
+              top: 0,
+              right: 0,
+
+              child: Image(
+                image: const AssetImage('images/bgcolor.png',),
+                width: MediaQuery.of(context).size.width,
+                height: 380,
+                fit: BoxFit.cover,
               ),
             ),
           ],

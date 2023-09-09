@@ -14,7 +14,7 @@ class HelpScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // backgroundColor: const Color(0xff23AA49).withOpacity(0.12),
+      backgroundColor: const Color(0xffffffff),
       appBar: MYDetailsappbar(
         text: 'Help & Support',
         onpressed: () {
@@ -22,69 +22,72 @@ class HelpScreen extends StatelessWidget {
         },
       ),
       body: SingleChildScrollView(
-        child: Column(
-          children: [
-            Image.asset(
-              'images/helpsupport.png',
-              height: 307,
-              width: 307,
-            ),
-            Padding(
-              padding: const EdgeInsets.all(16.0),
-              child: Container(
-                  height: 200,
-                  width: 342,
-                  decoration: cardcontainerdecoration,
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(
-                         vertical: 20),
-                    child: ListView.builder(
-                      physics: const NeverScrollableScrollPhysics(),
-                      itemCount: list.length,
-                      itemBuilder: (context, index) {
-                        return Padding(
-                          padding: const EdgeInsets.all(12.0),
-                          child: Row(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Padding(
-                                padding: const EdgeInsets.only(left: 16.0),
-                                child: Image.asset(
-                                  list[index].imageurl,
-                                  height: 24,
-                                  width: 24,
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 15),
+          child: Column(
+            children: [
+              Image.asset(
+                'images/helpsupport.png',
+                height: 307,
+                width: 307,
+              ),
+              Padding(
+                padding: const EdgeInsets.all(16.0),
+                child: Container(
+                    height: 200,
+                    width: 342,
+                    decoration: cardcontainerdecoration,
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(
+                           vertical: 20),
+                      child: ListView.builder(
+                        physics: const NeverScrollableScrollPhysics(),
+                        itemCount: list.length,
+                        itemBuilder: (context, index) {
+                          return Padding(
+                            padding: const EdgeInsets.all(12.0),
+                            child: Row(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Padding(
+                                  padding: const EdgeInsets.only(left: 16.0),
+                                  child: Image.asset(
+                                    list[index].imageurl,
+                                    height: 24,
+                                    width: 24,
+                                  ),
                                 ),
-                              ),
-                              Padding(
-                                padding: const EdgeInsets.only(left: 16.0),
-                                child: Column(
+                                Padding(
+                                  padding: const EdgeInsets.only(left: 16.0),
+                                  child: Column(
 
-                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                    crossAxisAlignment: CrossAxisAlignment.start,
 
-                                  children: [
-                                    Text(
-                                      list[index].text,
-                                      style: k12Grey400style,
-                                    ),
-                                    const SizedBox(
-                                      height: 10,
-                                    ),
-                                    Container(
-                                      height: 1,
-                                      width: 240,
-                                      color: const Color(0xffEBEBF0),
-                                    ),
-                                  ],
+                                    children: [
+                                      Text(
+                                        list[index].text,
+                                        style: k12Grey400style,
+                                      ),
+                                      const SizedBox(
+                                        height: 10,
+                                      ),
+                                      Container(
+                                        height: 1,
+                                        width: 220,
+                                        color: const Color(0xffEBEBF0),
+                                      ),
+                                    ],
+                                  ),
                                 ),
-                              ),
-                            ],
-                          ),
-                        );
-                      },
-                    ),
-                  )),
-            ),
-          ],
+                              ],
+                            ),
+                          );
+                        },
+                      ),
+                    )),
+              ),
+            ],
+          ),
         ),
       ),
     );

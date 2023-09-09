@@ -1,4 +1,5 @@
 import 'package:flutter/Material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 import '../text/constants.dart';
 
@@ -10,12 +11,13 @@ class DescriptionWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+      padding: const EdgeInsets.symmetric(horizontal: 4, vertical: 4),
       child: TextFormField(
         // readOnly: true,
         initialValue: description,
-        style: const TextStyle(
-          fontSize: 16,
+        style: GoogleFonts.poppins(
+          fontSize: 12,
+          fontWeight: FontWeight.w400,
           color: Colors.black87,
         ),
         maxLines: null,
@@ -28,7 +30,7 @@ class DescriptionWidget extends StatelessWidget {
               width: 1,
               color: Color(0xffD6D8DA), // Your desired border color
             ),
-            borderRadius: BorderRadius.circular(8),
+            borderRadius: BorderRadius.circular(10),
           ),
           enabledBorder: OutlineInputBorder(
             borderSide: const BorderSide(
@@ -36,9 +38,9 @@ class DescriptionWidget extends StatelessWidget {
               width: 1,
               color: Color(0xffD6D8DA), // Your desired border color
             ),
-            borderRadius: BorderRadius.circular(8),
+            borderRadius: BorderRadius.circular(10),
           ),
-          contentPadding: const EdgeInsets.all(16),
+          contentPadding: const EdgeInsets.all(18),
         ),
       ),
     );

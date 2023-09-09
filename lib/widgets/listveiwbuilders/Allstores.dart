@@ -50,7 +50,7 @@ class _AllStoresState extends State<AllStores> {
   Widget build(BuildContext context) {
     // final mediaquery = MediaQuery.of(context).size;
     return SizedBox(
-      height: 150,
+      height: 162,
       child: ListView.builder(
         scrollDirection: Axis.horizontal,
         itemCount: list.length,
@@ -78,7 +78,7 @@ class _AllStoresState extends State<AllStores> {
                   BoxShadow(
                     color: Colors.black.withOpacity(0.1), // Shadow color
                     spreadRadius: 0, // Spread radius (controls the blur)
-                    blurRadius: 2.84415602684021, // Blur radius
+                    blurRadius: 2.54415602684021, // Blur radius
                     offset: const Offset(0, 2), // Offset in the x and y axes
                   ),
                 ],
@@ -91,9 +91,9 @@ class _AllStoresState extends State<AllStores> {
                     Row(
                       children: [
                         Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                          padding: const EdgeInsets.only(left: 8.0,right: 0),
                           child: CircleAvatar(
-                            radius: 30,
+                            radius: 28,
                             backgroundImage: AssetImage(
                               list[index].image!,
                             ),
@@ -115,7 +115,7 @@ class _AllStoresState extends State<AllStores> {
                               ),
                             ),
                             Padding(
-                              padding: const EdgeInsets.only(left:6,top:6.0),
+                              padding: const EdgeInsets.only(left:6,top:3.0),
                               child: Row(
                                 children: [
                                   const Icon(
@@ -135,7 +135,7 @@ class _AllStoresState extends State<AllStores> {
                               padding: const EdgeInsets.only(left: 6,top:6.0),
                               child: Row(
                                 children: [
-                                  Image.asset('images/star1.png',width: 14.25,height:  14.25,),
+                                  Image.asset('images/liststar.png',width: 14.25,height:  14.25,),
                                   Padding(
                                     padding: const EdgeInsets.only(left: 5,right: 3),
                                     child: Text(
@@ -153,27 +153,29 @@ class _AllStoresState extends State<AllStores> {
                           ],
                         ),
                         const Spacer(),
-                        GestureDetector(
-                          onTap: () {
-                            setState(() {
-                              list[index].isfav = !list[index].isfav;
-                              // Toggle favorite state
-                            });
-                          },
-                          child: Padding(
-                            padding: const EdgeInsets.only(right: 12.0),
-                            child: Image.asset(
-                              list[index].isfav
-                                  ? 'images/fillheart.png'
-                                  : 'images/heart.png',
-                             width: 20,
-                              height: 20,
-                            ),
+                        Padding(
+                          padding: const EdgeInsets.only(right: 12.0,bottom: 30),
+                          child: IconButton(
+                               onPressed: () {
+                                 setState(() {
+                                   list[index].isfav = !list[index].isfav;
+                                   // Toggle favorite state
+                                 });
+                               },
+                              icon: Image.asset(
+                                list[index].isfav
+                                    ? 'images/fillheart.png'
+                                    : 'images/heart.png',
+                               width: 20,
+                                height: 20,
+                                fit: BoxFit.contain,
+                              ),
+                            )
                           ),
-                        ),
+
                       ],
                     ),
-                    const SizedBox(height: 8,),
+                    const SizedBox(height: 10,),
                     Text(
                       'Lorem ipsum dolor sit amet, Lorem \nipsum dolor sit amet, consectetur ',
                       style: GoogleFonts.poppins(

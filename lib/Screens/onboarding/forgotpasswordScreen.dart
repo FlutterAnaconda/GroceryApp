@@ -1,8 +1,8 @@
 import 'package:dotcoder1/Screens/onboarding/newpassword.dart';
+import 'package:dotcoder1/widgets/text/constants.dart';
 import 'package:flutter/material.dart';
 
-import '../../widgets/text/BoldText.dart';
-import '../../widgets/text/thintext.dart';
+
 import '../../widgets/textfields/butons/Myfilledbutton.dart';
 import '../../widgets/textfields/textfield.dart';
 
@@ -26,30 +26,30 @@ class _ForgotScreenState extends State<ForgotScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final mediaquery = MediaQuery.of(context).size;
+    // final mediaquery = MediaQuery.of(context).size;
 
     return SafeArea(
       child: Scaffold(
-        // backgroundColor: const Color(0xff23AA49).withOpacity(0.12),
+        backgroundColor: Colors.white,
         body: Column(crossAxisAlignment: CrossAxisAlignment.center, children: [
-          SizedBox(
-            height: mediaquery.height * 0.02,
+          const SizedBox(
+            height: 30,
           ),
-          Image(
-            image: const AssetImage('images/registerimage.png'),
-            height: mediaquery.height * 0.2,
+          const Image(
+            image: AssetImage('images/registerimage.png'),
+            height: 100,
           ),
-          SizedBox(
-            height: mediaquery.height * 0.01,
+          const SizedBox(
+            height: 30,
           ),
-          const BoldText(text: "Forgot Password"),
-          SizedBox(
-            height: mediaquery.height * 0.005,
+           Text( "Forgot Password",style: k24B600style,),
+          const SizedBox(
+            height: 5,
           ),
-          const Thintext(
-              text: "     Enter your email for\n changing your password"),
-          SizedBox(
-            height: mediaquery.height * 0.03,
+           Text(
+               "     Enter your email for\n changing your password",style: k14Grey400style,),
+          const SizedBox(
+            height: 50,
           ),
           MyTextFormField(
             name: 'Email', // Assign a name to the form field

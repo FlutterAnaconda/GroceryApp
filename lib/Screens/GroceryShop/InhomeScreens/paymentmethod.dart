@@ -33,6 +33,7 @@ class _PaymentScreenState extends State<PaymentScreen> {
   Widget paymentwidget() => SingleChildScrollView(
     child:
         Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+          const SizedBox(height: 20,),
       Padding(
         padding: const EdgeInsets.symmetric(horizontal: 12.0),
         child: Text(
@@ -50,7 +51,8 @@ class _PaymentScreenState extends State<PaymentScreen> {
           itemBuilder: (BuildContext context, int index) {
             return Padding(
               padding: const EdgeInsets.symmetric(horizontal: 8.0),
-              child: SizedBox(
+              child: Container(
+                margin: const EdgeInsets.only(left: 10),
                   width: MediaQuery.of(context).size.width * 0.8,
                   child: Image.asset(imagepath[index])),
             );
@@ -58,11 +60,11 @@ class _PaymentScreenState extends State<PaymentScreen> {
         ),
       ),
       const Padding(
-        padding: EdgeInsets.symmetric(horizontal: 8.0),
+        padding: EdgeInsets.symmetric(horizontal: 8.0,vertical: 5),
         child: DottedBorderButton(),
       ),
       Padding(
-        padding: const EdgeInsets.only(top: 4, left: 12.0),
+        padding: const EdgeInsets.only(top: 20, left: 12.0,bottom: 15),
         child: Text(
           "Payment Methods",
           style: GoogleFonts.poppins(
@@ -72,7 +74,7 @@ class _PaymentScreenState extends State<PaymentScreen> {
           const Paymentmethodcard(),
           Padding(
             padding:
-            const EdgeInsets.all(8),
+            const EdgeInsets.symmetric(horizontal: 16,vertical: 2),
             child: GradientElevatedButton(
               onPressed: () {
                 widget.onPressed;

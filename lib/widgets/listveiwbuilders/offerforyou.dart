@@ -11,11 +11,13 @@ class OfferListveiw extends StatelessWidget {
       title: 'Authentic Pantry',
       image: 'images/Group 7066.png',
       rating: 3,
+      subtitle: 'Dollar pantry',
       location: '91 park st,12',
       price: 25,
     ),
     ProductModel(
-      title: 'zapiata',
+      title: 'Gromit\'s Offer',
+      subtitle: 'Dollar pantry',
       image: 'images/Group 1171276027.png',
       rating: 3,
       location: '91 park st,12',
@@ -23,6 +25,7 @@ class OfferListveiw extends StatelessWidget {
     ),
     ProductModel(
       title: 'carbs',
+      subtitle: 'Dollar pantry',
       image: 'images/Group 1171276027.png',
       rating: 3,
       location: '91 park st,12',
@@ -30,6 +33,7 @@ class OfferListveiw extends StatelessWidget {
     ),
     ProductModel(
       title: 'tamatar',
+      subtitle: 'Dollar pantry',
       image: 'images/Group 1171276027.png',
       rating: 3,
       location: '91 park st,12',
@@ -43,7 +47,7 @@ class OfferListveiw extends StatelessWidget {
   Widget build(BuildContext context) {
     // final mediaquery = MediaQuery.of(context).size;
     return SizedBox(
-      height: 224,
+      height: 258,
       child: ListView.builder(
         scrollDirection: Axis.horizontal,
         itemCount: list.length,
@@ -53,6 +57,7 @@ class OfferListveiw extends StatelessWidget {
                 context,
                 MaterialPageRoute(
                     builder: (_) => ProductDetailsScreen(
+                      subtitle: list[index].subtitle!,
                           image: list[index].image!,
                           location: list[index].location!,
                           price: list[index].price!,
@@ -62,7 +67,7 @@ class OfferListveiw extends StatelessWidget {
               decoration: BoxDecoration(
                 color: Colors.white, // Set the container background color
                 borderRadius:
-                    BorderRadius.circular(9), // Optional: Rounded corners
+                    BorderRadius.circular(14), // Optional: Rounded corners
                 boxShadow: [
                   BoxShadow(
                     color: Colors.black.withOpacity(0.1), // Shadow color
@@ -80,16 +85,20 @@ class OfferListveiw extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: [
                     ClipRRect(
-                      borderRadius: const BorderRadius.only(
-                          topLeft: Radius.circular(9),
-                          topRight: Radius.circular(9)),
+                      borderRadius:  const BorderRadius.all(Radius.circular(10)),
+                  //         topLeft: Radius.circular(10),
+                  //         topRight: Radius.circular(10),
+                  // bottomLeft: Radius.circular(10),
+                  // bottomRight: Radius.circular(10)),
+
                       child: Image.asset(
                         list[index].image!,
-                        height: 140,
-                        fit: BoxFit.fill,
+                        height: 180,
+                        width: 212,
+                        fit: BoxFit.cover,
                       ),
                     ),
-                    const SizedBox(height: 10,),
+                    const SizedBox(height: 8,),
                     Row(
                       children: [
                         Padding(
@@ -120,7 +129,7 @@ class OfferListveiw extends StatelessWidget {
                         ),
                       ],
                     ),
-                    const SizedBox(height: 5,),
+                    const SizedBox(height: 2,),
                     Row(
                       children: [
                         const Padding(

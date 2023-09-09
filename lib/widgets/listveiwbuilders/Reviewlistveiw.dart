@@ -49,14 +49,14 @@ class _ReviewsBuilderState extends State<ReviewsBuilder> {
   Widget build(BuildContext context) {
     final mediaquery = MediaQuery.of(context).size;
     return SizedBox(
-      height: 400,
+      height: 270,
       child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 4.0),
+        padding: const EdgeInsets.symmetric(horizontal: 8.0),
         child: ListView.builder(
           scrollDirection: Axis.vertical,
           itemCount: list.length,
           shrinkWrap: true,
-          // physics: const NeverScrollableScrollPhysics(),
+          physics: const NeverScrollableScrollPhysics(),
           itemBuilder: (BuildContext context, int index) {
             return Container(
               height: 118,
@@ -66,12 +66,12 @@ class _ReviewsBuilderState extends State<ReviewsBuilder> {
                 border: Border.all(
                     width: 0.5,
                     color: Colors.black
-                        .withOpacity(0.05)), // Optional: Rounded corners
+                        .withOpacity(0.01)), // Optional: Rounded corners
                 boxShadow: [
                   BoxShadow(
                     color: Colors.black.withOpacity(0.1), // Shadow color
                     spreadRadius: 0, // Spread radius (controls the blur)
-                    blurRadius: 2.84415602684021, // Blur radius
+                    blurRadius: 2, // Blur radius
                     offset: const Offset(0, 2), // Offset in the x and y axes
                   ),
                 ],
@@ -87,7 +87,7 @@ class _ReviewsBuilderState extends State<ReviewsBuilder> {
                         Padding(
                           padding: const EdgeInsets.all(8.0),
                           child: CircleAvatar(
-                            radius: 25,
+                            radius: 28,
                             backgroundImage: NetworkImage(
                               list[index].image!,
                             ),
@@ -112,6 +112,7 @@ class _ReviewsBuilderState extends State<ReviewsBuilder> {
                                     color: Color(0xff737373),
                                     size: 18,
                                   ),
+                                  const SizedBox(width: 3,),
                                   Text(
                                     list[index].location!,
                                     style: k10grey300style,
@@ -126,7 +127,7 @@ class _ReviewsBuilderState extends State<ReviewsBuilder> {
                           padding: const EdgeInsets.all(8.0),
                           child: Row(
                             children: [
-                              Image.asset('images/star1.png',width: 14.25,height:  14.25,),
+                              Image.asset('images/star1.png',color: const Color(0xffFFF743),width: 14.25,height:  14.25,),
                               Padding(
                                 padding: const EdgeInsets.only(left: 5),
                                 child: Text(

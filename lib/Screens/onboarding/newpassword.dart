@@ -1,7 +1,6 @@
+import 'package:dotcoder1/widgets/text/constants.dart';
 import 'package:flutter/material.dart';
 
-import '../../widgets/text/BoldText.dart';
-import '../../widgets/text/thintext.dart';
 import '../../widgets/textfields/butons/Myfilledbutton.dart';
 import '../../widgets/textfields/textfield.dart';
 
@@ -34,7 +33,7 @@ class _NewpasswordState extends State<Newpassword> {
 
     return SafeArea(
       child: Scaffold(
-        // backgroundColor: const Color(0xff23AA49).withOpacity(0.12),
+        backgroundColor: Colors.white,
         body: SizedBox(
           height: mediaquery.height,
           child: SingleChildScrollView(
@@ -44,29 +43,29 @@ class _NewpasswordState extends State<Newpassword> {
                 const SizedBox(
                   height: 30,
                 ),
-                Image(
-                  image: const AssetImage('images/registerimage.png'),
-                  height: mediaquery.height * 0.2,
+                const Image(
+                  image: AssetImage('images/registerimage.png'),
+                  height: 100,
                 ),
                 const SizedBox(
                   height: 15,
                 ),
-                const BoldText(text: " Account Recovery"),
+                 Text( "Forgot Password",style: k24B600style,),
                 const SizedBox(
                   height: 15,
                 ),
-                const Thintext(
-                    text:
-                        "   Enter your new password\n for accessing your account"),
+                 Text(
+
+                        "   Enter your new password\n for accessing your account",style: k14Grey400style,),
                 const SizedBox(
-                  height: 30,
+                  height: 50,
                 ),
                 MyTextFormField(
                   obscure: showpass,
                   name: 'Password', // Assign a name to the form field
                   labelText: 'Password',
                   controller: _passwordController,
-                  suffixicon: InkWell(
+                  suffixicon: GestureDetector(
                       onTap: () {
                         showpass = !showpass;
                         setState(() {});
@@ -84,11 +83,18 @@ class _NewpasswordState extends State<Newpassword> {
                                 fit: BoxFit.cover,
                               ),
                             )
-                          : const Icon(
-                              Icons.visibility,
-                              color: Colors.blue,
-                              size: 20,
-                            )),
+                          :  Container(
+                        height: 20,
+                        width: 20,
+                        alignment: Alignment.center,
+                        child: Image.asset(
+                          width:
+                          20, // Adjust the image width within the container
+                          height: 20,
+                          'images/filleye.png',
+                          fit: BoxFit.contain,
+                        ),
+                      ),),
                 ),
                 const SizedBox(
                   height: 15,
@@ -98,7 +104,7 @@ class _NewpasswordState extends State<Newpassword> {
                   name: 'ConfirmPassword', // Assign a name to the form field
                   labelText: 'ConfirmPassword',
                   controller: _confirmPasswordController,
-                  suffixicon: InkWell(
+                  suffixicon: GestureDetector(
                       onTap: () {
                         showpass1 = !showpass1;
                         setState(() {});
@@ -116,14 +122,21 @@ class _NewpasswordState extends State<Newpassword> {
                                 fit: BoxFit.cover,
                               ),
                             )
-                          : const Icon(
-                              Icons.visibility,
-                              color: Colors.blue,
-                              size: 20,
-                            )),
+                          : Container(
+                        height: 20,
+                        width: 20,
+                        alignment: Alignment.center,
+                        child: Image.asset(
+                          width:
+                          20, // Adjust the image width within the container
+                          height: 20,
+                          'images/filleye.png',
+                          fit: BoxFit.contain,
+                        ),
+                      ),),
                 ),
-                SizedBox(
-                  height: mediaquery.height * 0.07,
+                const SizedBox(
+                  height: 25,
                 ),
                 GradientElevatedButton(
                   text: 'Forgot',

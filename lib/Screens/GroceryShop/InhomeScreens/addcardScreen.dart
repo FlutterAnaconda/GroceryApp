@@ -94,7 +94,7 @@ class _AddCardScreenState extends State<AddCardScreen> {
                 ),
               ),
               SizedBox(
-                height: 200,
+                height: 90,
                 child: ListView.builder(
                   scrollDirection: Axis.horizontal,
                   physics: const NeverScrollableScrollPhysics(),

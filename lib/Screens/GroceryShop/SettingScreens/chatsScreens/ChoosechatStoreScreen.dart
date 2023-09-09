@@ -24,7 +24,9 @@ class _ChoosechatStoreScreenState extends State<ChoosechatStoreScreen> {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
+
       child: Scaffold(
+        backgroundColor: Colors.white,
         appBar: MYDetailsappbar(
           text: 'Chat',
           onpressed: () => Navigator.pop(context),
@@ -71,6 +73,7 @@ class _ChoosechatStoreScreenState extends State<ChoosechatStoreScreen> {
               )),
           child: Container(
             height: 82,
+            width: 300,
             decoration: BoxDecoration(
               color: Colors.white, // Set the container background color
               borderRadius: BorderRadius.circular(5),
@@ -87,7 +90,7 @@ class _ChoosechatStoreScreenState extends State<ChoosechatStoreScreen> {
                 ),
               ],
             ),
-            margin: const EdgeInsets.symmetric(horizontal: 20,vertical: 4  ),
+            margin: const EdgeInsets.symmetric(horizontal: 30,vertical: 4  ),
             child: SizedBox(
               width: MediaQuery.of(context).size.width *
                   0.8, // Replace with your desired fixed width

@@ -67,17 +67,21 @@ class _CheckOutScreenState extends State<CheckOutScreen> {
             const SizedBox(
               height: 20,
             ),
-            Mystepper(
-                currentindex: _currentPage,
-                firsttext: 'Delivery',
-                thridtext: 'Payment',
-                secondtext: 'Address', isdummyneeded: true,),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 18.0),
+              child: Mystepper(
+                  currentindex: _currentPage,
+                  firsttext: 'Delivery',
+                  thridtext: 'Payment',
+                  secondtext: 'Address', isdummyneeded: true,),
+            ),
             const SizedBox(
               height: 20,
             ),
             Expanded(
               child: PageView(
                 controller: _contentPageController,
+                physics: const NeverScrollableScrollPhysics(),
                 scrollDirection: Axis.horizontal,
                 // physics: const NeverScrollableScrollPhysics(),
                 children: [
@@ -145,18 +149,27 @@ class _CheckOutScreenState extends State<CheckOutScreen> {
                             //   borderRadius: BorderRadius.circular(8.0),
                             //   borderSide: BorderSide.none,
                           ),
-                          child: Icon(
-                            Icons.location_on,
-                            color: Theme.of(context).primaryColor,
-                            size: 23,
+                          child: Container(
+                            height: 20,
+                            width: 20,
+                            alignment: Alignment.center,
+                            child: Image.asset(
+                              width:
+                              17, // Adjust the image width within the container
+                              height: 21,
+                              'images/location.png',
+
+                              fit: BoxFit.contain,
+                            ),
                           )),
                     ),
                   )
                 ],
               ),
             ),
+            const SizedBox(height: 20,),
             SizedBox(
-              height: 215,
+              height: 225,
               child: ListView.builder(
                   physics: const NeverScrollableScrollPhysics(),
                   itemCount: deliverywidgetform.length,
@@ -170,7 +183,7 @@ class _CheckOutScreenState extends State<CheckOutScreen> {
                     }
                     return Padding(
                       padding: const EdgeInsets.symmetric(
-                          horizontal: 4.0, vertical: 10),
+                          horizontal: 4.0, vertical: 8),
                       child: MyTextFormField(
                         controller: deliverywidgetform[index].controller,
                         labelText: deliverywidgetform[index].label,
@@ -180,6 +193,7 @@ class _CheckOutScreenState extends State<CheckOutScreen> {
                     );
                   }),
             ),
+            const SizedBox(height: 10,),
             Row(
               children: [
                 Expanded(
@@ -201,40 +215,61 @@ class _CheckOutScreenState extends State<CheckOutScreen> {
             Padding(
               padding:
                   const EdgeInsets.symmetric(horizontal: 10.0, vertical: 4),
-              child: Row(
-                children: [
-                  // GestureDetector(
-                  //   onTap: () => setState(() {
-                  //     issave = !issave;
-                  //   }),
-                  //   child: issave
-                  //       ? Icon(
-                  //           Icons.square_sharp,
-                  //           color: Colors.grey.withOpacity(0.50),
-                  //           size: 30,
-                  //           // fill: 1,
-                  //         )
-                  //       : const Icon(
-                  //           Icons.square_sharp,
-                  //           color: Colors.green,
-                  //           size: 30,
-                  //           // fill: 1,
-                  //         ),
-                  // ),
-                  Checkbox(
-                      value: issave,
-                      activeColor: Colors.green,
-                      onChanged: ((value) => setState(() {
-                            issave = !issave;
-                          }))),
-                  Text("Save shipping address",
-                      style: GoogleFonts.poppins(
-                          fontSize: 16, fontWeight: FontWeight.w500)),
-                ],
+              child: Padding(
+                padding: const EdgeInsets.only(left: 12.0,top: 10,bottom: 15),
+                child: Row(
+                  children: [
+                 
+                    GestureDetector(
+                      onTap: (){
+                        setState(() {
+                          issave = !issave;
+                        });
+
+                      },
+                      child: Container(
+                        width: 24,
+                        height: 24,
+                        decoration: BoxDecoration(
+                          shape: BoxShape.rectangle,
+           borderRadius: BorderRadius.circular(4),
+                          border: Border.all(
+                            color: issave
+                                ? const Color(0xFF07CD6E)
+                                : Colors.grey,
+                          ),
+                          gradient: issave
+                              ? LinearGradient(
+                            colors: [
+                              const Color(0xff07CD6E),
+                              const Color(0xFF059F55).withOpacity(0.86),
+                            ],
+                            begin: Alignment.topCenter,
+                            end: Alignment.bottomCenter,
+                          )
+                              : null,
+                        ),
+                        child: Center(
+                          child: issave
+                              ? const Icon(
+                            Icons.check,
+                            color: Colors.white,
+                            size: 16,
+                          )
+                              : null,
+                        ),
+                      ),
+                    ),
+                    const SizedBox(width: 8,),
+                    Text("Save shipping address",
+                        style: GoogleFonts.poppins(
+                            fontSize: 16, fontWeight: FontWeight.w500)),
+                  ],
+                ),
               ),
             ),
             SizedBox(
-              height: 180,
+              height: 215,
               child: Container(
                 decoration: typingcardcontainerdecoration,
                 child: Padding(
@@ -253,7 +288,7 @@ class _CheckOutScreenState extends State<CheckOutScreen> {
                           ),
                         ),
                         Padding(
-                          padding: const EdgeInsets.only(left: 8,top:12.0),
+                          padding: const EdgeInsets.only(left: 8,top:20.0),
                           child: Row(
                             children: [
                               Text(
@@ -284,14 +319,14 @@ class _CheckOutScreenState extends State<CheckOutScreen> {
                                   style: GoogleFonts.poppins(
                                       fontSize: 14, color: Colors.black)),
                               const Spacer(),
-                              Text("data",
+                              Text("+12.70",
                                   style: GoogleFonts.poppins(
                                       fontSize: 14, color: Colors.black)),
                             ],
                           ),
                         ),
                         Padding(
-                          padding: const EdgeInsets.only(top: 12.0),
+                          padding: const EdgeInsets.only(top: 45.0),
                           child: Center(
                               child: GradientElevatedButton(
                                   onPressed: () {

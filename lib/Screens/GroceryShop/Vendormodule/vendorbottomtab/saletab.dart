@@ -1,3 +1,5 @@
+import 'package:dotcoder1/Screens/GroceryShop/Vendormodule/VendorhomeScreen.dart';
+import 'package:dotcoder1/Screens/GroceryShop/homeScreen.dart';
 import 'package:dotcoder1/widgets/customappbar.dart';
 import 'package:dotcoder1/widgets/tabbar_tab/vordertabbar.dart';
 import 'package:dotcoder1/widgets/text/constants.dart';
@@ -37,12 +39,10 @@ class _SaletabState extends State<Saletab> with SingleTickerProviderStateMixin {
         '09th Jan, 2023 -- 11:20AM', ' + \$500.00'),
     SalestabModel('images/down.png', 'Withdraw Amount',
         '09th Jan, 2023 -- 11:20AM', ' - \$20.00'),
-    SalestabModel(
-        'images/down.png', 'Withdraw Amount', '09th Jan, 2023 -- 11:20AM',
-        ' - \$20.00'),
+    SalestabModel('images/down.png', 'Withdraw Amount',
+        '09th Jan, 2023 -- 11:20AM', ' - \$20.00'),
     SalestabModel('images/up.png', 'Sales Amount Deposit',
         '09th Jan, 2023 -- 11:20AM', ' + \$500.00'),
-
   ];
 
   final List<String> tabs = [
@@ -79,10 +79,19 @@ class _SaletabState extends State<Saletab> with SingleTickerProviderStateMixin {
     return DefaultTabController(
       length: 3,
       child: Scaffold(
+        backgroundColor: Colors.white,
         appBar: Mycircleavatarappbar(
-            text: 'My Sale',
-            imagepath: 'images/Group 7066.png',
-            onpressed: () {}),
+          text: 'My Sale',
+          imagepath: 'images/Group 7066.png',
+          onpressed: () {
+            Navigator.pushReplacement(
+              context,
+              MaterialPageRoute(
+                builder: (c) => const VendorhomeScreen(),
+              ),
+            );
+          },
+        ),
         body: SingleChildScrollView(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
@@ -91,10 +100,7 @@ class _SaletabState extends State<Saletab> with SingleTickerProviderStateMixin {
                 padding: const EdgeInsets.all(8.0),
                 child: Container(
                   height: 160,
-                  width: MediaQuery
-                      .of(context)
-                      .size
-                      .width,
+                  width: MediaQuery.of(context).size.width,
                   decoration: BoxDecoration(
                       color: const Color(0xffEFF9F2),
                       borderRadius: BorderRadius.circular(10),
@@ -141,10 +147,7 @@ class _SaletabState extends State<Saletab> with SingleTickerProviderStateMixin {
                 height: 10,
               ),
               Container(
-                height: MediaQuery
-                    .of(context)
-                    .size
-                    .height - 340,
+                height: MediaQuery.of(context).size.height - 340,
                 child: PageView(
                   physics: const NeverScrollableScrollPhysics(),
                   controller: _pageController,
@@ -161,55 +164,64 @@ class _SaletabState extends State<Saletab> with SingleTickerProviderStateMixin {
             ],
           ),
         ),
-        bottomNavigationBar:  Padding(
+        bottomNavigationBar: Padding(
           padding: const EdgeInsets.all(8.0),
-          child: GradientElevatedButton(text: 'Withdraw', onPressed: (){}),
+          child: GradientElevatedButton(text: 'Withdraw', onPressed: () {}),
         ),
       ),
     );
   }
-  Widget AllSales_withdarw() =>
-      ListView.builder(itemCount: stringlist.length,itemBuilder: (context, index) {
-        final int color;
-        if(stringlist[index].imagepath=='images/up.png')
-          {
-            color=0xff34A853;
+
+  Widget AllSales_withdarw() => ListView.builder(
+        itemCount: stringlist.length,
+        itemBuilder: (context, index) {
+          final int color;
+          if (stringlist[index].imagepath == 'images/up.png') {
+            color = 0xff34A853;
+          } else {
+            color = 0xffB62D2D;
           }
-        else
-          {
-            color=0xffB62D2D;
-          }
-        return MySalesTabCard(imagepath: stringlist[index].imagepath, maintext: stringlist[index].maintext, datetime: stringlist[index].datetime, amount: stringlist[index].amount, color: color);
+          return MySalesTabCard(
+              imagepath: stringlist[index].imagepath,
+              maintext: stringlist[index].maintext,
+              datetime: stringlist[index].datetime,
+              amount: stringlist[index].amount,
+              color: color);
+        },
+      );
 
-      },);
-
-  Widget Sales() =>
-      ListView.builder(itemCount: stringlist.length,itemBuilder: (context, index) {
-
-        if(stringlist[index].imagepath !='images/up.png')
-        {
-          return Container();
-        }
-
-        return MySalesTabCard(imagepath: stringlist[index].imagepath, maintext: stringlist[index].maintext, datetime: stringlist[index].datetime, amount: stringlist[index].amount, color: 0xff34A853);
-
-      },);
-
-  Widget Withdraw() =>
-      SizedBox(
-      height: MediaQuery.of(context).size.height-406,
-        child: ListView.builder(itemCount: stringlist.length,itemBuilder: (context, index) {
-
-          if(stringlist[index].imagepath=='images/up.png')
-          {
+  Widget Sales() => ListView.builder(
+        itemCount: stringlist.length,
+        itemBuilder: (context, index) {
+          if (stringlist[index].imagepath != 'images/up.png') {
             return Container();
           }
 
-          return MySalesTabCard(imagepath: stringlist[index].imagepath, maintext: stringlist[index].maintext, datetime: stringlist[index].datetime, amount: stringlist[index].amount, color: 0xffB62D2D);
+          return MySalesTabCard(
+              imagepath: stringlist[index].imagepath,
+              maintext: stringlist[index].maintext,
+              datetime: stringlist[index].datetime,
+              amount: stringlist[index].amount,
+              color: 0xff34A853);
+        },
+      );
 
-        },),
+  Widget Withdraw() => SizedBox(
+        height: MediaQuery.of(context).size.height - 406,
+        child: ListView.builder(
+          itemCount: stringlist.length,
+          itemBuilder: (context, index) {
+            if (stringlist[index].imagepath == 'images/up.png') {
+              return Container();
+            }
+
+            return MySalesTabCard(
+                imagepath: stringlist[index].imagepath,
+                maintext: stringlist[index].maintext,
+                datetime: stringlist[index].datetime,
+                amount: stringlist[index].amount,
+                color: 0xffB62D2D);
+          },
+        ),
       );
 }
-
-
-

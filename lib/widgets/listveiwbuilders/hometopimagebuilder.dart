@@ -4,10 +4,8 @@ import 'package:flutter/material.dart';
 class ImageSlider extends StatelessWidget {
   final List<String> imagepath = [
     'images/slide1.png',
-    'images/slide1.png',
-    'images/slide1.png',
-    'images/slide1.png',
-    'images/slide1.png', // Replace with your image URLs
+    'images/slide2.png',
+    // Replace with your image URLs
     // Replace with your image URLs
     // Add more image URLs here if needed
   ];
@@ -20,29 +18,38 @@ class ImageSlider extends StatelessWidget {
     return CarouselSlider(
       options: CarouselOptions(
         // clipBehavior: Clip.none,
-        padEnds: false,
-        // disableCenter: true,
-        // viewportFraction: 0.9,
+        // padEnds: true,
+
+        viewportFraction: 0.98,
         height: 150,
+
+        // viewportFraction: 0.95,
         // Adjust the height as needed
         // autoPlay: true, // Enable auto-play
         // enlargeCenterPage: true,
-        aspectRatio: 1,
+        aspectRatio: 16/9,
         // autoPlayCurve: Curves.fastOutSlowIn,
-        enableInfiniteScroll: true,
+        // enableInfiniteScroll: true,
         // pauseAutoPlayOnTouch: true,
       ),
       items: imagepath.map((imagepath) {
         return Builder(
           builder: (BuildContext context) {
             return Padding(
-              padding: const EdgeInsets.only(left: 10.0, ),
-              child: Image.asset(
-                imagepath,
-                width: MediaQuery.of(context).size.width,
-                height: MediaQuery.of(context).size.height,
-                fit: BoxFit.contain,
-
+              padding: const EdgeInsets.symmetric(horizontal: 8),
+              child: Container(
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(8),
+                ),
+                height: 150,
+                width: 500,
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(8),
+                  child: Image.asset(
+                    imagepath,
+                    fit: BoxFit.fill,
+                  ),
+                ),
               ),
             );
           },

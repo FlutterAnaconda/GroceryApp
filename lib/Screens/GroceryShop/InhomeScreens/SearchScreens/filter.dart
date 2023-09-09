@@ -19,6 +19,7 @@ class _FilterScreenState extends State<FilterScreen> {
   Widget build(BuildContext context) {
     return SafeArea(
         child: Scaffold(
+          backgroundColor: Colors.white,
       appBar: MYDetailsappbar(
           text: 'Filter', onpressed: () => Navigator.pop(context)),
 

@@ -32,7 +32,7 @@ class _FavoritesScreenState extends State<FavoritesScreen>
   void _handleTabChange() {
     _pageController.animateToPage(
       _tabController.index,
-      duration: const Duration(milliseconds: 400),
+      duration: const Duration(milliseconds: 500),
       curve: Curves.decelerate,
     );
   }
@@ -49,6 +49,7 @@ class _FavoritesScreenState extends State<FavoritesScreen>
     return DefaultTabController(
       length: 2, // Number of tabs
       child: Scaffold(
+        backgroundColor: Colors.white,
         appBar: MYDetailsappbar(
           text: 'Favorite',
           onpressed: () => Navigator.pop(context),
@@ -68,6 +69,7 @@ class _FavoritesScreenState extends State<FavoritesScreen>
                         16.0), // Adjust border radius as needed
                     color: const Color(0xffEDF8F0)),
                 child: TabBar(
+
                   controller:
                       _tabController, // Explicitly set the TabController
                   tabs: const [

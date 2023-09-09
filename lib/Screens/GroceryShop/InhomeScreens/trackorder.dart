@@ -43,12 +43,13 @@ class _TrackorderState extends State<Trackorder> {
             },
           ),
           Container(
-            height: 190,
+            height: 210,
             width: double.infinity,
             color: Colors.white,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
+                const SizedBox(height: 15,),
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 16.0,vertical: 15),
                   child: Text(
@@ -56,11 +57,14 @@ class _TrackorderState extends State<Trackorder> {
                     style: k18B700style,
                   ),
                 ),
-                Mystepper(
-                    currentindex: 0,
-                    firsttext: 'Order Placed',
-                    secondtext: 'On the way',
-                    thridtext: 'Delivered', isdummyneeded: true,),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 18.0),
+                  child: Mystepper(
+                      currentindex: 0,
+                      firsttext: 'Order Placed',
+                      secondtext: 'On the way',
+                      thridtext: 'Delivered', isdummyneeded: true,),
+                ),
                 Padding(
                   padding: const EdgeInsets.symmetric(
                     horizontal: 22,

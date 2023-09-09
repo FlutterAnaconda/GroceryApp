@@ -20,12 +20,13 @@ class ProductDetailsScreen extends StatefulWidget {
   final String image;
   final int price;
   final String location;
+  final String subtitle;
   const ProductDetailsScreen({
     super.key,
     required this.image,
     required this.location,
     required this.price,
-    required this.title,
+    required this.title, required this.subtitle,
   });
   @override
   State<ProductDetailsScreen> createState() => _ProductDetailsScreenState();
@@ -79,101 +80,47 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
     return SafeArea(
       child: Scaffold(
           backgroundColor: const Color(0xffffffff),
-          appBar: MYDetailsappbar(
+          appBar: Myfavappbar(
               text: 'Product Details', onpressed: () => Navigator.pop(context)),
-          body: Stack(
-            children: [
-              SingleChildScrollView(
-                child: Column(
+          body: SingleChildScrollView(
+            child: Stack(
+              children: [
+                Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Container(
+                      alignment: Alignment.center,
                       color: Colors.white,
-                      height: 310,
-                      // decoration: BoxDecoration(
-                      //   color: Colors.white, // Set the container background color
-                      //   // borderRadius: BorderRadius.circular(34),
-                      //   border: Border.all(
-                      //       width: 0.5,
-                      //       color: Colors.black
-                      //           .withOpacity(0.05)), // Optional: Rounded corners
-                      //
-                      //   boxShadow: [
-                      //     BoxShadow(
-                      //       color: Colors.black.withOpacity(0.1), // Shadow color
-                      //       spreadRadius: 0, // Spread radius (controls the blur)
-                      //       blurRadius: 2.84415602684021, // Blur radius
-                      //       offset:
-                      //           const Offset(0, 2), // Offset in the x and y axes
-                      //     ),
-                      //   ],
-                      // ),
-                      child: Stack(
-                        children: [
-                          // Image Widget
-                          isAssetimage
-                              ? Image.asset(
-                                  widget.image,
-                                  width: double.infinity,
-                                  height: 300,
-                                  fit: BoxFit.cover,
-                                )
-                              : Image.network(
-                                  widget.image,
-                                  width: double.infinity,
-                                  height: 270,
-                                  fit: BoxFit.fill,
-                                ),
-                          // Cart Quantity Control
-                          Positioned(
-                            bottom: 10,
-                            right: 10,
-                            child: CartQuantityWidget(
-                              initialquantity: cartQuantity,
-                              onQuantityChanged: (newQuantity) {
-                                setState(() {
-                                  cartQuantity = newQuantity;
-                                });
-                              },
+                      height: 250,
+                      width: double.infinity,
+
+                      child: isAssetimage
+                          ? Image.asset(
+                              widget.image,
+                              width: double.infinity,
+                              height: 250,
+                              fit: BoxFit.fill,
+                            )
+                          : Image.network(
+                              widget.image,
+                              width: double.infinity,
+                              height: 250,
+                              fit: BoxFit.fill,
                             ),
-                          ),
-                          Positioned(
-                            bottom: 10,
-                            left: 10,
-                            child: GestureDetector(
-                              onTap: () {
-                                setState(() {
-                                  isfav = !isfav;
-                                  // Toggle favorite state
-                                });
-                              },
-                              child: Padding(
-                                padding: const EdgeInsets.only(right: 12.0),
-                                child: Image.asset(
-                                  isfav
-                                      ? 'images/fillheart.png'
-                                      : 'images/heart.png',
-                                  width: 30,
-                                  height: 30,
-                                ),
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
                     ),
+
                     const SizedBox(
-                      height: 10,
+                      height: 65,
                     ),
                     Divider(
                       color: Colors.black.withOpacity(0.05),
                       height: 1,
                     ),
                     const SizedBox(
-                      height: 10,
+                      height: 30,
                     ),
                     Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                      padding: const EdgeInsets.symmetric(horizontal: 12.0),
                       child: Row(
                         children: [
                           Text(
@@ -189,7 +136,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                       ),
                     ),
                     Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                      padding: const EdgeInsets.only(left: 16.0,top: 4),
                       child: Row(
                         children: [
                           const Icon(
@@ -197,12 +144,16 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                             color: Colors.red,
                             size: 17.8,
                           ),
+                          const SizedBox(width: 5,),
                           Text(
                             widget.location,
                             style: k12_4B_49_400style,
                           ),
                         ],
                       ),
+                    ),
+                    const SizedBox(
+                      height: 30,
                     ),
                     SingleChildScrollView(
                       scrollDirection: Axis.horizontal,
@@ -212,19 +163,18 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                             padding: const EdgeInsets.only(left: 8.0),
                             child: buildMinorDetail(
                                 '45minutes',
-                                Icons.bike_scooter,
-                                Colors.orangeAccent,
+                               'images/vespa.png',
                                 context),
                           ),
                           Padding(
                             padding: const EdgeInsets.only(left: 8.0),
                             child: buildMinorDetail('80 kcal,100 gm',
-                                Icons.water_drop, Colors.green, context),
+                                'images/drop.png', context),
                           ),
                           Padding(
                             padding: const EdgeInsets.only(left: 8.0),
                             child: buildMinorDetail('80 kcal,100 gm',
-                                Icons.water_drop, Colors.green, context),
+                                'images/leaf.png', context),
                           ),
                         ],
                       ),
@@ -241,26 +191,12 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                                       title: widget.title,
                                     ))),
                         child: Text(
-                          'AddReview',
-                          style: k10G400style,
+                          'Add Review',
+                          style: k10G400underlinestyle,
                         ),
                       ),
                     ),
-                    // Padding(
-                    //   padding: const EdgeInsets.only(bottom: 18.0),
-                    //   child: TextButton(
-                    //     onPressed: () => Navigator.push(
-                    //       context,
-                    //       MaterialPageRoute(
-                    //         builder: (_) => const FavoritesScreen(),
-                    //       ),
-                    //     ),
-                    //     child: Text(
-                    //       'See All favorite',
-                    //       style: k10G400style,
-                    //     ),
-                    //   ),
-                    // ),
+
                     Padding(
                       padding: const EdgeInsets.only(left: 10.0),
                       child: Text(
@@ -269,10 +205,10 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                       ),
                     ),
                     Padding(
-                      padding: const EdgeInsets.all(8.0),
+                      padding: const EdgeInsets.symmetric(horizontal: 12.0,vertical: 8),
                       child: Text(
-                        'Lorem ipsum dolor sit amet, Lorem ipsum dolor\n sit amet, consectetur adipiscing elit.consectetur \nadipiscing ',
-                        style: k14Grey500style,
+                        'Lorem ipsum dolor sit amet, Lorem ipsum dolor sit amet, consectetur adipiscing elit . consectetur adipiscing ',
+                        style: k14Grey9C500style,
                       ),
                     ),
                     Myhomerowtext(
@@ -282,58 +218,78 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                             MaterialPageRoute(
                                 builder: (_) => const ReviewsBuilderScreen()))),
                     const ReviewsBuilder(),
+                const SizedBox(height: 10,),
+                Padding(
+                  padding: const EdgeInsets.symmetric(
+                      horizontal: 16.0),
+                  child: GradientElevatedButton(
+                    onPressed: () {
+                      addToCart();
+                    },
+                    text: 'Add to Cart',
+                  ),
+                ),
+                    const SizedBox(height: 10,),
                   ],
                 ),
-              ),
-            ],
-          ),
-          bottomNavigationBar: Padding(
-            padding: const EdgeInsets.symmetric(
-                horizontal: 16.0),
-            child: GradientElevatedButton(
-              onPressed: () {
-                addToCart();
-              },
-              text: 'Add to Cart',
+                Positioned(
+                  top: 255,
+                  right: 10,
+                  child: CartQuantityWidget(
+                    initialquantity: cartQuantity,
+                    onQuantityChanged: (newQuantity) {
+                      setState(() {
+                        cartQuantity = newQuantity;
+                      });
+                    },
+                  ),
+                ),
+              ],
             ),
-          )),
-    );
+          ),
+
+          ));
+
   }
 }
 
 Widget buildMinorDetail(
-    String text, IconData myicon, Color mycolor, BuildContext context) {
-  final mediaqurey = MediaQuery.of(context).size;
+    String text, String imagepath, BuildContext context) {
+  // final mediaqurey = MediaQuery.of(context).size;
   return Padding(
     padding: const EdgeInsets.all(2.0),
     child: Container(
-      decoration: const BoxDecoration(
-        borderRadius: BorderRadius.all(
-          Radius.circular(10),
-        ),
-        color: Color.fromARGB(240, 230, 239, 245),
+      constraints: const BoxConstraints(
+        minWidth: 112,
+        maxWidth: 129,
       ),
-      height: mediaqurey.height * 0.05,
+      decoration:  BoxDecoration(
+        borderRadius: const BorderRadius.all(
+          Radius.circular(4),
+        ),
+        color:const Color(0xffF3FAF5).withOpacity(0.66),
+      ),
+      height:40,
+
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 8.0),
-        child: SizedBox(
-          height: 40,
-          child: Row(
-            children: [
-              Icon(
-                myicon,
-                color: mycolor,
-              ),
-              const SizedBox(
-                width: 5,
-              ),
-              Text(
-                text,
-                style: GoogleFonts.poppins(
-                    fontSize: 11, color: const Color(0xff958F8F)),
-              ),
-            ],
-          ),
+        child: Row(
+          children: [
+            Image.asset(
+              imagepath,
+             width: 20,
+              height: 20,
+              fit: BoxFit.contain,
+            ),
+            const SizedBox(
+              width: 5,
+            ),
+            Text(
+              text,
+              style: GoogleFonts.poppins(
+                  fontSize: 11, color: const Color(0xff958F8F)),
+            ),
+          ],
         ),
       ),
     ),

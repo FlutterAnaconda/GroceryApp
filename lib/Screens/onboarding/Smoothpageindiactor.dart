@@ -1,14 +1,13 @@
-import 'package:dotcoder1/Screens/onboarding/RegisterAccount.dart';
+
 import 'package:dotcoder1/Screens/onboarding/SigninScreen.dart';
+import 'package:dotcoder1/widgets/text/constants.dart';
 
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
-import '../../Providers/usertype.dart';
 import '../../widgets/text/BoldText.dart';
-import '../../widgets/text/thintext.dart';
+
 import '../../widgets/textfields/butons/Myfilledbutton.dart';
 
 class MyPageView extends StatefulWidget {
@@ -32,8 +31,7 @@ class _MyPageViewState extends State<MyPageView> {
     _pageController.addListener(() {
       setState(() {
         currentPage = _pageController.page!.toInt();
-        print(currentPage);
-        print(pageCount);
+
       });
     });
   }
@@ -43,9 +41,9 @@ class _MyPageViewState extends State<MyPageView> {
   Widget build(BuildContext context) {
     final mediaquery = MediaQuery.of(context).size;
     return SafeArea(
-      child: Scaffold(
-        body: Scaffold(
-          backgroundColor: const Color(0xff23AA49).withOpacity(0.12),
+      child:
+         Scaffold(
+          backgroundColor:Colors.white,
           body: SingleChildScrollView(
             child: Column(
               children: [
@@ -53,6 +51,10 @@ class _MyPageViewState extends State<MyPageView> {
                 Align(
                   alignment: Alignment.topRight,
                   child: TextButton(
+                    style: ButtonStyle(
+                      splashFactory: NoSplash.splashFactory,
+                      overlayColor: MaterialStateProperty.all(Colors.white),
+                    ),
                     onPressed: () {
                       Navigator.pushReplacement(
                           context,
@@ -67,13 +69,13 @@ class _MyPageViewState extends State<MyPageView> {
                       style: GoogleFonts.poppins(
                         color: Colors.black,
                         fontWeight: FontWeight.w500,
-                        decoration: TextDecoration.underline,
+
                       ),
                     ),
                   ),
                 ),
                 SizedBox(
-                  height: 550,
+                  height: 545,
                   child: PageView(
                     controller: _pageController,
                     children: [
@@ -88,21 +90,21 @@ class _MyPageViewState extends State<MyPageView> {
                     ],
                   ),
                 ),
-                const SizedBox(
-                  height: 5,
-                ),
+                // const SizedBox(
+                //   height: 5,
+                // ),
                 SmoothPageIndicator(
                   controller: _pageController,
                   count: pageCount,
                   effect: const CustomizableEffect(
                     activeDotDecoration: DotDecoration(
-                        height: 10,
+                        height: 8.16,
                         color: Color(0xff34A853),
-                        width: 40,
+                        width: 26.35,
                         borderRadius: BorderRadius.all(Radius.circular(5))),
                     dotDecoration: DotDecoration(
-                      height: 10,
-                      width: 10,
+                      height: 9.41,
+                      width: 9.41,
                       borderRadius: BorderRadius.all(Radius.circular(5)),
                       dotBorder: DotBorder(
                         color: Color(0xff34A853),
@@ -182,10 +184,10 @@ class _MyPageViewState extends State<MyPageView> {
                 //   ),
                 // ),
                 const SizedBox(
-                  height: 30,
+                  height: 40,
                 ),
                 Padding(
-                  padding: const EdgeInsets.all(8.0),
+                  padding: const EdgeInsets.symmetric(horizontal: 45.0),
                   child: GradientElevatedButton(
                     text: 'Next',
                     onPressed: () {
@@ -210,7 +212,7 @@ class _MyPageViewState extends State<MyPageView> {
             ),
           ),
         ),
-      ),
+
     );
   }
 
@@ -218,17 +220,32 @@ class _MyPageViewState extends State<MyPageView> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
-        Padding(
-            padding: EdgeInsets.only(left: leftpadding),
-            child: Image(
-              image: AssetImage(image),
-              height: 400,
-            )),
+        Stack(
+          children: [
+            const Positioned(
+              top: 40,
+              left: 0,
+
+              child: Image(
+                image: AssetImage('images/bgcolor.png',),
+                width: 400,
+                height: 380,
+                fit: BoxFit.cover,
+              ),
+            ),
+            Padding(
+                padding: EdgeInsets.only(left: leftpadding),
+                child: Image(
+                  image: AssetImage(image),
+                  height: 390,
+                )),
+          ],
+        ),
         BoldText(text: boldtext),
         const SizedBox(height: 15),
-        const Thintext(
-            text:
-                "You can access all verity of groceries\n  here and fast delivery service system"),
+         Text(
+
+                "You can access all verity of groceries\nhere and fast delivery service system",style: k14Grey700style,),
         // SizedBox(height: mediaquery.height * 0.03),
       ],
     );

@@ -49,6 +49,7 @@ class _OrderTabState extends State<OrderTab>
     return DefaultTabController(
       length: 2, // Number of tabs
       child: Scaffold(
+        backgroundColor: Colors.white,
         appBar: MYDetailsappbar(
             text: 'My Orders',
             onpressed: () => Navigator.pushReplacement(
@@ -83,7 +84,7 @@ class _OrderTabState extends State<OrderTab>
                 ),
               ),
             ),
-            const SizedBox(height: 10,),
+
             Expanded(
               child: PageView(
                 physics: const NeverScrollableScrollPhysics(),

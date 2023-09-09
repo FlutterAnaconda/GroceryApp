@@ -14,7 +14,7 @@ class VorderTabbar extends StatelessWidget {
       backgroundColor: const Color(0xffEFF9F1),
 
       borderWidth: 1,
-      contentPadding: const EdgeInsets.symmetric(horizontal: 18),
+      contentPadding: const EdgeInsets.symmetric(horizontal: 38),
       buttonMargin:const EdgeInsets.symmetric(horizontal: 5),
       borderColor: Colors.transparent,
       controller: tabController,

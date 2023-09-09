@@ -11,6 +11,7 @@ class StartchatindScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: MYDetailsappbar(
           text: 'Chat',
           onpressed: () {
@@ -27,22 +28,25 @@ class StartchatindScreen extends StatelessWidget {
               'No Conversation yet?',
               style: k20darkgrey400,
             ),
+            const SizedBox(height: 80,),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 40.0, vertical: 30),
+              child: GradientElevatedButton(
+                  text: 'Start Chat',
+                  onPressed: () {
+                    Navigator.pushReplacement(
+                      context,
+                      MaterialPageRoute(
+                        builder: ((context) => const ChoosechatStoreScreen()),
+                      ),
+                    );
+                  }),
+            ),
           ],
         ),
+
       ),
-      bottomNavigationBar: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 40.0, vertical: 30),
-        child: GradientElevatedButton(
-            text: 'Start Chat',
-            onPressed: () {
-              Navigator.pushReplacement(
-                context,
-                MaterialPageRoute(
-                  builder: ((context) => const ChoosechatStoreScreen()),
-                ),
-              );
-            }),
-      ),
+
     );
   }
 }

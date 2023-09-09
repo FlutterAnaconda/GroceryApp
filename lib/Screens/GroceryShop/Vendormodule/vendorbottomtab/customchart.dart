@@ -888,17 +888,17 @@ import 'package:flutter/material.dart';
 ///full my one
 
 
-class BarChartSample2 extends StatefulWidget {
-  BarChartSample2({super.key});
+class Vendorchart extends StatefulWidget {
+  Vendorchart({super.key});
   final Color leftBarColor = AppColors.contentColorYellow;
   final Color rightBarColor = AppColors.contentColorRed;
   final Color avgColor =
   AppColors.contentColorOrange.avg(AppColors.contentColorRed);
   @override
-  State<StatefulWidget> createState() => BarChartSample2State();
+  State<StatefulWidget> createState() => VendorchartState();
 }
 
-class BarChartSample2State extends State<BarChartSample2> {
+class VendorchartState extends State<Vendorchart> {
   final double width = 18;
 
   late List<BarChartGroupData> rawBarGroups;

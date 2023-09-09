@@ -9,14 +9,14 @@ class Myhomerowtext extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 8),
+      padding: const EdgeInsets.symmetric(horizontal: 10,vertical: 12),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Text(
             text,
             style:
-                GoogleFonts.poppins(fontWeight: FontWeight.w500, fontSize: 18),
+                GoogleFonts.poppins(fontWeight: FontWeight.w500, fontSize: 16,color: Colors.black),
           ),
           TextButton(
             onPressed: ontap,

@@ -14,13 +14,13 @@ class TopsellingListview extends StatefulWidget {
 class _TopsellingListviewState extends State<TopsellingListview> {
   List<ProductModel> list = [
     ProductModel(
-      title: "Orgnaic",
+      title: "Orgnaic Mango",
       image: "images/mango.png",
       price: 23,
       subtitle: 'alabama',
     ),
     ProductModel(
-      title: "Orange",
+      title: "Fresh Orange",
       image: "images/mango.png",
       price: 64,
       subtitle: 'alabama',
@@ -93,7 +93,8 @@ class _TopsellingListviewState extends State<TopsellingListview> {
     // final mediaquery = MediaQuery.of(context).size;
 
     return SizedBox(
-      height: 80,
+      height: 82,
+      //own height was 77
       child: ListView.builder(
         scrollDirection: Axis.horizontal,
         itemCount: list.length,
@@ -110,31 +111,32 @@ class _TopsellingListviewState extends State<TopsellingListview> {
                     context,
                     MaterialPageRoute(
                         builder: (_) => ProductDetailsScreen(
+                          subtitle: list[index].subtitle!,
                               image: list[index].image!,
                               location: list[index].subtitle!,
                               price: list[index].price!,
                               title: list[index].title!,
                             ))),
                 child: Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 4.0),
+                  padding: const EdgeInsets.symmetric(horizontal: 0.0),
                   child: Container(
                     decoration: BoxDecoration(
                       color: Colors.white, // Set the container background color
                       borderRadius:
-                          BorderRadius.circular(9), // Optional: Rounded corners
+                          BorderRadius.circular(5), // Optional: Rounded corners
                       boxShadow: [
                         BoxShadow(
-                          color: Colors.black.withOpacity(0.1), // Shadow color
+                          color: const Color(0xff000000).withOpacity(0.10), // Shadow color
                           spreadRadius: 0, // Spread radius (controls the blur)
-                          blurRadius: 3.5630252361297607, // Blur radius
+                          blurRadius: 2, // Blur radius
                           offset: const Offset(0,
-                              1.7815126180648804), // Offset in the x and y axes
+                              2), // Offset in the x and y axes
                         ),
                       ],
                     ),
                     margin: const EdgeInsets.symmetric(horizontal: 8,vertical: 4),
                     child: SizedBox(
-                      width: 210,
+                      width: 222,
 
                       // Replace with your desired fixed width
                       child: Row(
@@ -144,7 +146,7 @@ class _TopsellingListviewState extends State<TopsellingListview> {
                             // mainAxisAlignment: MainAxisAlignment.spaceAround,
                             children: [
                               Padding(
-                                padding: const EdgeInsets.only(left: 6.0,top:6),
+                                padding: const EdgeInsets.only(left: 6.0,top:8),
                                 child: Text(
                                   list[index].title!,
                                   style: GoogleFonts.poppins(
@@ -165,7 +167,7 @@ class _TopsellingListviewState extends State<TopsellingListview> {
                                 ),
                               ),
                               Padding(
-                                padding: const EdgeInsets.only(left: 6.0,top: 10),
+                                padding: const EdgeInsets.only(left: 6.0,top: 6,bottom: 5),
                                 child: Text(
                                   '\$${list[index].price!.toStringAsFixed(1)}',
                                   style: GoogleFonts.poppins(
@@ -185,14 +187,15 @@ class _TopsellingListviewState extends State<TopsellingListview> {
               ),
               Positioned(
                 // top: 0,
-                bottom: 13,
-                left: 77,
+                bottom: 28,
+                right: 0,
                 // right: 0,
-                child: InkWell(
+                child: GestureDetector(
                   onTap: () => Navigator.push(
                       context,
                       MaterialPageRoute(
                           builder: (_) => ProductDetailsScreen(
+                            subtitle: list[index].subtitle!,
                                 image: list[index].image!,
                                 location: list[index].subtitle!,
                                 price: list[index].price!,

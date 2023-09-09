@@ -21,12 +21,16 @@ class MyLoginWithButton extends StatelessWidget {
         child: ElevatedButton(
           onPressed: onTap,
           style: ElevatedButton.styleFrom(
+            foregroundColor: Colors.white,
+shadowColor: Colors.white,
+
+            splashFactory: NoSplash.splashFactory,
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(8.0),
-              side: const BorderSide(color: Color(0xFFD6D8DA), width: 0.3),
+              side: const BorderSide(color: Color(0xFFD6D8DA), width: 1),
             ),
             padding: const EdgeInsets.all(16.0),
-            elevation: 1.0,
+            elevation: 0,
             backgroundColor: Colors.white,
             surfaceTintColor: Colors.white,
           ),

@@ -7,8 +7,10 @@ import 'package:flutter/material.dart';
 
 import '../../../../widgets/dropdown/Mydropdown.dart';
 import '../../../../widgets/textfields/Descriptiontextfeild.dart';
+import '../VendorhomeScreen.dart';
 class Addproducttab extends StatefulWidget {
-  const Addproducttab({super.key});
+  final bool isupdate;
+  const Addproducttab({super.key, required this.isupdate});
 
   @override
   State<Addproducttab> createState() => _AddproducttabState();
@@ -40,7 +42,9 @@ class _AddproducttabState extends State<Addproducttab> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: MYDetailsappbar(text: 'Add Product',onpressed: () {
+      backgroundColor: Colors.white,
+      appBar: MYDetailsappbar(text: widget.isupdate?'Update Product':'Add Product',onpressed: () {
+         widget.isupdate?Navigator.pop(context):(Navigator.pushReplacement(context, MaterialPageRoute(builder: (c)=>const VendorhomeScreen())));
 
       },),
       body: SingleChildScrollView(
@@ -79,9 +83,9 @@ class _AddproducttabState extends State<Addproducttab> {
               'Lorem ipsum dolor sit amet, Lorem ipsum\n dolor sit amet, consectetur \nadipiscing elit.consectetur adipiscing ',
             ),
             const SizedBox(height: 20,),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 8.0),
-              child: const MyDropDownFormField(hinttext: 'Delivery Time', list: list, iscolorchanged: true,),
+            const Padding(
+              padding: EdgeInsets.symmetric(horizontal: 8.0),
+              child: MyDropDownFormField(hinttext: 'Delivery Time', list: list, iscolorchanged: true,),
             ),
             const SizedBox(height: 20,),
             SizedBox(
@@ -95,7 +99,7 @@ class _AddproducttabState extends State<Addproducttab> {
             ),
             Padding(
               padding: const EdgeInsets.only(left: 20.0,top: 40),
-              child: GradientElevatedButton(text: 'Add Product', onPressed: (){}),
+              child: GradientElevatedButton(text: widget.isupdate?'Update':'Add Product', onPressed: (){}),
             ),
           ],
         ),

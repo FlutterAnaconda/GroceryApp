@@ -25,9 +25,10 @@ class MyTextFormField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 15),
+      padding: const EdgeInsets.symmetric(horizontal: 20,vertical: 5),
       child: SizedBox(
         width: MediaQuery.of(context).size.width,
+        height: 50,
         child: TextFormField(
           readOnly: isreadonly,
           style: const TextStyle(fontSize: 18.0),
@@ -41,7 +42,7 @@ class MyTextFormField extends StatelessWidget {
                 const EdgeInsets.symmetric(vertical: 10.0, horizontal: 10),
             focusedBorder: const OutlineInputBorder(
 
-              borderSide: BorderSide(color: Color(0xFFD6D8DA), width: 2),
+              borderSide: BorderSide(color: Color(0xFFD6D8DA), width: 1),
               borderRadius: BorderRadius.all(
                 Radius.circular(10),
               ),

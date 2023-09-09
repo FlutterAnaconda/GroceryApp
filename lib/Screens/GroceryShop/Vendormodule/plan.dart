@@ -30,6 +30,7 @@ class _PlanScreenState extends State<PlanScreen> {
     final package = Provider.of<Usertype>(context);
 
     return Scaffold(
+      backgroundColor: Colors.white,
       body: package.baseindex == 1
           ? const SubscribtionScreen()
           : SingleChildScrollView(
@@ -92,8 +93,8 @@ class _PlanScreenState extends State<PlanScreen> {
                                         // print(selectedindex);
                                       },
                                       child: Container(
-                                        height: 28,
-                                        width: 28,
+                                        height: 18,
+                                        width: 18,
                                         decoration: BoxDecoration(
                                             color: Colors.white,
                                             borderRadius:
@@ -108,7 +109,7 @@ class _PlanScreenState extends State<PlanScreen> {
                                                 Icons.circle,
                                                 color: Theme.of(context)
                                                     .primaryColor,
-                                                size: 18,
+                                                size: 11,
                                               )
                                             : const SizedBox(),
                                       ),
@@ -166,3 +167,9 @@ class _PlanScreenState extends State<PlanScreen> {
     );
   }
 }
+
+
+
+
+
+

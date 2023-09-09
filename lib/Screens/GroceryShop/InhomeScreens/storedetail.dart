@@ -1,12 +1,20 @@
-import 'package:dotcoder1/Screens/GroceryShop/InhomeScreens/productdetailsscreen.dart';
+
+import 'package:dotcoder1/Screens/GroceryShop/Vendormodule/Tab_bar_content_of%20vendor.dart';
+
+import 'package:dotcoder1/Screens/GroceryShop/Vendormodule/outofstock.dart';
+
 import 'package:dotcoder1/Screens/GroceryShop/homeScreen.dart';
 import 'package:dotcoder1/widgets/text/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 
+import '../../../Providers/usertype.dart';
 import '../../../models/productmodel.dart';
 import '../../../widgets/customappbar.dart';
 
+
+import '../Vendormodule/tab_bar_content.dart';
 class Storesdetailscreen extends StatefulWidget {
   static const String routename = '/AllStoresscreen';
   final String imagepath;
@@ -37,86 +45,26 @@ class _StoresdetailscreenState extends State<Storesdetailscreen> {
     const Tab(text: 'Dairy'),
   ];
 
-  // List<ProductModel> list = [
-  //   ProductModel(
-  //     title: 'Blazzing Store',
-  //     image: 'images/Group 7066.png',
-  //     rating: 3,
-  //     location: '91 park st,12',
-  //     isfav: false,
-  //   ),
-  //   ProductModel(
-  //     title: 'Blazzing Store',
-  //     image: 'images/Group 1171276027.png',
-  //     rating: 3,
-  //     location: '91 park st,12',
-  //     isfav: false,
-  //   ),
-  //   ProductModel(
-  //     title: 'Authentic Pantry',
-  //     image: 'images/Group 1171276027.png',
-  //     rating: 3,
-  //     location: '91 park st,12',
-  //     isfav: false,
-  //   ),
-  //   ProductModel(
-  //     title: 'Authentic Pantry',
-  //     image: 'images/Group 1171276027.png',
-  //     rating: 3,
-  //     location: '91 park st,12',
-  //     isfav: false,
-  //   ),
-  //   ProductModel(
-  //     title: 'Authentic Pantry',
-  //     image: 'images/Group 1171276027.png',
-  //     rating: 3,
-  //     location: '91 park st,12',
-  //     isfav: false,
-  //   ),
-  //   ProductModel(
-  //     title: 'Authentic Pantry',
-  //     image: 'images/Group 1171276027.png',
-  //     rating: 3,
-  //     location: '91 park st,12',
-  //     isfav: false,
-  //   ),
-  //   ProductModel(
-  //     title: 'Authentic Pantry',
-  //     image: 'images/Group 1171276027.png',
-  //     rating: 3,
-  //     location: '91 park st,12',
-  //     isfav: false,
-  //   ),
-  //   ProductModel(
-  //     title: 'Authentic Pantry',
-  //     image: 'images/Group 1171276027.png',
-  //     rating: 3,
-  //     location: '91 park st,12',
-  //     isfav: false,
-  //   ),
-  //   ProductModel(
-  //     title: 'Authentic Pantry',
-  //     image: 'images/Group 1171276027.png',
-  //     rating: 3,
-  //     location: '91 park st,12',
-  //     isfav: false,
-  //   ),
-  // ];
+
   @override
   Widget build(BuildContext context) {
     // final mediaquery = MediaQuery.of(context).size;
+    final whichuser = Provider.of<Usertype>(context).isuser!;
+    print(whichuser);
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: MYDetailsappbar(
           text: 'Store Details',
-          onpressed: () => Navigator.pushReplacement(context,
-              MaterialPageRoute(builder: ((context) => const HomeScreen())))),
+          onpressed: () => whichuser?(Navigator.pushReplacement(context, MaterialPageRoute(builder: (c)=>const HomeScreen()))):Navigator.pop(context)),
       body: DefaultTabController(
         length: tabs.length,
         child: NestedScrollView(
           headerSliverBuilder: (context, innerBoxIsScrolled) {
             return [
               SliverAppBar(
-                expandedHeight: 433.0,
+                backgroundColor: Colors.white,
+                floating: true,
+                expandedHeight: 440.0,
                 flexibleSpace: FlexibleSpaceBar(
                   background: Column(
                     children: [
@@ -127,6 +75,7 @@ class _StoresdetailscreenState extends State<Storesdetailscreen> {
                         widget.location,
                         widget.rating,
                         widget.isfav,
+                        whichuser,
                       ),
                     ],
                   ),
@@ -148,9 +97,13 @@ class _StoresdetailscreenState extends State<Storesdetailscreen> {
               ),
               Expanded(
                 child: TabBarView(
+                  physics: const NeverScrollableScrollPhysics(),
                   children: tabs.map((tab) {
                     // You can return different content for each tab
-                    return buildContentForTab(); // Implement your content widgets
+                    return whichuser
+                        ? const TabbarContent()
+                        :const VendorTabbarconent();
+                    // buildContentForvendor(); // Implement your content widgets
                   }).toList(),
                 ),
               ),
@@ -163,26 +116,27 @@ class _StoresdetailscreenState extends State<Storesdetailscreen> {
 
   List<ProductModel> list = [
     ProductModel(
-        title: 'zulam',
-        image: 'images/Group 7066.png',
-        rating: 3,
-        location: '91 park st,12',
-        price: 25,
-        discount: true,),
+      title: 'zulam',
+      image: 'images/Group 7066.png',
+      rating: 3,
+      location: '91 park st,12',
+      price: 25,
+      discount: true,
+    ),
     ProductModel(
-        title: 'italia',
-        image: 'images/Group 1171276027.png',
-        rating: 3,
-        location: '91 park st,12',
-        price: 20,
-        discount: true,),
+      title: 'italia',
+      image: 'images/Group 1171276027.png',
+      rating: 3,
+      location: '91 park st,12',
+      price: 20,
+      discount: true,
+    ),
     ProductModel(
       title: 'norm',
       image: 'images/Group 1171276027.png',
       rating: 3,
       location: '91 park st,12',
       price: 25,
-
     ),
     ProductModel(
       title: 'pharse',
@@ -244,137 +198,14 @@ class _StoresdetailscreenState extends State<Storesdetailscreen> {
     ),
   ];
 
-  Widget buildContentForTab() {
-    // Implement the content for each tab here
-    return ListView.builder(
-      scrollDirection: Axis.vertical,
-      itemCount: list.length,
-      itemBuilder: (context, index) {
-        return GestureDetector(
-          onTap: () => Navigator.push(
-              context,
-              MaterialPageRoute(
-                  builder: (_) => ProductDetailsScreen(
-                        image: list[index].image!,
-                        location: list[index].location!,
-                        price: list[index].price!,
-                        title: list[index].title!,
-                      ))),
-          child: Container(
-            decoration: BoxDecoration(
-              color: Colors.white, // Set the container background color
-              borderRadius:
-                  BorderRadius.circular(9), // Optional: Rounded corners
-              boxShadow: [
-                BoxShadow(
-                  color: Colors.black.withOpacity(0.1), // Shadow color
-                  spreadRadius: 0, // Spread radius (controls the blur)
-                  blurRadius: 3.5630252361297607, // Blur radius
-                  offset: const Offset(
-                      0, 1.7815126180648804), // Offset in the x and y axes
-                ),
-              ],
-            ),
-            margin: const EdgeInsets.all(8),
-            child: Stack(
-              children: [
-               list[index].discount!? Positioned(
-                  right: 20,
-                  child:Container(
-                    width: 35,
-                    height: 40,
-                      decoration: BoxDecoration(
-                        image: DecorationImage(
-                          image: AssetImage(list[index].price! ==25?'images/yellow.png':'images/green.png',),
-                          fit: BoxFit.cover, // Adjust the fit to your needs
-                        ),),
 
-                  )
-                ):Container(),
-                SizedBox(
-                  height: 100, // Replace with your desired fixed width
-                  child: Row(
-                    // crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      ClipRRect(
-                        borderRadius: const BorderRadius.only(
-                            topLeft: Radius.circular(9),
-                            topRight: Radius.circular(9)),
-                        child: Image.asset(
-                          list[index].image!,
-                          height: 100,
-                          width: 100,
-                          fit: BoxFit.fill,
-                        ),
-                      ),
-                      const SizedBox(
-                        width: 20,
-                      ),
-                      Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            list[index].title!,
-                            style: GoogleFonts.poppins(
-                              fontSize: 16.03,
-                              fontWeight: FontWeight.w600,
-                              color: const Color(0xff34A853),
-                            ),
-                          ),
-                          const SizedBox(
-                            height: 5,
-                          ),
-                          Row(
-                            children: [
-                              Image.asset(
-                                'images/star1.png',
-                                width: 14.25,
-                                height: 14.25,
-                              ),
-                              Padding(
-                                padding:
-                                    const EdgeInsets.only(right: 2.0, left: 6),
-                                child: Text(
-                                  list[index].rating!.toStringAsFixed(1),
-                                  style: GoogleFonts.poppins(
-                                      fontSize: 12, fontWeight: FontWeight.w400
-                                      // fontWeight: FontWeight.bold,
-                                      ),
-                                ),
-                              ),
-                              Text(
-                                '(24)',
-                                style: k12lightgrey400,
-                              )
-                            ],
-                          ),
-                          Padding(
-                            padding:
-                                const EdgeInsets.only(right: 18.0, top: 15),
-                            child: Text(
-                              '\$${list[index].price!.toStringAsFixed(1)}',
-                              style: GoogleFonts.poppins(
-                                fontSize: 14,
-                                fontWeight: FontWeight.w600,
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ],
-                  ),
-                ),
-              ],
-            ),
-          ),
-        );
-      },
-    );
-  }
 
-  Widget buildsinglestore(
-      String imagepath, String title, String location, int rating, bool isfav) {
+
+  
+
+
+  Widget buildsinglestore(String imagepath, String title, String location,
+      int rating, bool isfav, bool isuser) {
     return Container(
       decoration: BoxDecoration(
         color: Colors.white, // Set the container background color
@@ -384,9 +215,9 @@ class _StoresdetailscreenState extends State<Storesdetailscreen> {
             color: Colors.black.withOpacity(0.05)), // Optional: Rounded corners
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withOpacity(0.1), // Shadow color
+            color: Colors.black.withOpacity(0.05), // Shadow color
             spreadRadius: 0, // Spread radius (controls the blur)
-            blurRadius: 2.84415602684021, // Blur radius
+            blurRadius: 1.5, // Blur radius
             offset: const Offset(0, 2), // Offset in the x and y axes
           ),
         ],
@@ -394,7 +225,7 @@ class _StoresdetailscreenState extends State<Storesdetailscreen> {
       // margin: const EdgeInsets.all(8),
       child: SizedBox(
         width: double.infinity,
-        height: 191, // Replace with your desired fixed width
+        height: 192, // Replace with your desired fixed width
         child: Column(
           children: [
             Row(
@@ -501,6 +332,30 @@ class _StoresdetailscreenState extends State<Storesdetailscreen> {
                     ': 2-3 hours.',
                     style: k12Grey400style,
                   ),
+                  const SizedBox(
+                    width: 10,
+                  ),
+                  isuser
+                      ? const SizedBox()
+                      : TextButton(
+                          onPressed: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (c) => const OutofStockScreen(
+
+                                        )));
+                          },
+                          child: Text(
+                            'view Out of Stock',
+                            style: GoogleFonts.poppins(
+                              fontWeight: FontWeight.w300,
+                              fontSize: 10,
+                              color: const Color(0xff059F55),
+                              decoration: TextDecoration.underline,
+                              decorationColor: Theme.of(context).primaryColor,
+                            ),
+                          ))
                 ],
               ),
             )
@@ -510,13 +365,3 @@ class _StoresdetailscreenState extends State<Storesdetailscreen> {
     );
   }
 }
-
-
-
-
-
-
-
-
-
-

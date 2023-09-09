@@ -8,21 +8,24 @@ import '../../models/productmodel.dart';
 class NewarrivalListview extends StatelessWidget {
   List<ProductModel> list = [
     ProductModel(
-      title: 'zulam',
+      title: 'Rediscover food',
+      subtitle: 'Dollar pantry',
       image: 'images/image17.png',
       rating: 3,
-      location: '91 park st,12',
+      location: '91 park st,12 pindi road',
       price: 25,
     ),
     ProductModel(
-      title: 'italia',
+      title: 'Traditional Food',
+      subtitle: 'Dollar pantry',
       image: 'images/Group 1171276027.png',
       rating: 3,
-      location: '91 park st,12',
+      location: '91 park st,12 pindi road',
       price: 25,
     ),
     ProductModel(
       title: 'norm',
+      subtitle: 'Dollar pantry',
       image: 'images/Group 1171276027.png',
       rating: 3,
       location: '91 park st,12',
@@ -30,6 +33,7 @@ class NewarrivalListview extends StatelessWidget {
     ),
     ProductModel(
       title: 'pharse',
+      subtitle: 'Dollar pantry',
       image: 'images/Group 1171276027.png',
       rating: 3,
       location: '91 park st,12',
@@ -40,7 +44,7 @@ class NewarrivalListview extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final mediaquery = MediaQuery.of(context).size;
+    // final mediaquery = MediaQuery.of(context).size;
     return SizedBox(
       height: 260,
       child: ListView.builder(
@@ -52,6 +56,7 @@ class NewarrivalListview extends StatelessWidget {
                 context,
                 MaterialPageRoute(
                     builder: (_) => ProductDetailsScreen(
+                      subtitle: list[index].subtitle!,
                           image: list[index].image!,
                           location: list[index].location!,
                           price: list[index].price!,
@@ -74,7 +79,7 @@ class NewarrivalListview extends StatelessWidget {
               ),
               margin: const EdgeInsets.all(8),
               child: SizedBox(
-                width: 212, // Replace with your desired fixed width
+                width: 211, // Replace with your desired fixed width
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.end,
                   children: [
@@ -90,7 +95,7 @@ class NewarrivalListview extends StatelessWidget {
                       ),
                     ),
                     Padding(
-                      padding: const EdgeInsets.only(top:10.0),
+                      padding: const EdgeInsets.only(top:9.0),
                       child: Row(
                         children: [
                           Padding(
@@ -105,10 +110,10 @@ class NewarrivalListview extends StatelessWidget {
                             ),
                           ),
                           const Spacer(),
-                          Image.asset('images/star1.png',width: 14.25,height:  14.25,),
-                          const SizedBox(width: 5,),
+                          SizedBox( height: 14,width: 14,child: Image.asset('images/liststar.png',width: 13,height:  13,color: const Color(0xffFFF743),fit: BoxFit.contain,)),
+                          const SizedBox(width: 3,),
                           Padding(
-                            padding: const EdgeInsets.only(right: 16.0),
+                            padding: const EdgeInsets.only(right: 8.0),
                             child: Text(
                               list[index].rating!.toStringAsFixed(1),
                               style: GoogleFonts.poppins(
@@ -121,27 +126,27 @@ class NewarrivalListview extends StatelessWidget {
                       ),
                     ),
                     Padding(
-                      padding: const EdgeInsets.only(top:5.0),
+                      padding: const EdgeInsets.only(top:4.0),
                       child: Row(
                         children: [
                           const Padding(
                             padding: EdgeInsets.only(left: 5.0),
                             child: Icon(Icons.location_on,
-                                color: Colors.black45, size: 16),
+                                color: Colors.black45, size: 18),
                           ),
                           const SizedBox(width: 4,),
                           Text(
                             list[index].location!,
-                            style: const TextStyle(
+                            style:  GoogleFonts.poppins(
                                 fontSize: 12.47,
-                                color: Colors.black45,
+                                color: Colors.black.withOpacity(0.49),
                                 fontWeight: FontWeight.w400),
                           ),
                         ],
                       ),
                     ),
                     Padding(
-                      padding: const EdgeInsets.only(right: 18.0),
+                      padding: const EdgeInsets.only(right: 18.0,bottom: 5,top: 4),
                       child: Text(
                         '\$${list[index].price!.toStringAsFixed(1)}',
                         style: GoogleFonts.poppins(

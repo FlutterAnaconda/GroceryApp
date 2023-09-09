@@ -69,7 +69,7 @@ class _SearchTextFieldState extends State<SearchTextField> {
     return Column(
       children: [
         SizedBox(
-          width: widget.isexpanded ? MediaQuery.of(context).size.width : 280,
+          width: widget.isexpanded ? MediaQuery.of(context).size.width : MediaQuery.of(context).size.width-80,
           height: 49.41,
           child: TextField(
             // onTapOutside: (event) {
@@ -95,11 +95,9 @@ class _SearchTextFieldState extends State<SearchTextField> {
             controller: widget.controller,
             onChanged: (value) => onSearchTextChanged(),
             decoration: InputDecoration(
-              prefixIcon: const Icon(
-                Icons.search,
-                color: Color(0xFF868889),
-                size: 16.32,
-              ),
+              contentPadding:
+              const EdgeInsets.symmetric(vertical: 10.0, horizontal: 10),
+              prefixIcon:Container(alignment: Alignment.center,height: 16.32,width: 16.32,child: Image.asset('images/search.png',height: 16.32,width: 16.32,fit:  BoxFit.contain,)),
               // suffixIcon: Icon(
 
               // ),
@@ -110,7 +108,9 @@ class _SearchTextFieldState extends State<SearchTextField> {
                 color: const Color(0xFF868889),
               ),
               filled: true,
-              fillColor: widget.iscolorchanged ?Color(0xffEBF8EE):const Color.fromARGB(250, 240, 249, 250),
+              //home search color F8F9FB
+              //chat screen search color EEF9F1
+              fillColor: widget.iscolorchanged ?const Color(0xffEEF9F1):const Color(0xffF8F9FB),
               border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(8.0),
                   borderSide: BorderSide.none),
@@ -120,8 +120,8 @@ class _SearchTextFieldState extends State<SearchTextField> {
         if (filteredSuggestions.isNotEmpty)
           SingleChildScrollView(
             child: Container(
-              height: 40,
-              width: 300,
+              height: 100,
+              width: 250,
               color: Colors.white,
               child: ListView.builder(
                 // shrinkWrap: true,

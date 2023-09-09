@@ -16,7 +16,7 @@ class ContainerListItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(8.0),
-      child: InkWell(
+      child: GestureDetector(
         onTap: onpressed,
         child: Container(
           padding: const EdgeInsets.all(12.0),

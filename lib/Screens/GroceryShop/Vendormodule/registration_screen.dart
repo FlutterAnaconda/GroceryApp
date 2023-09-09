@@ -14,7 +14,7 @@ class VendorRegistration extends StatefulWidget {
 }
 
 class _VendorRegistrationState extends State<VendorRegistration> {
-  final PageController _contentPageController = PageController(initialPage: 0);
+   final PageController _contentPageController = PageController(initialPage: 0,);
   int? _currentPage;
   @override
   void initState() {
@@ -30,19 +30,24 @@ class _VendorRegistrationState extends State<VendorRegistration> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: MYDetailsappbar(text: 'Registration',onpressed: (){
+        _currentPage! > 0?
+            _contentPageController.previousPage(duration: const Duration(milliseconds: 250 ), curve: Curves.linear):
+
         Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => const SignInScreen(),));
       },),
       body:  Column(
         children: [
 
           Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 16.0),
+            padding: const EdgeInsets.symmetric(horizontal: 20.0),
             child: Mystepper(currentindex: _currentPage,firsttext: 'Information', secondtext: 'Plans', thridtext: 'Complete', isdummyneeded: false,),
           ),
           Expanded(child: PageView(
             controller: _contentPageController,
             scrollDirection: Axis.horizontal,
+            physics: const NeverScrollableScrollPhysics(),
             children:  [
               InformationScreen(
                       onslide: () {

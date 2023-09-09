@@ -1,5 +1,8 @@
-class SwitchInprofileModel {
+class OneTextOneBool {
   final String text;
-  bool ischeck;
-  SwitchInprofileModel(this.text, this.ischeck);
+  final bool ischeck;
+  OneTextOneBool({
+    required this.text,
+    required this.ischeck,
+  });
 }

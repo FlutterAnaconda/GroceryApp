@@ -3,7 +3,17 @@ import 'package:fluttertoast/fluttertoast.dart';
 import '../models/cart_item.dart';
 
 class CartProvider extends ChangeNotifier {
-  final List<CartItem> _cartItems = [];
+  final List<CartItem> _cartItems = [
+
+      CartItem(title: 'Mango', image: 'images/mango.png', price: 24, quantity: 1),
+      CartItem(title: 'Mango', image: 'images/orange.png', price: 24, quantity: 1),
+      CartItem(title: 'Mango', image: 'images/mango.png', price: 24, quantity: 1),
+      CartItem(title: 'Mango', image: 'images/lettuce.png', price: 24, quantity: 1),
+      CartItem(title: 'Mango', image: 'images/orange.png', price: 24, quantity: 1),
+      CartItem(title: 'Mango', image: 'images/mango.png', price: 24, quantity: 1),
+
+
+  ];
 
   List<CartItem> get cartItems => _cartItems;
 

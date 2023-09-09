@@ -8,8 +8,9 @@ class BoldText extends StatelessWidget {
   Widget build(BuildContext context) {
     return   Text(text,
       style:  GoogleFonts.poppins(
-        fontWeight: FontWeight.bold,
+        fontWeight: FontWeight.w700,
         fontSize: 26,
+        color: const Color(0xff2E2E2E)
       ),
     );
   }

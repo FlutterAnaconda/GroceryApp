@@ -28,6 +28,7 @@ dependencies:
   syncfusion_flutter_sliders: ^22.2.9
   fl_chart: ^0.63.0
   buttons_tabbar: ^1.3.7+1
+  flutter_slidable: ^3.0.0
   
 
 dev_dependencies:
@@ -52,6 +53,9 @@ flutter:
     - images/yellow.png
     - images/sale1.png
     - images/cube.png
+    - images/bgcolor.png
+    - images/edit.png
+    - images/cleander.png
     - images/orderdone.png
     - images/conform.png
     - images/outdev.png
@@ -65,6 +69,16 @@ flutter:
     - images/salesdisplay.png
     - images/commission.png
     - images/subscribe.png
+    - images/filleye.png
+    - images/orange.png
+    - images/lettuce.png
+    - images/liststar.png
+    - images/search.png
+    - images/location.png
+    - images/vespa.png
+    - images/drop.png
+    - images/leaf.png
+    - images/halfbgcolor.png
     - images/vendor/maxorder.png
     - images/vendor/maxprod.png
     - images/vendor/mobile.png

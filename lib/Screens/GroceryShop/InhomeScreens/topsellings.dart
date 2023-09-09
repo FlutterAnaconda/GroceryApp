@@ -110,83 +110,72 @@ class _TopsellingListScreenState extends State<TopsellingListScreen> {
           return Stack(
             clipBehavior: Clip.none,
             children: [
-              GestureDetector(
-                onTap: () => Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (_) => ProductDetailsScreen(
-                              image: list[index].image!,
-                              location: list[index].subtitle!,
-                              price: list[index].price!,
-                              title: list[index].title!,
-                            ))),
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(
-                      horizontal: 16.0, vertical: 16),
-                  child: Container(
-                    height: 80,
-                    decoration: BoxDecoration(
-                      color: Colors.white, // Set the container background color
-                      borderRadius:
-                          BorderRadius.circular(9), // Optional: Rounded corners
-                      boxShadow: [
-                        BoxShadow(
-                          color: Colors.black.withOpacity(0.1), // Shadow color
-                          spreadRadius: 0, // Spread radius (controls the blur)
-                          blurRadius: 3.5630252361297607, // Blur radius
-                          offset: const Offset(0,
-                              1.7815126180648804), // Offset in the x and y axes
+              Padding(
+                padding: const EdgeInsets.symmetric(
+                    horizontal: 16.0, vertical: 16),
+                child: Container(
+                  height: 80,
+                  decoration: BoxDecoration(
+                    color: Colors.white, // Set the container background color
+                    borderRadius:
+                        BorderRadius.circular(9), // Optional: Rounded corners
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.black.withOpacity(0.1), // Shadow color
+                        spreadRadius: 0, // Spread radius (controls the blur)
+                        blurRadius: 3.5630252361297607, // Blur radius
+                        offset: const Offset(0,
+                            1.7815126180648804), // Offset in the x and y axes
+                      ),
+                    ],
+                  ),
+                  margin: const EdgeInsets.symmetric(horizontal: 8,vertical: 4),
+                  child: SizedBox(
+                    width: 260,
+
+
+                    // Replace with your desired fixed width
+                    child: Row(
+                      children: [
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          // mainAxisAlignment: MainAxisAlignment.end,
+                          children: [
+                            Padding(
+                              padding: const EdgeInsets.only(left: 6.0,top: 6),
+                              child: Text(
+                                list[index].title!,
+                                style: GoogleFonts.poppins(
+                                  fontSize: 12.8,
+                                  fontWeight: FontWeight.w600,
+                                ),
+                              ),
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.only(left: 6.0),
+                              child: Text(
+                                list[index].subtitle!,
+                                style: GoogleFonts.poppins(
+                                  fontSize: 11.38,
+                                  color: const Color(0xff9C9898),
+                                  fontWeight: FontWeight.w500,
+                                ),
+                              ),
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.only(left: 6.0,top: 10),
+                              child: Text(
+                                '\$${list[index].price!.toStringAsFixed(1)}',
+                                style: GoogleFonts.poppins(
+                                  fontSize: 12.8,
+                                  fontWeight: FontWeight.w600,
+                                  color: const Color(0xff34A853),
+                                ),
+                              ),
+                            ),
+                          ],
                         ),
                       ],
-                    ),
-                    margin: const EdgeInsets.symmetric(horizontal: 8,vertical: 4),
-                    child: SizedBox(
-                      width: 260,
-
-
-                      // Replace with your desired fixed width
-                      child: Row(
-                        children: [
-                          Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            // mainAxisAlignment: MainAxisAlignment.end,
-                            children: [
-                              Padding(
-                                padding: const EdgeInsets.only(left: 6.0,top: 6),
-                                child: Text(
-                                  list[index].title!,
-                                  style: GoogleFonts.poppins(
-                                    fontSize: 12.8,
-                                    fontWeight: FontWeight.w600,
-                                  ),
-                                ),
-                              ),
-                              Padding(
-                                padding: const EdgeInsets.only(left: 6.0),
-                                child: Text(
-                                  list[index].subtitle!,
-                                  style: GoogleFonts.poppins(
-                                    fontSize: 11.38,
-                                    color: const Color(0xff9C9898),
-                                    fontWeight: FontWeight.w500,
-                                  ),
-                                ),
-                              ),
-                              Padding(
-                                padding: const EdgeInsets.only(left: 6.0,top: 10),
-                                child: Text(
-                                  '\$${list[index].price!.toStringAsFixed(1)}',
-                                  style: GoogleFonts.poppins(
-                                    fontSize: 12.8,
-                                    fontWeight: FontWeight.w600,
-                                    color: const Color(0xff34A853),
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ],
-                      ),
                     ),
                   ),
                 ),
@@ -196,30 +185,19 @@ class _TopsellingListScreenState extends State<TopsellingListScreen> {
                 bottom: 43,
                 right: 70,
                 // right: 0,
-                child: InkWell(
-                  onTap: () => Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (_) => ProductDetailsScreen(
-                                image: list[index].image!,
-                                location: list[index].subtitle!,
-                                price: list[index].price!,
-                                title: list[index].title!,
-                              ))),
-                  child: list[index].image!.contains('http')
-                      ? Image.network(
-                          list[index].image!,
-                          height: 80,
-                          width: 130,
-                          // fit: BoxFit.fill,
-                        )
-                      : Image.asset(
-                          list[index].image!,
-                          height: 80,
-                          width: 150,
-                          // fit: BoxFit.fill,
-                        ),
-                ),
+                child: list[index].image!.contains('http')
+                    ? Image.network(
+                        list[index].image!,
+                        height: 80,
+                        width: 130,
+                        // fit: BoxFit.fill,
+                      )
+                    : Image.asset(
+                        list[index].image!,
+                        height: 80,
+                        width: 150,
+                        // fit: BoxFit.fill,
+                      ),
               ),
             ],
           );

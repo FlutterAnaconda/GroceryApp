@@ -9,6 +9,7 @@ class Usertype with ChangeNotifier {
   bool? get isuser => _isuser;
   bool? get subscribe => _subscribe;
   int? get baseindex => _baseindex;
+
   void isUser(bool isuser) {
     _isuser = isuser;
     notifyListeners();

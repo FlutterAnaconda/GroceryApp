@@ -31,6 +31,7 @@ class _PriceRangeSliderState extends State<PriceRangeSlider> {
                 },
                 min: 0,
                 max: 300,
+
                 inactiveColor: const Color(0xFFD9D9D9),
                 activeColor: const Color(0xff07CD6E),
                 divisions: 300,

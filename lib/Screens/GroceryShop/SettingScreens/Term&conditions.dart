@@ -20,7 +20,7 @@ class _TermconScreenState extends State<TermconScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // backgroundColor: const Color(0xff23AA49).withOpacity(0.12),
+      backgroundColor: const Color(0xffffffff),
       appBar: MYDetailsappbar(
         text: 'Term & Conditions',
         onpressed: () {
@@ -69,16 +69,50 @@ class _TermconScreenState extends State<TermconScreen> {
                 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu turpis molestie, dictum est a, mattis tellus. Sed dignissim, metus. ',
                 style: k14lightgery400style,
               ),
+              const SizedBox(height: 20,),
               Row(
                 children: [
-                  Checkbox(
-                    splashRadius: 20,
-                    activeColor: Theme.of(context).primaryColor,
-                    value: ischecked,
-                    onChanged: (value) => setState(() {
-                      ischecked = !ischecked;
-                    }),
+                  GestureDetector(
+                    onTap: (){
+                      setState(() {
+                        ischecked = !ischecked;
+                      });
+
+                    },
+                    child: Container(
+                      width: 18,
+                      height: 18,
+                      decoration: BoxDecoration(
+                        shape: BoxShape.rectangle,
+                        borderRadius: BorderRadius.circular(4),
+                        border: Border.all(
+                          color: ischecked
+                              ? const Color(0xFF07CD6E)
+                              : Colors.grey,
+                        ),
+                        gradient: ischecked
+                            ? LinearGradient(
+                          colors: [
+                            const Color(0xff07CD6E),
+                            const Color(0xFF059F55).withOpacity(0.86),
+                          ],
+                          begin: Alignment.topCenter,
+                          end: Alignment.bottomCenter,
+                        )
+                            : null,
+                      ),
+                      child: Center(
+                        child: ischecked
+                            ? const Icon(
+                          Icons.check,
+                          color: Colors.white,
+                          size: 16,
+                        )
+                            : null,
+                      ),
+                    ),
                   ),
+
                   const SizedBox(
                     width: 10,
                   ),
@@ -91,52 +125,55 @@ class _TermconScreenState extends State<TermconScreen> {
                     style: k14darkGrey500style,
                   ),
                 ],
-              )
+              ),
+              const SizedBox(height: 30,),
+              Padding(
+                padding: const EdgeInsets.symmetric(vertical: 15.0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    SizedBox(
+                      width: 161,
+                      child: GradientElevatedButton(
+                        onPressed: () {
+                          if (ischecked == false) {
+                            Fluttertoast.showToast(
+                              msg: 'please accept Term&Condition',
+                              toastLength: Toast.LENGTH_SHORT,
+                              gravity: ToastGravity.BOTTOM,
+                              timeInSecForIosWeb: 1,
+                              backgroundColor: Colors.red,
+                              textColor: Colors.white,
+                              fontSize: 16.0,
+                            );
+                          } else {
+                            Navigator.pop(context);
+                          }
+                        },
+                        text: 'Accept',
+                      ),
+                    ),
+                    const SizedBox(
+                      width: 15,
+                    ),
+                    SizedBox(
+                      width: 161,
+                      child: Myoutlinebutton(
+                        height: 50,
+                        onTap: () {
+                          Navigator.pop(context);
+                        },
+                        text: 'Cancel',
+                      ),
+                    )
+                  ],
+                ),
+              ),
             ],
           ),
         ),
       ),
-      bottomNavigationBar: Padding(
-        padding: const EdgeInsets.symmetric(vertical: 15.0),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            SizedBox(
-              width: 161,
-              child: GradientElevatedButton(
-                onPressed: () {
-                  if (ischecked == false) {
-                    Fluttertoast.showToast(
-                      msg: 'please accept Term&Condition',
-                      toastLength: Toast.LENGTH_SHORT,
-                      gravity: ToastGravity.BOTTOM,
-                      timeInSecForIosWeb: 1,
-                      backgroundColor: Colors.red,
-                      textColor: Colors.white,
-                      fontSize: 16.0,
-                    );
-                  } else {
-                    Navigator.pop(context);
-                  }
-                },
-                text: 'Accept',
-              ),
-            ),
-            const SizedBox(
-              width: 15,
-            ),
-            SizedBox(
-              width: 161,
-              child: Myoutlinebutton(
-                onTap: () {
-                  Navigator.pop(context);
-                },
-                text: 'Cancel',
-              ),
-            )
-          ],
-        ),
-      ),
+
     );
   }
 }

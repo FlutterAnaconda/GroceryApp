@@ -1,23 +1,26 @@
 // Import the necessary packages at the beginning of your Dart file
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
+import '../../../models/productmodel.dart';
 import '../../../widgets/customappbar.dart';
+
 
 class AllCategory extends StatelessWidget {
   static const String routename = '/AllCategory';
-  final List<String> imagepath = [
-    'images/catergoryimages/g4.png',
-    'images/catergoryimages/g3.png',
-    'images/catergoryimages/g2.png',
-    'images/catergoryimages/g1.png',
-    'images/catergoryimages/g4.png',
-    'images/catergoryimages/g3.png',
-    'images/catergoryimages/g2.png',
-    'images/catergoryimages/g1.png',
-    'images/catergoryimages/g4.png',
-    'images/catergoryimages/g3.png',
-    'images/catergoryimages/g2.png',
-    'images/catergoryimages/g1.png',
+  final List<ProductModel> imagepath = [
+    ProductModel(image: 'images/catergoryimages/g1.png', title: 'Meat'),
+    ProductModel(image: 'images/catergoryimages/g2.png', title: 'Fruit'),
+    ProductModel(image: 'images/catergoryimages/g3.png', title: 'Cold'),
+    ProductModel(image: 'images/catergoryimages/g4.png', title: 'Vegetables'),
+    ProductModel(image: 'images/catergoryimages/g5.png', title: 'Dairy'),
+    ProductModel(image: 'images/catergoryimages/g6.png', title: 'Bakery'),
+    ProductModel(image: 'images/catergoryimages/g7.png', title: 'Meals'),
+    ProductModel(image: 'images/catergoryimages/g8.png', title: 'Fishes'),
+    ProductModel(image: 'images/catergoryimages/g9.png', title: 'Eggs'),
+    ProductModel(image: 'images/catergoryimages/g10.png', title: 'juices'),
+    ProductModel(image: 'images/catergoryimages/g11.png', title: 'Ice Cream'),
+    ProductModel(image: 'images/catergoryimages/g12.png', title: 'Fresh'),
   ];
 
   AllCategory({super.key});
@@ -25,16 +28,17 @@ class AllCategory extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // backgroundColor: Color(0xff23AA49).withOpacity(0.12),
+      backgroundColor: Colors.white,
       appBar: MYDetailsappbar(
         text: 'All Categories',
         onpressed: () => Navigator.pop(context),
       ),
       body: Padding(
-        padding: const EdgeInsets.only(top: 30.0),
+        padding: const EdgeInsets.only(top: 30.0,left: 10,right: 10),
         child: GridView.builder(
           gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
             crossAxisCount: 4,
+            childAspectRatio: 3/3.4,
             crossAxisSpacing: 0.0,
             mainAxisSpacing: 8.0,
           ),
@@ -56,14 +60,19 @@ class AllCategory extends StatelessWidget {
                       child: Padding(
                         padding: const EdgeInsets.all(8.0),
                         child: Image(
-                          image: AssetImage(imagepath[index]),
+                          image: AssetImage(imagepath[index].image!),
                           // Adjust the height of the images as needed
                           fit: BoxFit.fill,
                         ),
                       ),
                     ),
                   ),
-                  const Text("data"),
+                   const SizedBox(height: 3,),
+                   Text(imagepath[index].title!, style: GoogleFonts.poppins(
+            fontSize: 12,
+            fontWeight: FontWeight.w300,
+            color: const Color(0xff636464),
+            ),),
                 ],
               ),
             );

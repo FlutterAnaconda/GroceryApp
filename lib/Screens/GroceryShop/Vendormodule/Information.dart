@@ -286,7 +286,7 @@ class _InformationScreenState extends State<InformationScreen> {
             // Assign a name to the form field
             labelText: 'Password',
             controller: _passwordController,
-            suffixicon: InkWell(
+            suffixicon: GestureDetector(
                 onTap: () {
                   showpass = !showpass;
                   setState(() {});
@@ -304,11 +304,18 @@ class _InformationScreenState extends State<InformationScreen> {
                           fit: BoxFit.cover,
                         ),
                       )
-                    : const Icon(
-                        Icons.visibility,
-                        color: Colors.blue,
-                        size: 20,
-                      )),
+                    : Container(
+                  height: 20,
+                  width: 20,
+                  alignment: Alignment.center,
+                  child: Image.asset(
+                    width:
+                    20, // Adjust the image width within the container
+                    height: 20,
+                    'images/filleye.png',
+                    fit: BoxFit.contain,
+                  ),
+                ),),
           ),
           const SizedBox(
             height: 20,
@@ -319,7 +326,7 @@ class _InformationScreenState extends State<InformationScreen> {
             // Assign a name to the form field
             labelText: 'ConfirmPassword',
             controller: _confirmPasswordController,
-            suffixicon: InkWell(
+            suffixicon: GestureDetector(
                 onTap: () {
                   showpass1 = !showpass1;
                   setState(() {});
@@ -337,11 +344,18 @@ class _InformationScreenState extends State<InformationScreen> {
                           fit: BoxFit.cover,
                         ),
                       )
-                    : const Icon(
-                        Icons.visibility,
-                        color: Colors.blue,
-                        size: 20,
-                      )),
+                    : Container(
+                  height: 20,
+                  width: 20,
+                  alignment: Alignment.center,
+                  child: Image.asset(
+                    width:
+                    20, // Adjust the image width within the container
+                    height: 20,
+                    'images/filleye.png',
+                    fit: BoxFit.contain,
+                  ),
+                ),),
           ),
           const SizedBox(
             height: 20,

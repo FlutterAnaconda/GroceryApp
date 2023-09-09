@@ -17,6 +17,7 @@ import '../../../widgets/textfields/searchtextfeild.dart';
 import '../InhomeScreens/NewArrivalScreen.dart';
 import '../InhomeScreens/SearchScreens/filter.dart';
 import '../InhomeScreens/SearchScreens/locationScreen.dart';
+import '../InhomeScreens/Seeallfavorites.dart';
 import '../InhomeScreens/allstoresscreen.dart';
 import '../InhomeScreens/categoreyscreen.dart';
 import '../InhomeScreens/offerforyou.dart';
@@ -45,13 +46,10 @@ class _HomeTabState extends State<HomeTab> {
   @override
   Widget build(BuildContext context) {
     // final mediaquery = MediaQuery.of(context).size;
-    final islocationicon = Provider
-        .of<Usertype>(context)
-        .islocationicon;
+    final islocationicon = Provider.of<Usertype>(context).islocationicon;
 
     return Scaffold(
-      // backgroundColor: const Color(0xff23AA49).withOpacity(0.12),
-
+      backgroundColor: Colors.white,
       body: SingleChildScrollView(
         child: Column(
           children: [
@@ -62,19 +60,20 @@ class _HomeTabState extends State<HomeTab> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Padding(
-                  padding: const EdgeInsets.only(left: 8.0),
-                  child: InkWell(
+                  padding: const EdgeInsets.only(left: 15.0),
+                  child: GestureDetector(
                     onTap: () {
-                      // Add your logic here for the first icon onTap event.
+                      Navigator.push(context, MaterialPageRoute(builder: (c)=>const FavoritesScreen()));
                     },
                     child: const Image(
-                      image: AssetImage('images/menu-bar 1.png',),
+                      image: AssetImage(
+                        'images/menu-bar 1.png',
+                      ),
                       width: 25,
                       height: 24,
                     ),
                   ),
                 ),
-
                 Text(
                   'Grocery Shop',
                   style: GoogleFonts.poppins(
@@ -84,14 +83,20 @@ class _HomeTabState extends State<HomeTab> {
                   ),
                 ),
                 Padding(
-                  padding: const EdgeInsets.only(right:4.0),
-                  child: InkWell(
+                  padding: const EdgeInsets.only(right: 4.0),
+                  child: GestureDetector(
                     onTap: () {
-                      Navigator.push(context, MaterialPageRoute(
-                        builder: (context) => const CartScreen(cartItems: [],),));
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const CartScreen(
+                              cartItems: [],
+                              islarge: true,
+                            ),
+                          ));
                     },
                     child: const Padding(
-                      padding: EdgeInsets.only(right: 8.0),
+                      padding: EdgeInsets.only(right: 15.0),
                       child: Image(
                         image: AssetImage('images/cart.png'),
                         height: 25,
@@ -117,54 +122,63 @@ class _HomeTabState extends State<HomeTab> {
                     controller: searchcontroller,
                     suggestions: searchSuggestions,
                     isexpanded: false,
-                    hinttext: 'Search Categories', iscolorchanged: false,
+                    hinttext: 'Search Categories',
+                    iscolorchanged: false,
                   ),
                 ),
-                const SizedBox(width: 5,),
+                const SizedBox(
+                  width: 7,
+                ),
                 Padding(
-                  padding: const EdgeInsets.only(right: 8.0),
+                  padding: const EdgeInsets.only(right: 3.0),
                   child: GestureDetector(
                     onTap: () {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) =>
-                            islocationicon
+                            builder: (context) => islocationicon
                                 ? const PickLocationScreen()
                                 : const FilterScreen(),
                           ));
                     },
                     child: Container(
-                        height: 49.41,
-                        width: 44,
-                        decoration: const BoxDecoration(
-                          shape: BoxShape.rectangle,
-                          borderRadius: BorderRadius.all(Radius.circular(10)),
-                          color: Color.fromARGB(250, 240, 249, 250),
-                          // border: OutlinedBorder(
-                          //   borderRadius: BorderRadius.circular(8.0),
-                          //   borderSide: BorderSide.none,
+                      height: 49.41,
+                      width: 44,
+                      decoration: const BoxDecoration(
+                        shape: BoxShape.rectangle,
+                        borderRadius: BorderRadius.all(Radius.circular(10)),
+                        color: Color(0xffF4F5F9),
+                        // Color.fromARGB(250, 240, 249, 250),
+                        // border: OutlinedBorder(
+                        //   borderRadius: BorderRadius.circular(8.0),
+                        //   borderSide: BorderSide.none,
+                      ),
+                      child: islocationicon
+                          ?Container(
+                        height: 20,
+                        width: 20,
+                        alignment: Alignment.center,
+                        child: Image.asset(
+                          width:
+                          17, // Adjust the image width within the container
+                          height: 21,
+                          'images/location.png',
+                          fit: BoxFit.contain,
                         ),
-                        child: islocationicon
-                            ? Icon(
-                          Icons.location_on,
-                          color: Theme
-                              .of(context)
-                              .primaryColor,
-                          size: 23,
-                        )
-                            : Container(
-                          height: 20,
-                          width: 20,
-                          alignment: Alignment.center,
-                          child: Image.asset(
-                            width:
-                            20, // Adjust the image width within the container
-                            height: 20,
-                            'images/filtericon.png',
-                            fit: BoxFit.cover,
-                          ),
-                        )),
+                      )
+                          : Container(
+                              height: 20,
+                              width: 20,
+                              alignment: Alignment.center,
+                              child: Image.asset(
+                                width:
+                                    20, // Adjust the image width within the container
+                                height: 20,
+                                'images/filtericon.png',
+                                fit: BoxFit.contain,
+                              ),
+                            ),
+                    ),
                   ),
                 )
               ],
@@ -183,6 +197,7 @@ class _HomeTabState extends State<HomeTab> {
               ontap: () =>
                   Navigator.pushNamed(context, TopsellingListScreen.routename),
             ),
+            const SizedBox(height: 10,),
             const TopsellingListview(),
             Myhomerowtext(
               text: 'New Arrival',
@@ -198,13 +213,15 @@ class _HomeTabState extends State<HomeTab> {
             OfferListveiw(),
             Myhomerowtext(
               text: 'All Stores',
-              ontap: () =>
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => const AllStoresscreen())),
+              ontap: () => Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => const AllStoresscreen())),
             ),
             const AllStores(),
+            const SizedBox(
+              height: 30,
+            ),
           ],
         ),
       ),

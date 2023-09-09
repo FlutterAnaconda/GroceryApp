@@ -44,7 +44,11 @@ class ConversationBody extends StatefulWidget {
 }
 
 class _ConversationBodyState extends State<ConversationBody> {
-  final List<Message> _messages = [];
+  final List<Message> _messages = [
+    Message('Hi there can you help me', true),
+    Message('how can I sir Describe please', false),
+    Message('no need thank you', true),
+  ];
 
   void _addMessage(String text, bool isMe) {
     setState(() {

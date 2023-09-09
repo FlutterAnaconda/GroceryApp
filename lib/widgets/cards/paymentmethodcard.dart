@@ -31,8 +31,9 @@ class _PaymentmethodcardState extends State<Paymentmethodcard> {
   Widget build(BuildContext context) {
     return
       SizedBox(
-        height: 250,
+        height: 255,
         child: ListView.builder(
+          physics: const NeverScrollableScrollPhysics(),
           itemCount: 3,
           itemBuilder: (BuildContext context, int index) {
             return Padding(
@@ -46,10 +47,12 @@ class _PaymentmethodcardState extends State<Paymentmethodcard> {
                 child: Stack(
                   children: [
                     Padding(
-                      padding: const EdgeInsets.only(left: 30.0),
+                      padding: const EdgeInsets.only(left: 20.0),
                       child: Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 25.0),
                         child: Container(
+                          height: 74,
+                          width: 300,
                           padding: const EdgeInsets.all(16.0),
                           decoration: BoxDecoration(
                             color: Colors.white, // Set the container background color
@@ -77,18 +80,26 @@ class _PaymentmethodcardState extends State<Paymentmethodcard> {
                               ),
                               const Spacer(),
                               AnimatedContainer(
+                                alignment: Alignment.center,
                                 duration: const Duration(milliseconds: 200),
-                                width: 30,
-                                height: 30,
+                                width: 20,
+                                height: 20,
                                 decoration: BoxDecoration(
-                                  color:  selectedPaymentIndex == index
-                                      ? Theme.of(context).primaryColor
-                                      : Colors.transparent,
-                                  border: Border.all(color: Theme.of(context).primaryColor),
+                                  gradient:  selectedPaymentIndex == index
+                                      ? const LinearGradient( colors: [
+                                    // const Color(0xff07CD6E),
+                                    Color.fromRGBO(7, 205, 110, 1),
+                                    Color.fromRGBO(5, 159, 85, 0.86)
+                                    // const Color(0xFF059F55).withOpacity(0.86),
+                                  ],
+                                    begin: Alignment.topCenter,
+                                    end: Alignment.bottomCenter,)
+                                      : null,
+                                  border: Border.all(color:  selectedPaymentIndex == index?Theme.of(context).primaryColor:const Color(0xffAAAAAA)),
                                   borderRadius: BorderRadius.circular(4),
                                 ),
                                 child: selectedPaymentIndex == index
-                                    ? const Icon(Icons.check, color: Colors.white)
+                                    ? const Icon(Icons.check, color: Colors.white ,size: 15,weight: 10,)
                                     : const SizedBox.shrink(),
                               ),
                             ],
@@ -98,9 +109,20 @@ class _PaymentmethodcardState extends State<Paymentmethodcard> {
                     ),
                     Positioned(
                       left: 20,
-                      child: Material(
-                        elevation: 1,
-                        shape: const CircleBorder(),
+                      top: 5,
+                      child: Container(
+                        height: 60.16,
+                            width: 59.18,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(30),
+                              boxShadow: [
+                                BoxShadow(
+                                  color: const Color(0xff0075FF).withOpacity(0.10),
+                                  offset: const Offset(3.698965072631836,2),
+                                  blurRadius: 10,
+                                ),
+                              ],
+                            ),
                         child: CircleAvatar(
                           backgroundColor: Colors.white,
                           radius: 30,

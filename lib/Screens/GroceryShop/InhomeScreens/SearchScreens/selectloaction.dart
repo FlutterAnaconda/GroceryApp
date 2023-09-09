@@ -28,6 +28,16 @@ class _LocationSliderState extends State<LocationSlider> {
                     activeTickColor: Theme.of(context).primaryColor,
                     tooltipBackgroundColor: Theme.of(context).primaryColor,
                     thumbColor: const Color(0xffD6D8DA),
+                    activeLabelStyle: GoogleFonts.poppins(
+                      color: const Color(0xff0F172A),
+                      fontWeight: FontWeight.w500,
+                      fontSize: 10.36
+                    ),
+                    inactiveLabelStyle: GoogleFonts.poppins(
+                        color: const Color(0xff0F172A),
+                        fontWeight: FontWeight.w500,
+                        fontSize: 10.36
+                    ),
                     tooltipTextStyle: GoogleFonts.poppins(
                       fontSize: 10.63,
                       fontWeight: FontWeight.w500,

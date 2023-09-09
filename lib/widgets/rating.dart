@@ -16,6 +16,7 @@ class _RatingCardState extends State<RatingCard> {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 10.0,vertical: 10),
       child: Container(
+        width: 340,
         decoration: cardcontainerdecoration,
         child: Column(
           children: [

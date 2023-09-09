@@ -1,3 +1,5 @@
+
+import 'package:dotcoder1/Providers/usertype.dart';
 import 'package:dotcoder1/Screens/GroceryShop/SettingScreens/help.dart';
 import 'package:dotcoder1/Screens/GroceryShop/SettingScreens/policies.dart';
 import 'package:dotcoder1/Screens/GroceryShop/SettingScreens/userinfo.dart';
@@ -5,6 +7,7 @@ import 'package:dotcoder1/Screens/GroceryShop/homeScreen.dart';
 import 'package:dotcoder1/Screens/onboarding/SigninScreen.dart';
 import 'package:dotcoder1/widgets/customappbar.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 import '../../../models/setting_tab_model.dart';
 import '../../../widgets/listveiwbuilders/settinglistview.dart';
@@ -15,6 +18,7 @@ import '../SettingScreens/Term&conditions.dart';
 
 import '../SettingScreens/chatsScreens/startchating.dart';
 import '../SettingScreens/language.dart';
+import '../Vendormodule/VendorhomeScreen.dart';
 
 class SettingTab extends StatefulWidget {
   const SettingTab({super.key});
@@ -206,39 +210,55 @@ class _SettingTabState extends State<SettingTab> {
 
   @override
   Widget build(BuildContext context) {
+    final whichtext=Provider.of<Usertype>(context);
+    final ishomescren=whichtext.isuser!;
     return Scaffold(
-      backgroundColor: const Color(0xff23AA49).withOpacity(0.12),
+      backgroundColor: const Color(0xffffffff),
       appBar: MYDetailsappbar(
         text: 'Settings',
         onpressed: () {
           Navigator.push(context,
-              MaterialPageRoute(builder: (context) => const HomeScreen()));
+              MaterialPageRoute(builder: (context) => ishomescren?const HomeScreen():const VendorhomeScreen()));
         },
       ),
-      body: ListView.builder(
-        itemCount: items.length,
-        itemBuilder: (context, index) {
-          return ContainerListItem(
-            onpressed: () => items[index].onpressed(context),
-            title: items[index].title,
-            iconspath: items[index].iconspath,
-          );
-        },
-      ),
-      bottomNavigationBar: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 60.0, vertical: 5),
-        child: GradientElevatedButton(
-          onPressed: () {
-            Navigator.pushReplacement(
-              context,
-              MaterialPageRoute(
-                builder: ((context) => const SignInScreen()),
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            ListView.builder(
+              shrinkWrap: true,
+              itemCount: items.length,
+              physics: const NeverScrollableScrollPhysics(),
+              itemBuilder: (context, index) {
+
+                return ContainerListItem(
+                  onpressed: () {
+
+                    items[index].onpressed(context);
+
+                  },
+                  title:( (items[index].title=='User Information') && (whichtext.isuser! ==false))? 'Owner Information': items[index].title,
+                  iconspath: items[index].iconspath,
+                );
+              },
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 60.0, vertical: 5),
+              child: GradientElevatedButton(
+                onPressed: () {
+                  Navigator.pushReplacement(
+                    context,
+                    MaterialPageRoute(
+                      builder: ((context) => const SignInScreen()),
+                    ),
+                  );
+                },
+                text: 'Logout',
               ),
-            );
-          },
-          text: 'Logout',
+            ),
+          ],
         ),
       ),
+
     );
   }
 }

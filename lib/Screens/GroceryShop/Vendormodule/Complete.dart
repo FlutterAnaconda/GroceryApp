@@ -1,4 +1,5 @@
 import 'package:dotcoder1/Screens/onboarding/SigninScreen.dart';
+import 'package:dotcoder1/widgets/textfields/butons/Myfilledbutton.dart';
 import 'package:flutter/material.dart';
 
 import '../../../widgets/textfields/butons/outline_to_fill_button.dart';
@@ -17,36 +18,47 @@ class _CompleteScreenState extends State<CompleteScreen> {
   void _onButtonTap() {
     setState(() {
       isTapped = !isTapped;
+      isTapped1=false;
     });
-    Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>const SignInScreen()));
+
   }
   void onButtonTap1() {
     setState(() {
-
-      isTapped = !isTapped;
+     isTapped=false;
+      isTapped1 = !isTapped1;
     });
 
-    Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>const SignInScreen()));
+
   }
 
   @override
   Widget build(BuildContext context) {
 
-    return Column(
-mainAxisAlignment: MainAxisAlignment.center,
-      children: [
+    return  Scaffold(
+      backgroundColor: Colors.white,
+      body: Column(
+crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+ SizedBox(height: MediaQuery.of(context).size.height*0.30,),
+          Mytrialbutton(isTapped: isTapped,ontap: (){
+            _onButtonTap();
 
-        Mytrialbutton(isTapped: isTapped,ontap: (){
-          _onButtonTap();
-
-        },text: 'Continue With 7 Days free trial',),
-        const SizedBox(height: 20,),
-        Mytrialbutton(isTapped: isTapped1,ontap: (){
-          onButtonTap1();
+          },text: 'Continue With 7 Days free trial',),
+          const SizedBox(height: 20,),
+          Mytrialbutton(isTapped: isTapped1,ontap: (){
+            onButtonTap1();
 
 
-        },text: 'Pay Manually',)
-      ],
+          },text: 'Pay Manually',),
+          const Expanded(child: SizedBox()),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 18.0,vertical: 10),
+            child: GradientElevatedButton(text: 'Next', onPressed: (){
+              Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => const SignInScreen(),));
+            }),
+          )
+        ],
+      ),
     );
   }
 }
