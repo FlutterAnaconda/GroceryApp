@@ -52,39 +52,46 @@ class _AddproducttabState extends State<Addproducttab> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Padding(
-              padding: const EdgeInsets.only(left: 8.0),
+              padding: const EdgeInsets.symmetric(horizontal: 16.0),
               child: Text('Add Images',style: k14B500style,),
             ),
-            const Padding(
-              padding: EdgeInsets.all(12.0),
-              child: ImageContainer(width: 337, heigth: 143, text: 'Add Product', radius: 10),
+            const SizedBox(height: 8,),
+             Padding(
+               padding: const EdgeInsets.symmetric(horizontal: 16.0),
+              child: ImageContainer(width: MediaQuery.sizeOf(context).width, heigth: 143, text: 'Add Product', radius: 10),
             ),
+          const SizedBox(height: 6,),
+             Padding(
+               padding: const EdgeInsets.symmetric(horizontal: 16.0),
+               child: Row(
+                 children: [
 
-            const Row(
-               children: [
-                 SizedBox(width: 10,),
-                 ImageContainer(width: 105, heigth: 72, text: 'Add 1', radius: 10),
-                 SizedBox(width: 10,),
-                 ImageContainer(width: 105, heigth: 72, text: 'Add 2', radius: 10),
-                 SizedBox(width: 10,),
-                 ImageContainer(width: 105, heigth: 72, text: 'Add 3', radius: 10),
-               ],
+                   ImageContainer(width: MediaQuery.sizeOf(context).width*0.285, heigth: 72, text: 'Add 1', radius: 10),
+                   const SizedBox(width: 10,),
+                   ImageContainer(width: MediaQuery.sizeOf(context).width*0.285, heigth: 72, text: 'Add 2', radius: 10),
+                   const SizedBox(width: 10,),
+                   ImageContainer(width: MediaQuery.sizeOf(context).width*0.285, heigth: 72, text: 'Add 3', radius: 10),
+                 ],
             ),
+             ),
             Padding(
-              padding: const EdgeInsets.only(left: 8.0,top: 20,bottom: 20),
+              padding: const EdgeInsets.only(left: 16.0,top: 20,bottom: 20),
               child: Text('Add Information',style: k14B500style,),
             ),
             MyTextFormField(name: 'Product Name', labelText: 'Product Name', controller: prodnamecontroller),
             const SizedBox(height: 20,),
             MyTextFormField(name: 'Product Address', labelText: 'Product Address', controller: prodaddcontroller),
             const SizedBox(height: 20,),
-            const DescriptionWidget(
-              description:
-              'Lorem ipsum dolor sit amet, Lorem ipsum\n dolor sit amet, consectetur \nadipiscing elit.consectetur adipiscing ',
+            const Padding(
+              padding: EdgeInsets.symmetric(horizontal: 16.0),
+              child: DescriptionWidget(
+                description:
+                'Lorem ipsum dolor sit amet, Lorem ipsum\n dolor sit amet, consectetur \nadipiscing elit.consectetur adipiscing ',
+              ),
             ),
             const SizedBox(height: 20,),
             const Padding(
-              padding: EdgeInsets.symmetric(horizontal: 8.0),
+              padding: EdgeInsets.symmetric(horizontal: 18.0),
               child: MyDropDownFormField(hinttext: 'Delivery Time', list: list, iscolorchanged: true,),
             ),
             const SizedBox(height: 20,),
@@ -98,7 +105,7 @@ class _AddproducttabState extends State<Addproducttab> {
               ],),
             ),
             Padding(
-              padding: const EdgeInsets.only(left: 20.0,top: 40),
+              padding: const EdgeInsets.only(left: 18.0,top: 40),
               child: GradientElevatedButton(text: widget.isupdate?'Update':'Add Product', onPressed: (){}),
             ),
           ],

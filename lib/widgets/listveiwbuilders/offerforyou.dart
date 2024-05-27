@@ -49,6 +49,7 @@ class OfferListveiw extends StatelessWidget {
     return SizedBox(
       height: 258,
       child: ListView.builder(
+        padding:  const EdgeInsets.only(left: 8),
         scrollDirection: Axis.horizontal,
         itemCount: list.length,
         itemBuilder: (BuildContext context, int index) {

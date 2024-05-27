@@ -982,6 +982,7 @@ mainAxisAlignment: MainAxisAlignment.end,
                   child: AspectRatio(
                     aspectRatio: 1,
                     child: BarChart(
+
                         swapAnimationDuration: const Duration(seconds: 2),
                       swapAnimationCurve: Curves.elasticInOut,
                       BarChartData(
@@ -995,6 +996,8 @@ mainAxisAlignment: MainAxisAlignment.end,
                         maxY: 11,
                         barTouchData: BarTouchData(
                           touchTooltipData: BarTouchTooltipData(
+                            direction: TooltipDirection.top,
+                            fitInsideVertically: true,
                             tooltipBgColor: const Color(0xff34B3F1),
                             getTooltipItem: (group, groupIndex, rod, rodIndex) {
                               final weekNames = ['Week1', 'Week2', 'Week3', 'Week4'];

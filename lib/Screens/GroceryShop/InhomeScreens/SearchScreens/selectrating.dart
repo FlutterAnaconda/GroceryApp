@@ -13,7 +13,7 @@ class _SelectRatingState extends State<SelectRating> {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 240,
+      height: 250,
       child: Padding(
         padding: const EdgeInsets.all(8.0),
         child: ListView.builder(
@@ -22,21 +22,25 @@ class _SelectRatingState extends State<SelectRating> {
           itemBuilder: (context, index) {
             bool isSelected = selectedCheckboxIndices.contains(index);
 
-            return GestureDetector(
-              onTap: () {
-                setState(() {
-                  if (isSelected) {
-                    selectedCheckboxIndices.remove(index);
-                  } else {
-                    selectedCheckboxIndices.add(index);
-                  }
-                });
-              },
-              child: Container(
-                margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-                child: Row(
-                  children: [
-                    Container(
+            return Container(
+              margin: const EdgeInsets.symmetric(horizontal: 16,),
+              child: Row(
+                children: [
+                  TextButton(
+                    style: ButtonStyle(
+                      overlayColor: MaterialStateProperty.all(Colors.white),
+                      splashFactory: NoSplash.splashFactory,
+                    ),
+                    onPressed: (){
+                      setState(() {
+                        if (isSelected) {
+                          selectedCheckboxIndices.remove(index);
+                        } else {
+                          selectedCheckboxIndices.add(index);
+                        }
+                      });
+                    },
+                    child: Container(
                       width: 24,
                       height: 24,
                       decoration: BoxDecoration(
@@ -68,28 +72,28 @@ class _SelectRatingState extends State<SelectRating> {
                             : null,
                       ),
                     ),
-                    const SizedBox(width: 16),
-                    SizedBox(
-                      width: 130,
-                      height: 30,
-                      child: ListView.builder(
-                        physics: const NeverScrollableScrollPhysics(),
-                        scrollDirection: Axis.horizontal,
-                        itemCount: index + 1,
-                        itemBuilder: (context, index) {
-                          return Padding(
-                            padding: const EdgeInsets.only(left: 8.0),
-                            child: Image.asset(
-                              image,
-                              height: 16,
-                              width: 16,
-                            ),
-                          );
-                        },
-                      ),
-                    )
-                  ],
-                ),
+                  ),
+                  const SizedBox(width: 16),
+                  SizedBox(
+                    width: 130,
+                    height: 30,
+                    child: ListView.builder(
+                      physics: const NeverScrollableScrollPhysics(),
+                      scrollDirection: Axis.horizontal,
+                      itemCount: index + 1,
+                      itemBuilder: (context, index) {
+                        return Padding(
+                          padding: const EdgeInsets.only(left: 8.0),
+                          child: Image.asset(
+                            image,
+                            height: 16,
+                            width: 16,
+                          ),
+                        );
+                      },
+                    ),
+                  )
+                ],
               ),
             );
           },

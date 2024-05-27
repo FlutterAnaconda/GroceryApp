@@ -52,6 +52,7 @@ class _AllStoresState extends State<AllStores> {
     return SizedBox(
       height: 162,
       child: ListView.builder(
+        padding:  const EdgeInsets.only(left: 8),
         scrollDirection: Axis.horizontal,
         itemCount: list.length,
         itemBuilder: (BuildContext context, int index) {

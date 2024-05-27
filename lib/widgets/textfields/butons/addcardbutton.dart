@@ -8,47 +8,42 @@ class DottedBorderButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 8.0) ,
-      child: SizedBox(
-        width: MediaQuery.of(context).size.width,
-        child: GestureDetector(
-          onTap: () {
-            Navigator.push(context,
-                MaterialPageRoute(builder: (_) => const AddCardScreen()));
-          },
-          child: DottedBorder(
-            color: const Color(0xFF07CD6E),
-            strokeWidth: 2,
-            borderType: BorderType.RRect,
-            radius: const Radius.circular(10),
-            dashPattern: const [
-              6,
-              4
-            ], // Define the dash pattern (6 is dash width, 4 is dash space)
-            child: const Padding(
-              padding: EdgeInsets.all(12.0),
-              child: Center(
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    Icon(
-                      Icons.add,
-                      color: Color(0xFF07CD6E),
-                    ),
-                    SizedBox(width: 8),
-                    Text(
-                      'Add Card',
-                      style: TextStyle(
-                        fontSize: 16,
-                        fontWeight: FontWeight.bold,
-                        color: Color(0xFF07CD6E),
-                      ),
-                    ),
-                  ],
+    return SizedBox(
+      height: 50,
+      width: MediaQuery.sizeOf(context).width-  50,
+      child: GestureDetector(
+        onTap: () {
+          Navigator.push(context,
+              MaterialPageRoute(builder: (_) => const AddCardScreen()));
+        },
+        child: DottedBorder(
+          color: const Color(0xFF07CD6E),
+          strokeWidth: 1,
+          borderType: BorderType.RRect,
+          radius: const Radius.circular(10),
+          dashPattern: const [
+            6,
+            4
+          ], // Define the dash pattern (6 is dash width, 4 is dash space)
+          child: const Center(
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+
+              children: [
+                Icon(
+                  Icons.add,
+                  color: Color(0xFF07CD6E),
                 ),
-              ),
+                SizedBox(width: 8),
+                Text(
+                  'Add Card',
+                  style: TextStyle(
+                    fontSize: 16,
+                    fontWeight: FontWeight.bold,
+                    color: Color(0xFF07CD6E),
+                  ),
+                ),
+              ],
             ),
           ),
         ),

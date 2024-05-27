@@ -129,21 +129,28 @@ class _VHometabState extends State<VHometab> {
               const SizedBox(
                 height: 10,
               ),
-              const Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  VendorStore(
-                    text: 'Categories',
-                    amount: '14',
-                  ),
-                  SizedBox(
-                    width: 10,
-                  ),
-                  VendorStore(
-                    text: 'Products',
-                    amount: '56',
-                  ),
-                ],
+              const Padding(
+                padding: EdgeInsets.symmetric(horizontal: 16.0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Expanded(
+                      child: VendorStore(
+                        text: 'Categories',
+                        amount: '14',
+                      ),
+                    ),
+                    SizedBox(
+                      width: 10,
+                    ),
+                    Expanded(
+                      child: VendorStore(
+                        text: 'Products',
+                        amount: '56',
+                      ),
+                    ),
+                  ],
+                ),
               ),
               const SizedBox(
                 height: 10,

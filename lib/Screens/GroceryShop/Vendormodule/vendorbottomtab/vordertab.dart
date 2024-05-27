@@ -1,10 +1,11 @@
-import 'package:buttons_tabbar/buttons_tabbar.dart';
+
 import 'package:dotcoder1/widgets/customappbar.dart';
 
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
+
 
 import '../../../../widgets/tabbar_tab/itemtab.dart';
+import '../../../../widgets/tabbar_tab/vordertabbar.dart';
 
 class Vordertab extends StatefulWidget {
   const Vordertab({super.key});
@@ -41,80 +42,49 @@ class _VordertabState extends State<Vordertab>
     super.dispose();
   }
 
-  final List<String> tabs = [
-    'All(54)',
-    'Pending(4)',
-    'InProgress(12)',
-    'Delivered(51)'
-  ];
+final List<String> tabs =  [ 'All(54)',
+  'Pending(4)',
+  'InProgress(12)',
+  'Delivered(51)',];
 
   @override
   Widget build(BuildContext context) {
-    return DefaultTabController(
-        length: 4,
-        child: Scaffold(
-          backgroundColor: Colors.white,
-          appBar: MYDetailsappbar(text: 'My Orders', onpressed: () {}),
-          body: Column(
-            children: [
-              // VorderTabbar(tabController: _tabController, tabs: tabs),
-              ButtonsTabBar(
-                // Customize the appearance and behavior of the tab bar
-                backgroundColor: const Color(0xffEFF9F1),
-                onTap: (index) {
-                  _tabController.index = index;
-                  // setState(() {
-                  //
-                  // });
-                },
-                // physics: const AlwaysScrollableScrollPhysics(),
-
-                borderWidth: 1,
-                contentPadding: const EdgeInsets.symmetric(horizontal: 18),
-                buttonMargin: const EdgeInsets.symmetric(horizontal: 5),
-                borderColor: Colors.transparent,
-                controller: _tabController,
-                height: 30,
-                splashColor: const Color(0xff34A853).withOpacity(0.1),
-                unselectedBackgroundColor: Colors.white,
-                unselectedBorderColor: const Color(0xffE8ECF2),
-                labelStyle: GoogleFonts.poppins(
-                    color: const Color(0xff34A853),
-                    fontWeight: FontWeight.w400,
-                    fontSize: 12),
-                unselectedLabelStyle: GoogleFonts.poppins(
-                    color: const Color(0xff888888),
-                    fontWeight: FontWeight.w400,
-                    fontSize: 12),
-                // Add your tabs here
-                tabs: tabs.map((tab) {
-                  return Tab(
-                    text: tab,
-                  );
-                }).toList(),
-              ),
-
-              const SizedBox(
-                height: 10,
-              ),
-              Expanded(
-                child: PageView(
-                  physics: const NeverScrollableScrollPhysics(),
-                  controller: _pageController,
-                  children: [
-                    All(),
-                    Pending(),
-                    inprogress(),
-                    Delivered(),
-                  ],
-                  onPageChanged: (index) {
-                    _tabController.index = index;
-                  },
-                ),
-              ),
-            ],
+    return Scaffold(
+      backgroundColor: Colors.white,
+      appBar: MYDetailsappbar(text: 'My Orders', onpressed: () {}),
+      body: Column(
+        children: [
+          SingleChildScrollView(
+            scrollDirection: Axis.horizontal,
+            child: Row(
+              children: [
+                const SizedBox(width: 16,),
+                VorderTabbar(tabController: _tabController, tabs:  tabs),
+              ],
+            ),
           ),
-        ));
+
+
+          const SizedBox(
+            height: 10,
+          ),
+          Expanded(
+            child: PageView(
+              physics: const NeverScrollableScrollPhysics(),
+              controller: _pageController,
+              children: [
+                All(),
+                Pending(),
+                inprogress(),
+                Delivered(),
+              ],
+              onPageChanged: (index) {
+                _handleTabChange();           },
+            ),
+          ),
+        ],
+      ),
+    );
   }
 }
 

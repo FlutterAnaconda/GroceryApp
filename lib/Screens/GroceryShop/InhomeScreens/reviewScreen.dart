@@ -96,19 +96,19 @@ class _ReviewsBuilderScreenState extends State<ReviewsBuilderScreen> {
             return Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16.0),
               child: Container(
-                height: 136,
+                height: 140,
                 decoration: BoxDecoration(
                   color: Colors.white, // Set the container background color
                   borderRadius: BorderRadius.circular(5),
                   border: Border.all(
                       width: 0.5,
                       color: Colors.black
-                          .withOpacity(0.05)), // Optional: Rounded corners
+                          .withOpacity(0.01)), // Optional: Rounded corners
                   boxShadow: [
                     BoxShadow(
                       color: Colors.black.withOpacity(0.1), // Shadow color
                       spreadRadius: 0, // Spread radius (controls the blur)
-                      blurRadius: 2.84415602684021, // Blur radius
+                      blurRadius: 2.6, // Blur radius
                       offset: const Offset(0, 2), // Offset in the x and y axes
                     ),
                   ],
@@ -182,7 +182,7 @@ class _ReviewsBuilderScreenState extends State<ReviewsBuilderScreen> {
                       Padding(
                         padding: const EdgeInsets.only(left:10.0),
                         child: Text(
-                          'Lorem ipsum dolor sit amet, Lorem ipsum dolor sit amet, consectetur adipiscing elit.consectetur adipiscing',
+                          'Lorem ipsum dolor sit amet, Lorem ipsum\ndolor sit amet, consectetur adipiscing elit.\nconsectetur adipiscing',
                           style: k12Grey400style,
                         ),
                       )

@@ -41,7 +41,7 @@ class _PlanScreenState extends State<PlanScreen> {
                     height: 30,
                   ),
                   Padding(
-                    padding: const EdgeInsets.only(left: 12.0),
+                    padding: const EdgeInsets.only(left: 22.0),
                     child: Text(
                       "Choose Business Plan",
                       style: k14B600style,
@@ -50,84 +50,82 @@ class _PlanScreenState extends State<PlanScreen> {
                   const SizedBox(
                     height: 20,
                   ),
-                  Padding(
-                    padding: const EdgeInsets.only(left: 12.0),
-                    child: SizedBox(
-                      height: 160,
-                      child: ListView.builder(
-                        physics: const NeverScrollableScrollPhysics(),
-                        itemCount: list.length,
-                        itemBuilder: (context, index) {
-                          return Padding(
-                            padding: const EdgeInsets.all(10.0),
-                            child: Container(
-                              height: 64,
-                              width: 342,
-                              decoration: cardcontainerdecoration,
-                              child: Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceAround,
-                                children: [
-                                  const SizedBox(width: 10,),
-                                  Image.asset(
-                                    list[index].imageurl,
-                                    width: 24,
-                                    height: 24,
-                                  ),
-                                  const SizedBox(width: 10,),
-                                  Text(
-                                    list[index].text,
-                                    style: k14darkGrey300style,
-                                  ),
-                                  const SizedBox(
-                                    width: 100,
-                                  ),
-                                  Padding(
-                                    padding: const EdgeInsets.only(right: 12.0),
-                                    child: GestureDetector(
-                                      onTap: () {
-                                        setState(() {
-                                          selectedindex = index;
-                                        });
+                  SizedBox(
+                    height: 160,
+                    child: ListView.builder(
+                      padding: const EdgeInsets.symmetric(horizontal: 12),
+                      physics: const NeverScrollableScrollPhysics(),
+                      itemCount: list.length,
+                      itemBuilder: (context, index) {
+                        return Padding(
+                          padding: const EdgeInsets.all(10.0),
+                          child: Container(
+                            height: 64,
+                            width: 342,
+                            decoration: cardcontainerdecoration,
+                            child: Row(
+                              mainAxisAlignment:
+                                  MainAxisAlignment.spaceAround,
+                              children: [
+                                const SizedBox(width: 10,),
+                                Image.asset(
+                                  list[index].imageurl,
+                                  width: 24,
+                                  height: 24,
+                                ),
+                                const SizedBox(width: 10,),
+                                Text(
+                                  list[index].text,
+                                  style: k14darkGrey300style,
+                                ),
+                                const SizedBox(
+                                  width: 100,
+                                ),
+                                Padding(
+                                  padding: const EdgeInsets.only(right: 12.0),
+                                  child: GestureDetector(
+                                    onTap: () {
+                                      setState(() {
+                                        selectedindex = index;
+                                      });
 
-                                        // print(selectedindex);
-                                      },
-                                      child: Container(
-                                        height: 18,
-                                        width: 18,
-                                        decoration: BoxDecoration(
-                                            color: Colors.white,
-                                            borderRadius:
-                                                BorderRadius.circular(15),
-                                            border: Border.all(
-                                              width: 2,
-                                              color:
-                                                  Theme.of(context).primaryColor,
-                                            )),
-                                        child: selectedindex == index
-                                            ? Icon(
-                                                Icons.circle,
-                                                color: Theme.of(context)
-                                                    .primaryColor,
-                                                size: 11,
-                                              )
-                                            : const SizedBox(),
-                                      ),
+                                      // print(selectedindex);
+                                    },
+                                    child: Container(
+                                      height: 18,
+                                      width: 18,
+                                      decoration: BoxDecoration(
+                                          color: Colors.white,
+                                          borderRadius:
+                                              BorderRadius.circular(15),
+                                          border: Border.all(
+                                            width: 2,
+                                            color:
+                                                Theme.of(context).primaryColor,
+                                          )),
+                                      child: selectedindex == index
+                                          ? Icon(
+                                              Icons.circle,
+                                              color: Theme.of(context)
+                                                  .primaryColor,
+                                              size: 11,
+                                            )
+                                          : const SizedBox(),
                                     ),
                                   ),
-                                ],
-                              ),
+                                ),
+                              ],
                             ),
-                          );
-                        },
-                      ),
+                          ),
+                        );
+                      },
                     ),
                   ),
                   const SizedBox(
                     height: 20,
                   ),
                   Padding(
-                    padding: const EdgeInsets.only(left: 12.0),
+                    padding: const EdgeInsets.only(left: 22.0),
                     child: Text(
                       "Overview",
                       style: k14B600style,
@@ -137,7 +135,7 @@ class _PlanScreenState extends State<PlanScreen> {
                     height: 10,
                   ),
                   Padding(
-                    padding: const EdgeInsets.only(left: 12.0),
+                    padding: const EdgeInsets.only(left: 22.0),
                     child: Text(
                       'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu turpis molestie, dictum est a, mattis tellus. Sed dignissim, metus nec fringilla accumsan, risus sem sollicitudin lacus, ut interdum tellus elit sed risus. Maecenas eget condimentum velit, ',
                       style: k14Grey300style,
@@ -150,7 +148,7 @@ class _PlanScreenState extends State<PlanScreen> {
               ),
             ),
       bottomNavigationBar: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 12.0),
+        padding: const EdgeInsets.symmetric(horizontal: 22.0),
         child: GradientElevatedButton(
             text: 'Next',
             onPressed: () {

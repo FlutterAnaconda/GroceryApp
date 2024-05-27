@@ -74,7 +74,7 @@ class _InformationScreenState extends State<InformationScreen> {
             height: 30,
           ),
           Padding(
-            padding: const EdgeInsets.only(left:12.0),
+            padding: const EdgeInsets.only(left:16.0),
             child: Text(
               "Store Information",
               style: k14B600style,
@@ -83,17 +83,17 @@ class _InformationScreenState extends State<InformationScreen> {
           const SizedBox(
             height: 10,
           ),
-          const Row(
+           Row(
             children: [
               Padding(
-                padding: EdgeInsets.only(left: 16.0),
+                padding: const EdgeInsets.only(left: 16.0),
                 child: ImageContainer(
-                    width: 113, heigth: 123, text: 'Add Logo', radius: 20),
+                    width: MediaQuery.sizeOf(context).width*0.3, heigth: 123, text: 'Add Logo', radius: 20),
               ),
               Padding(
-                padding: EdgeInsets.only(right: 6.0,left: 12),
+                padding: const EdgeInsets.only(right: 12.0,left: 8),
                 child: ImageContainer(
-                    width: 210, heigth: 123, text: 'Add Cover', radius: 20),
+                    width: MediaQuery.sizeOf(context).width*0.59, heigth: 123, text: 'Add Cover', radius: 20),
               ),
             ],
           ),
@@ -101,7 +101,7 @@ class _InformationScreenState extends State<InformationScreen> {
             height: 18,
           ),
           const Padding(
-            padding: EdgeInsets.only(left: 8.0,right: 15),
+            padding: EdgeInsets.only(left: 16.0,right: 20),
             child: MyDropDownFormField(
                 hinttext: 'Select Module', list: InformationScreen.list, iscolorchanged: true,),
           ),
@@ -133,7 +133,7 @@ class _InformationScreenState extends State<InformationScreen> {
             height: 20,
           ),
           const Padding(
-            padding: EdgeInsets.only(left: 8.0,right: 15),
+            padding: EdgeInsets.only(left: 12.0,right: 20),
             child: MyDropDownFormField(
                 hinttext: 'Select Time Type', list: InformationScreen.listtime, iscolorchanged: true,),
           ),
@@ -141,21 +141,19 @@ class _InformationScreenState extends State<InformationScreen> {
             height: 15,
           ),
           SizedBox(
-            width: 355,
+            width: MediaQuery.sizeOf(context).width,
             child: Row(
               children: [
                 SizedBox(
-                    width: 175,
+                    width:  MediaQuery.sizeOf(context).width*0.5,
                     child: MyTextFormField(
                       controller: mincontroller,
                       labelText: 'Min Time',
                       name: 'Min Time',
                     )),
-                const SizedBox(
-                  width: 5,
-                ),
+
                 SizedBox(
-                  width: 175,
+                  width:  MediaQuery.sizeOf(context).width*0.5,
                   child: MyTextFormField(
                     controller: maxcontroller,
                     labelText: 'Max Time',
@@ -169,14 +167,14 @@ class _InformationScreenState extends State<InformationScreen> {
             height: 25,
           ),
           Padding(
-            padding: const EdgeInsets.only(left:12.0),
+            padding: const EdgeInsets.only(left:18.0),
             child: Text('Set Store Location', style: k14B600style),
           ),
           const SizedBox(
             height: 15,
           ),
           Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 12.0),
+            padding: const EdgeInsets.symmetric(horizontal: 18.0),
             child: SearchTextField(
                 controller: searchcontroller,
                 suggestions: [],
@@ -190,17 +188,17 @@ class _InformationScreenState extends State<InformationScreen> {
 
             children: [
               Padding(
-                padding: const EdgeInsets.only(left: 12.0),
+                padding: const EdgeInsets.only(left: 16.0,right: 18),
                 child: Image.asset(
                   'images/map.png',
-                  width: 342,
+                    width: MediaQuery.sizeOf(context).width,
                   height: 184,
                   fit: BoxFit.fill,
                 ),
               ),
               Positioned(
                 bottom: 10,
-                right: 10,
+                right: 25,
                 child: Container(
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(10),
@@ -229,22 +227,20 @@ class _InformationScreenState extends State<InformationScreen> {
             height: 20,
           ),
           SizedBox(
-             width: 355,
+             width: MediaQuery.sizeOf(context).width,
             child: Row(
               children: [
                 SizedBox(
-                  width: 175,
+                  width:  MediaQuery.sizeOf(context).width*0.5,
                   child: MyTextFormField(
                     controller: laticontroller,
                     labelText: 'Latitude',
                     name: 'Latitude',
                   ),
                 ),
-                const SizedBox(
-                  width: 5,
-                ),
+
                 SizedBox(
-                  width: 175,
+                  width:  MediaQuery.sizeOf(context).width*0.5,
                   child: MyTextFormField(
                     controller: longicontroller,
                     labelText: 'Longitude',
@@ -258,7 +254,7 @@ class _InformationScreenState extends State<InformationScreen> {
             height: 25,
           ),
           Padding(
-            padding: const EdgeInsets.only(left:12.0),
+            padding: const EdgeInsets.only(left:20.0),
             child: Text('Owner Information', style: k14B600style),
           ),
           const SizedBox(
@@ -361,7 +357,7 @@ class _InformationScreenState extends State<InformationScreen> {
             height: 20,
           ),
           Padding(
-            padding: const EdgeInsets.only(left:12.0),
+            padding: const EdgeInsets.symmetric(horizontal:22.0),
             child: GradientElevatedButton(
               text: 'Next',
               onPressed:

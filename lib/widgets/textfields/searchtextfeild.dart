@@ -69,7 +69,7 @@ class _SearchTextFieldState extends State<SearchTextField> {
     return Column(
       children: [
         SizedBox(
-          width: widget.isexpanded ? MediaQuery.of(context).size.width : MediaQuery.of(context).size.width-80,
+          width: widget.isexpanded ? MediaQuery.of(context).size.width : MediaQuery.of(context).size.width-92,
           height: 49.41,
           child: TextField(
             // onTapOutside: (event) {

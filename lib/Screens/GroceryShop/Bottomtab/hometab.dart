@@ -115,7 +115,7 @@ class _HomeTabState extends State<HomeTab> {
               children: [
                 Padding(
                   padding: const EdgeInsets.only(
-                    left: 12,
+                    left: 16,
                   ),
                   // height: 100, // Set a fixed height for the row
                   child: SearchTextField(

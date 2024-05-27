@@ -132,8 +132,8 @@ class _TermconScreenState extends State<TermconScreen> {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    SizedBox(
-                      width: 161,
+                    Expanded(
+
                       child: GradientElevatedButton(
                         onPressed: () {
                           if (ischecked == false) {
@@ -156,8 +156,8 @@ class _TermconScreenState extends State<TermconScreen> {
                     const SizedBox(
                       width: 15,
                     ),
-                    SizedBox(
-                      width: 161,
+                    Expanded(
+
                       child: Myoutlinebutton(
                         height: 50,
                         onTap: () {

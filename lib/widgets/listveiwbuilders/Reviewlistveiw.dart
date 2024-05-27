@@ -140,9 +140,12 @@ class _ReviewsBuilderState extends State<ReviewsBuilder> {
                         ),
                       ],
                     ),
-                    Text(
-                      'Lorem ipsum dolor sit amet, Lorem \nipsum dolor sit amet, consectetur ',
-                      style: k12Grey400style,
+                    Padding(
+                      padding: const EdgeInsets.only(left:10.0),
+                      child: Text(
+                        'Lorem ipsum dolor sit amet, Lorem ipsum dolor sit amet, consectetur adipiscing elit.consectetur adipiscing',
+                        style: k12Grey400style,
+                      ),
                     )
                   ],
                 ),

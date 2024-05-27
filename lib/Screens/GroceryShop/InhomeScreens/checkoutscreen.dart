@@ -57,7 +57,9 @@ class _CheckOutScreenState extends State<CheckOutScreen> {
       backgroundColor: Colors.white,
       appBar: MYDetailsappbar(
         text: 'Check out',
-        onpressed: (){Navigator.pop(context);},
+        onpressed: (){ _currentPage! > 0?
+        _contentPageController.previousPage(duration: const Duration(milliseconds: 250 ), curve: Curves.linear):
+        Navigator.pop(context);},
       ),
       body: Container(
         color: Colors.white,
@@ -123,9 +125,9 @@ class _CheckOutScreenState extends State<CheckOutScreen> {
               child: Row(
                 children: [
                   SizedBox(
-                      width: MediaQuery.of(context).size.width * 0.8,
+                      width: MediaQuery.of(context).size.width * 0.79,
                       child:  Padding(
-                        padding: const EdgeInsets.only(right: 4.0, left: 10),
+                        padding: const EdgeInsets.only(right: 4.0, left: 18),
                           child: MyDropDownFormField(hinttext: 'Delivery',list: list, iscolorchanged: false,),
                       )),
                   GestureDetector(
@@ -139,8 +141,8 @@ class _CheckOutScreenState extends State<CheckOutScreen> {
                     child: Padding(
                       padding: const EdgeInsets.only(right: 6.0),
                       child: Container(
-                          height: 57,
-                          width: 52,
+                          height: 56,
+                          width: 50,
                           decoration: const BoxDecoration(
                             shape: BoxShape.rectangle,
                             borderRadius: BorderRadius.all(Radius.circular(10)),
@@ -235,7 +237,7 @@ class _CheckOutScreenState extends State<CheckOutScreen> {
            borderRadius: BorderRadius.circular(4),
                           border: Border.all(
                             color: issave
-                                ? const Color(0xFF07CD6E)
+                                ? Colors.transparent
                                 : Colors.grey,
                           ),
                           gradient: issave
@@ -326,16 +328,15 @@ class _CheckOutScreenState extends State<CheckOutScreen> {
                           ),
                         ),
                         Padding(
-                          padding: const EdgeInsets.only(top: 45.0),
-                          child: Center(
-                              child: GradientElevatedButton(
-                                  onPressed: () {
-                                    _contentPageController.nextPage(
-                                        duration:
-                                            const Duration(milliseconds: 500),
-                                        curve: Curves.linear);
-                                  },
-                                  text: 'Next')),
+                          padding: const EdgeInsets.only(top: 45.0,left: 12 ),
+                          child: GradientElevatedButton(
+                              onPressed: () {
+                                _contentPageController.nextPage(
+                                    duration:
+                                        const Duration(milliseconds: 500),
+                                    curve: Curves.linear);
+                              },
+                              text: 'Next'),
                         ),
                       ]),
                 ),

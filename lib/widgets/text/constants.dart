@@ -145,6 +145,11 @@ final k14Grey9C500style = GoogleFonts.poppins(
   fontWeight: FontWeight.w500,
   color: const Color(0xff9C9898),
 );
+final k12Grey86400style=GoogleFonts.poppins(
+  fontSize: 12,
+  fontWeight:FontWeight.w400,
+  color:const Color(0xff868889),
+);
 final k14Grey700style = GoogleFonts.poppins(
   fontSize: 14,
   fontWeight: FontWeight.w700,
@@ -196,9 +201,11 @@ final k12B400style = GoogleFonts.poppins(
   color: const Color(0xff000000),
 );
 final k12Grey400style = GoogleFonts.poppins(
+ textStyle: const TextStyle( overflow: TextOverflow.ellipsis),
   fontSize: 12,
   fontWeight: FontWeight.w400,
   color: const Color(0xff9C9898),
+
 );
 final k12GreyAE400style = GoogleFonts.poppins(
   fontSize: 12,
@@ -235,6 +242,11 @@ final k14B400interstyle = GoogleFonts.inter(
   fontSize: 14,
   fontWeight: FontWeight.w400,
   color: const Color(0xff27272A),
+);
+final k14B400fullstyle = GoogleFonts.poppins(
+  fontSize: 14,
+  fontWeight: FontWeight.w400,
+  color: const Color(0xff000000),
 );
 final k14B600style = GoogleFonts.poppins(
   fontSize: 14,

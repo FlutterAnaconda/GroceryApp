@@ -3,7 +3,9 @@ import 'package:dotcoder1/Screens/onboarding/SigninScreen.dart';
 import 'package:dotcoder1/widgets/customappbar.dart';
 import 'package:dotcoder1/widgets/textfields/butons/Myfilledbutton.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
+import '../../../Providers/usertype.dart';
 import '../../../models/paymentmethod.dart';
 import '../../../models/switchinprofilemodel.dart';
 import '../../../widgets/text/constants.dart';
@@ -11,10 +13,16 @@ import '../../../widgets/text/constants.dart';
 // ignore: must_be_immutable
 class UserInfo extends StatefulWidget {
   const UserInfo({super.key});
+
   static const List<PaymentMethodModel> list = [
     PaymentMethodModel('joining', '03 Days'),
     PaymentMethodModel('Loylaty Points ', '45'),
     PaymentMethodModel('Total Orders', '4'),
+    PaymentMethodModel('Total Amount', '\$44'),
+  ];
+  static const List<PaymentMethodModel> vendorlist = [
+    PaymentMethodModel('joining', '120 Days'),
+    PaymentMethodModel('Product Reviews ', '820'),
     PaymentMethodModel('Total Amount', '\$44'),
   ];
 
@@ -24,13 +32,16 @@ class UserInfo extends StatefulWidget {
 
 class _UserInfoState extends State<UserInfo> {
   List<OneTextOneBool> switchlist = [
-    OneTextOneBool(text: 'Notification',ischeck:  false),
+    OneTextOneBool(text: 'Notification', ischeck: false),
     OneTextOneBool(text: 'Dark Mode ', ischeck: true),
   ];
-  bool isnotion=true;
-  bool isdarkon=false;
+  bool isnotion = true;
+  bool isdarkon = false;
+
   @override
   Widget build(BuildContext context) {
+    final whichtext = Provider.of<Usertype>(context);
+    final whichuser = whichtext.isuser!;
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: MYDetailsappbar(
@@ -51,7 +62,6 @@ class _UserInfoState extends State<UserInfo> {
                   clipBehavior: Clip.none,
                   // alignment: Alignment.bottomRight,
                   children: [
-
                     const CircleAvatar(
                       radius: 50,
                       backgroundImage: NetworkImage(
@@ -65,7 +75,8 @@ class _UserInfoState extends State<UserInfo> {
                           Navigator.push(
                               context,
                               MaterialPageRoute(
-                                builder: (context) => const ProfileUpdateScreen(),
+                                builder: (context) =>
+                                    const ProfileUpdateScreen(),
                               ));
                         },
                         child: Container(
@@ -95,11 +106,13 @@ class _UserInfoState extends State<UserInfo> {
                   'fawadh747@gmail.com',
                   style: k12B500style,
                 ),
-                const SizedBox(height: 25,),
+                const SizedBox(
+                  height: 25,
+                ),
                 Padding(
                   padding: const EdgeInsets.all(16.0),
                   child: Container(
-                      height: 200,
+                      height: whichuser?200:150,
                       width: 342,
                       decoration: cardcontainerdecoration,
                       child: Padding(
@@ -107,10 +120,13 @@ class _UserInfoState extends State<UserInfo> {
                             horizontal: 20, vertical: 20),
                         child: ListView.builder(
                           physics: const NeverScrollableScrollPhysics(),
-                          itemCount: UserInfo.list.length,
+                          itemCount: whichuser
+                              ? UserInfo.list.length
+                              : UserInfo.vendorlist.length,
                           itemBuilder: (context, index) {
                             return Padding(
-                              padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                              padding:
+                                  const EdgeInsets.symmetric(horizontal: 8.0),
                               child: Column(
                                 children: [
                                   Row(
@@ -118,15 +134,28 @@ class _UserInfoState extends State<UserInfo> {
                                         MainAxisAlignment.spaceBetween,
                                     children: [
                                       Text(
-                                        UserInfo.list[index].imageurl,
-                                       style: index==3?k14B500style: k12Grey400style,
+                                        whichuser
+                                            ? UserInfo.list[index].imageurl
+                                            : UserInfo
+                                                .vendorlist[index].imageurl,
+                                        style: index == 3
+                                            ? k14B500style
+                                            : k12Grey400style,
                                       ),
                                       const SizedBox(
                                         width: 100,
                                       ),
                                       Text(
-                                        UserInfo.list[index].text,
-                                        style:index == 3?k14G500style: k12_94G400style,
+                                        whichuser
+                                            ? UserInfo.list[index].text
+                                            : UserInfo.vendorlist[index].text,
+                                        style:UserInfo.list[index] == UserInfo.list.last
+                                            ? k14G500style
+                                            : UserInfo.vendorlist[index] == UserInfo.vendorlist.last
+                                            ? k14G500style
+                                            : k12_94G400style,
+
+
                                       ),
                                     ],
                                   ),
@@ -155,8 +184,8 @@ class _UserInfoState extends State<UserInfo> {
                     itemCount: switchlist.length,
                     itemBuilder: (context, index) {
                       return Padding(
-                        padding:
-                            const EdgeInsets.symmetric(horizontal: 16, vertical: 4),
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 16, vertical: 4),
                         child: Container(
                           height: 60,
                           width: 342,
@@ -178,27 +207,32 @@ class _UserInfoState extends State<UserInfo> {
                                     inactiveTrackColor: const Color(0xffD6D8DA),
                                     activeTrackColor: const Color(0xff07CD6E),
                                     thumbColor:
-                                        MaterialStateProperty.resolveWith<Color>(
-                                            (Set<MaterialState> states) {
-                                      if (states.contains(MaterialState.disabled)) {
+                                        MaterialStateProperty.resolveWith<
+                                            Color>((Set<MaterialState> states) {
+                                      if (states
+                                          .contains(MaterialState.disabled)) {
                                         return Colors.white.withOpacity(.48);
                                       }
                                       return Colors.white;
                                     }),
                                     trackOutlineColor:
-                                        MaterialStateProperty.resolveWith<Color>(
-                                            (Set<MaterialState> states) {
-                                      if (states.contains(MaterialState.disabled)) {
+                                        MaterialStateProperty.resolveWith<
+                                            Color>((Set<MaterialState> states) {
+                                      if (states
+                                          .contains(MaterialState.disabled)) {
                                         return const Color(0xffD6D8DA)
                                             .withOpacity(.48);
                                       }
-                                      return const Color(0xff07CD6E).withOpacity(0);
+                                      return const Color(0xff07CD6E)
+                                          .withOpacity(0);
                                     }),
                                     activeColor: Theme.of(context).primaryColor,
-                                    value:index==0?isnotion:isdarkon,
+                                    value: index == 0 ? isnotion : isdarkon,
                                     onChanged: (_) {
                                       setState(() {
-                                        index==0?isnotion = ! isnotion:isdarkon = ! isdarkon;
+                                        index == 0
+                                            ? isnotion = !isnotion
+                                            : isdarkon = !isdarkon;
                                       });
                                     }),
                               )

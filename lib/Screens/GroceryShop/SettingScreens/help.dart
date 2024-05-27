@@ -73,7 +73,7 @@ class HelpScreen extends StatelessWidget {
                                       ),
                                       Container(
                                         height: 1,
-                                        width: 220,
+                                        width: MediaQuery.sizeOf(context).width*0.55,
                                         color: const Color(0xffEBEBF0),
                                       ),
                                     ],

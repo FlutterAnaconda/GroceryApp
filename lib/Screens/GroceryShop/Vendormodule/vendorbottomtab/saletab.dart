@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:dotcoder1/Screens/GroceryShop/Vendormodule/VendorhomeScreen.dart';
 import 'package:dotcoder1/Screens/GroceryShop/homeScreen.dart';
 import 'package:dotcoder1/widgets/customappbar.dart';
@@ -18,7 +20,7 @@ class Saletab extends StatefulWidget {
 }
 
 class _SaletabState extends State<Saletab> with SingleTickerProviderStateMixin {
-  late TabController _tabController;
+  late TabController tabController;
   late PageController _pageController;
   static const List<SalestabModel> stringlist = [
     SalestabModel('images/down.png', 'Withdraw Amount',
@@ -54,14 +56,14 @@ class _SaletabState extends State<Saletab> with SingleTickerProviderStateMixin {
   @override
   void initState() {
     super.initState();
-    _tabController = TabController(length: 3, vsync: this);
+    tabController = TabController(length: 3, vsync: this);
     _pageController = PageController(initialPage: 0);
-    _tabController.addListener(_handleTabChange);
+    tabController.addListener(_handleTabChange);
   }
 
   void _handleTabChange() {
     _pageController.animateToPage(
-      _tabController.index,
+      tabController.index,
       duration: const Duration(milliseconds: 600),
       curve: Curves.decelerate,
     );
@@ -69,7 +71,7 @@ class _SaletabState extends State<Saletab> with SingleTickerProviderStateMixin {
 
   @override
   void dispose() {
-    _tabController.dispose();
+    tabController.dispose();
     _pageController.dispose();
     super.dispose();
   }
@@ -96,18 +98,20 @@ class _SaletabState extends State<Saletab> with SingleTickerProviderStateMixin {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
+              const SizedBox(height: 20,),
               Padding(
-                padding: const EdgeInsets.all(8.0),
+                padding: const EdgeInsets.symmetric(vertical: 10.0,horizontal: 16),
                 child: Container(
-                  height: 160,
-                  width: MediaQuery.of(context).size.width,
+                  height: 150,
+                  width: MediaQuery.of(context).size.width*0.9,
                   decoration: BoxDecoration(
+                    border: Border.all(color: Colors.white),
                       color: const Color(0xffEFF9F2),
                       borderRadius: BorderRadius.circular(10),
                       boxShadow: [
                         BoxShadow(
-                          color: Colors.black.withOpacity(0.05),
-                          blurRadius: 2,
+                          color: Colors.black.withOpacity(0.02),
+                          blurRadius: 1.5,
                           offset: const Offset(0, 2),
                         )
                       ]),
@@ -134,19 +138,39 @@ class _SaletabState extends State<Saletab> with SingleTickerProviderStateMixin {
                           ),
                         ],
                       ),
-                      Image.asset(
-                        'images/salesdisplay.png',
-                        fit: BoxFit.fill,
+                      GestureDetector(
+                        onTap: (){
+                          log('_tabController.index${tabController.index}');
+                          log('_pageController.page!${_pageController.page!}');
+                          if(tabController.index == _pageController.page!.toInt() )
+                          {
+
+                           print('true');
+                          }
+                        },
+                        child: Image.asset(
+                          'images/salesdisplay.png',
+                          fit: BoxFit.fill,
+                        ),
                       ),
                     ],
                   ),
                 ),
               ),
-              VorderTabbar(tabController: _tabController, tabs: tabs),
-              const SizedBox(
-                height: 10,
+              const SizedBox(height: 10,),
+              SingleChildScrollView(
+                scrollDirection: Axis.horizontal,
+                child: Row(
+                  children: [
+                    const SizedBox(width: 10,),
+                    VorderTabbar(tabController: tabController, tabs:  tabs),
+                  ],
+                ),
               ),
-              Container(
+              const SizedBox(
+                height: 15,
+              ),
+              SizedBox(
                 height: MediaQuery.of(context).size.height - 340,
                 child: PageView(
                   physics: const NeverScrollableScrollPhysics(),
@@ -157,7 +181,7 @@ class _SaletabState extends State<Saletab> with SingleTickerProviderStateMixin {
                     Withdraw(),
                   ],
                   onPageChanged: (index) {
-                    _tabController.index = index;
+                   _handleTabChange();
                   },
                 ),
               ),
@@ -173,6 +197,7 @@ class _SaletabState extends State<Saletab> with SingleTickerProviderStateMixin {
   }
 
   Widget AllSales_withdarw() => ListView.builder(
+    padding: const EdgeInsets.symmetric(horizontal: 4),
         itemCount: stringlist.length,
         itemBuilder: (context, index) {
           final int color;
@@ -191,6 +216,7 @@ class _SaletabState extends State<Saletab> with SingleTickerProviderStateMixin {
       );
 
   Widget Sales() => ListView.builder(
+    padding: const EdgeInsets.symmetric(horizontal: 4),
         itemCount: stringlist.length,
         itemBuilder: (context, index) {
           if (stringlist[index].imagepath != 'images/up.png') {
@@ -207,8 +233,10 @@ class _SaletabState extends State<Saletab> with SingleTickerProviderStateMixin {
       );
 
   Widget Withdraw() => SizedBox(
+
         height: MediaQuery.of(context).size.height - 406,
         child: ListView.builder(
+          padding: const EdgeInsets.symmetric(horizontal: 4),
           itemCount: stringlist.length,
           itemBuilder: (context, index) {
             if (stringlist[index].imagepath == 'images/up.png') {

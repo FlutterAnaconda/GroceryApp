@@ -89,7 +89,7 @@ class _ProfileUpdateScreenState extends State<ProfileUpdateScreen> {
                   style: k12B500style,
                 ),
                 SizedBox(
-                    height: 500,
+                    height: 300,
                     child: Padding(
                         padding:
                             const EdgeInsets.symmetric(horizontal: 16, vertical: 4),
@@ -122,17 +122,14 @@ class _ProfileUpdateScreenState extends State<ProfileUpdateScreen> {
                             ),
                           ],
                         ))),
-            Align(
-              alignment: Alignment.bottomCenter,
-              child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 50.0, vertical: 10),
-                child: GradientElevatedButton(
-                    text: 'Update',
-                    onPressed: () {
-                      setState(() {});
-                    }),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 35.0, vertical: 10),
+              child: GradientElevatedButton(
+                  text: 'Update',
+                  onPressed: () {
+                    setState(() {});
+                  }),
 
-            )
             ),],
             ),
             // const Positioned(

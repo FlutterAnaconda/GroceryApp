@@ -36,28 +36,33 @@ class _CompleteScreenState extends State<CompleteScreen> {
 
     return  Scaffold(
       backgroundColor: Colors.white,
-      body: Column(
+      body: SingleChildScrollView(
+        child: SizedBox(
+          height: MediaQuery.of(context).size.height,
+          child: Column(
 crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
+            children: [
  SizedBox(height: MediaQuery.of(context).size.height*0.30,),
-          Mytrialbutton(isTapped: isTapped,ontap: (){
-            _onButtonTap();
+              Mytrialbutton(isTapped: isTapped,ontap: (){
+                _onButtonTap();
 
-          },text: 'Continue With 7 Days free trial',),
-          const SizedBox(height: 20,),
-          Mytrialbutton(isTapped: isTapped1,ontap: (){
-            onButtonTap1();
+              },text: 'Continue With 7 Days free trial',),
+              const SizedBox(height: 20,),
+              Mytrialbutton(isTapped: isTapped1,ontap: (){
+                onButtonTap1();
 
 
-          },text: 'Pay Manually',),
-          const Expanded(child: SizedBox()),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 18.0,vertical: 10),
-            child: GradientElevatedButton(text: 'Next', onPressed: (){
-              Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => const SignInScreen(),));
-            }),
-          )
-        ],
+              },text: 'Pay Manually',),
+              const Expanded(child: SizedBox()),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 18.0,vertical: 10),
+                child: GradientElevatedButton(text: 'Next', onPressed: (){
+                  Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => const SignInScreen(),));
+                }),
+              )
+            ],
+          ),
+        ),
       ),
     );
   }

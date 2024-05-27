@@ -32,7 +32,7 @@ class _MyCheckboxListState extends State<MyCheckboxList> {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 270,
+      height: 300,
       child: Padding(
         padding: const EdgeInsets.all(8.0),
         child: ListView.builder(
@@ -41,21 +41,29 @@ class _MyCheckboxListState extends State<MyCheckboxList> {
           itemBuilder: (context, index) {
             bool isSelected = selectedCheckboxIndices.contains(index);
 
-            return GestureDetector(
-              onTap: () {
-                setState(() {
-                  if (isSelected) {
-                    selectedCheckboxIndices.remove(index);
-                  } else {
-                    selectedCheckboxIndices.add(index);
-                  }
-                });
-              },
-              child: Container(
-                margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-                child: Row(
-                  children: [
-                    Container(
+            return Container(
+              margin: const EdgeInsets.symmetric(horizontal: 16, ),
+              child: Row(
+                children: [
+                  TextButton(
+                    style: ButtonStyle(
+                      overlayColor: MaterialStateProperty.all(Colors.white),
+                      splashFactory: NoSplash.splashFactory,
+                    ),
+                    onPressed: (){
+                      setState(() {
+                        if (isSelected) {
+                          selectedCheckboxIndices.remove(index);
+                        } else {
+                          selectedCheckboxIndices.add(index);
+                        }
+                      });
+                    },
+                    child: Container(
+                      // constraints: BoxConstraints(
+                      //   maxWidth: 24,
+                      //   maxHeight: 24,
+                      // ),
                       width: 24,
                       height: 24,
                       decoration: BoxDecoration(
@@ -87,33 +95,33 @@ class _MyCheckboxListState extends State<MyCheckboxList> {
                             : null,
                       ),
                     ),
-                    const SizedBox(width: 16),
-                    SizedBox(
-                      width: 200,
-                      child: Row(
+                  ),
+                  const SizedBox(width: 16),
+                  SizedBox(
+                    width: 200,
+                    child: Row(
 
-                        children: [
-                          Text(
-                            list[index],
-                            style: GoogleFonts.poppins(
-                              color: isSelected ? Colors.green : Colors.black,
-                              fontSize: 14,
-                              fontWeight: FontWeight.w500,
-                            ),
+                      children: [
+                        Text(
+                          list[index],
+                          style: GoogleFonts.poppins(
+                            color: isSelected ? Colors.green : Colors.black,
+                            fontSize: 14,
+                            fontWeight: FontWeight.w500,
                           ),
-                          Text(
-                            quantitylist[index],
-                            style: GoogleFonts.poppins(
-                              color: isSelected ? Colors.green : const Color(0xffB1BCB4),
-                              fontSize: 14,
-                              fontWeight: FontWeight.w400,
-                            ),
+                        ),
+                        Text(
+                          quantitylist[index],
+                          style: GoogleFonts.poppins(
+                            color: isSelected ? Colors.green : const Color(0xffB1BCB4),
+                            fontSize: 14,
+                            fontWeight: FontWeight.w400,
                           ),
-                        ],
-                      ),
+                        ),
+                      ],
                     ),
-                  ],
-                ),
+                  ),
+                ],
               ),
             );
           },

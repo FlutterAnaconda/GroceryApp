@@ -21,7 +21,5 @@ class CartItem {
     }
   }
 
-  // void clearcart() {
-  //   quantity = 0;
-  // }
+  
 }

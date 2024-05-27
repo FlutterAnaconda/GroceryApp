@@ -6,7 +6,7 @@ class CartProvider extends ChangeNotifier {
   final List<CartItem> _cartItems = [
 
       CartItem(title: 'Mango', image: 'images/mango.png', price: 24, quantity: 1),
-      CartItem(title: 'Mango', image: 'images/orange.png', price: 24, quantity: 1),
+      CartItem(title: 'Mango', image: 'images/lettuce.png', price: 24, quantity: 1),
       CartItem(title: 'Mango', image: 'images/mango.png', price: 24, quantity: 1),
       CartItem(title: 'Mango', image: 'images/lettuce.png', price: 24, quantity: 1),
       CartItem(title: 'Mango', image: 'images/orange.png', price: 24, quantity: 1),

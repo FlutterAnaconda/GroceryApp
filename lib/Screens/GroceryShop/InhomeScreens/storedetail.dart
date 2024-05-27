@@ -116,7 +116,7 @@ class _StoresdetailscreenState extends State<Storesdetailscreen> {
 
   List<ProductModel> list = [
     ProductModel(
-      title: 'zulam',
+      title: 'Rediscover food',
       image: 'images/Group 7066.png',
       rating: 3,
       location: '91 park st,12',
@@ -124,7 +124,7 @@ class _StoresdetailscreenState extends State<Storesdetailscreen> {
       discount: true,
     ),
     ProductModel(
-      title: 'italia',
+      title: 'Rediscover food',
       image: 'images/Group 1171276027.png',
       rating: 3,
       location: '91 park st,12',
@@ -308,7 +308,7 @@ class _StoresdetailscreenState extends State<Storesdetailscreen> {
             Padding(
               padding: const EdgeInsets.only(left: 25.0, top: 8),
               child: Text(
-                'Lorem ipsum dolor sit amet, Lorem ipsum dolor sit amet,\nconsectetur adipiscing elit.consectetur adipiscing. ',
+                'Lorem ipsum dolor sit amet, Lorem ipsum dolor sit\namet,consectetur adipiscing elit.consectetur\nadipiscing. ',
                 style: k12Grey400style,
               ),
             ),

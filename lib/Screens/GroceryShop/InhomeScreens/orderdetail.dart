@@ -9,7 +9,11 @@ import '../SettingScreens/chatsScreens/chat.dart';
 
 class Orderdetails extends StatelessWidget {
   const Orderdetails({super.key});
-
+  final gradient = const LinearGradient(
+    colors: [Color(0xff00FF85), Color(0x8604D26F)],
+    begin: Alignment.topCenter,
+    end: Alignment.bottomCenter,
+  );
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -42,7 +46,7 @@ class Orderdetails extends StatelessWidget {
                         ),
                       ),
                       const Spacer(),
-                      buttoncontainer((){},30, 'Cash on delivery')
+                      buttoncontainer(120,(){},30, 'Cash on delivery')
                     ],
                   ),
                 ),
@@ -51,7 +55,7 @@ class Orderdetails extends StatelessWidget {
                 height: 25,
               ),
               Padding(
-                padding: const EdgeInsets.only(left: 12),
+                padding: const EdgeInsets.only(left: 16),
                 child: Text(
                   'Information',
                   style: k16B600style,
@@ -62,7 +66,7 @@ class Orderdetails extends StatelessWidget {
               ),
               Padding(
                 padding:
-                    const EdgeInsets.symmetric(horizontal: 12.0, vertical: 5),
+                    const EdgeInsets.symmetric(horizontal: 16.0, vertical: 5),
                 child: Container(
                   decoration: cardcontainerdecoration,
                   child: Column(
@@ -120,7 +124,7 @@ class Orderdetails extends StatelessWidget {
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.only(left: 8.0,top: 30),
+                padding: const EdgeInsets.only(left: 16.0,top: 30),
                 child: Text(
                   'Store Details',
                   style: k16B600style,
@@ -128,7 +132,7 @@ class Orderdetails extends StatelessWidget {
               ),
               Container(
                 margin:  const EdgeInsets.symmetric(
-                  horizontal: 8.0,vertical: 8
+                  horizontal: 16.0,vertical: 8
                 ),
                 height: 69,
                 width: MediaQuery.of(context).size.width,
@@ -144,16 +148,16 @@ class Orderdetails extends StatelessWidget {
                       Padding(
                         padding: const EdgeInsets.only(left: 8.0, top: 10),
                         child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Padding(
-                              padding: const EdgeInsets.only(left: 18.0),
-                              child: Text(
-                                "Balzing Store",
-                                style: k12B600style,
-                              ),
+                            Text(
+                              "Balzing Store",
+                              style: k12B600style,
                             ),
+const SizedBox(height: 2,),
                             Row(
-                              mainAxisAlignment: MainAxisAlignment.start,
+
+
                               children: [
                                 const Icon(
                                   Icons.location_on_rounded,
@@ -161,18 +165,16 @@ class Orderdetails extends StatelessWidget {
                                   size: 15,
                                 ),
                                 Text(
-                                  'Location',
-                                  style: k12lightGrey400style,
+                                  ' 13 Han, NY city',
+                                  style: k12Grey400style,
                                 ),
                               ],
                             )
                           ],
                         ),
                       ),
-                      const SizedBox(
-                        width: 44,
-                      ),
-                      buttoncontainer((){
+                      const Spacer(),
+                      buttoncontainer(74,(){
                         Navigator.push(context, MaterialPageRoute(builder: (c)=>const ConversationScreen(imagepath: 'images/Group 7066.png',storetitle: 'Balzing Store',)));
                       },5, 'Message'),
                     ],
@@ -192,7 +194,13 @@ class Orderdetails extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           const SizedBox(height: 5,),
-                          Text('Details', style: k18G600style),
+                          ShaderMask(shaderCallback: (Rect bounds)
+                              {
+                                return gradient.createShader(Offset.zero & bounds.size);
+                              },
+                            child: Text('Details', style: k18G600style),
+                          ),
+
                           const SizedBox(height: 20,),
                           Row(
                             children: [
@@ -260,14 +268,14 @@ class Orderdetails extends StatelessWidget {
     );
   }
 
-  Widget buttoncontainer(VoidCallback ontap,double radius, String text) {
+  Widget buttoncontainer(double width,VoidCallback ontap,double radius, String text) {
     return Padding(
       padding: const EdgeInsets.only(right: 8.0),
       child: GestureDetector(
         onTap: ontap,
         child: Container(
             height: 24,
-            width: 120,
+            width: width,
             alignment: Alignment.center,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.all(Radius.circular(radius)),

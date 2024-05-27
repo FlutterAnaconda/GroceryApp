@@ -10,6 +10,7 @@ class TabbarContent extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
      return ListView.builder(
+       padding: const EdgeInsets.symmetric(horizontal: 12),
       scrollDirection: Axis.vertical,
       itemCount: list.length,
       itemBuilder: (context, index) {
@@ -36,8 +37,8 @@ class TabbarContent extends StatelessWidget {
                     ? Positioned(
                     right: 20,
                     child: Container(
-                      width: 35,
-                      height: 40,
+                      width: 25.34,
+                      height: 30,
                       decoration: BoxDecoration(
                         image: DecorationImage(
                           image: AssetImage(

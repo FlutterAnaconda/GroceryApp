@@ -1,5 +1,6 @@
 import 'package:dotcoder1/widgets/text/constants.dart';
 import 'package:flutter/material.dart';
+
 import 'package:google_fonts/google_fonts.dart';
 
 
@@ -12,30 +13,65 @@ class MYDetailsappbar extends StatelessWidget implements PreferredSizeWidget {
 
   @override
   Widget build(BuildContext context) {
-    return AppBar(
-      backgroundColor: Colors.transparent,
-      centerTitle: true,
-      elevation: 0,
-      scrolledUnderElevation: 0,
-      surfaceTintColor: Colors.white,
-      leading: GestureDetector(
-        onTap: onpressed!,
-        child: Padding(
-          padding: const EdgeInsets.all(16.0),
-          child: Image.asset(
-            'images/Frame 36797.png',
-            height: 5,
-            fit: BoxFit.fill,
+    return Stack(
+      children: [
+        // Positioned(
+        //   top: 0,
+        //   // left: 180,
+        //
+        //   // child: Container(
+        //   //   width: 500,
+        //   //   height:  100,
+        //   //   // child: Container(
+        //   //   //   width: 80,
+        //   //   //   height: 80,
+        //   //   //   decoration: BoxDecoration(
+        //   //   //     color:Colors.white,
+        //   //   //     // const Color(0xff23AA49).withOpacity(0.05),
+        //   //   //     shape: BoxShape.rectangle,
+        //   //   //     boxShadow: [
+        //   //   //       BoxShadow(
+        //   //   //         color: const Color(0xff23AA49).withOpacity(0.05), // Adjust opacity for the desired intensity
+        //   //   //         blurRadius: 20, // Increase the blur radius for a softer shadow
+        //   //   //         spreadRadius: 5, // Spread radius 0 for a uniform shadow
+        //   //   //         offset: Offset(0, 0), // Offset (0, 0) for a centered shadow
+        //   //   //       )
+        //   //   //     ],
+        //   //   //   ),
+        //   //   // ),
+        //   //
+        //   //   child: Image.asset('images/halfbgcolor.png'),
+        //   //
+        //   //
+        //   // ),
+        // ),
+
+        AppBar(
+          backgroundColor: Colors.transparent,
+          centerTitle: true,
+          elevation: 0,
+          scrolledUnderElevation: 0,
+          surfaceTintColor: Colors.white,
+          leading: GestureDetector(
+            onTap: onpressed!,
+            child: Container(
+              alignment: Alignment.center,
+              height: 5,
+              width: 10,
+
+              child: Image.asset(
+                'images/Frame 36797.png',
+              height: 25,
+                fit: BoxFit.contain,
+              ),
+            ),
+          ),
+          title: Text(
+            text,
+            style:  GoogleFonts.poppins(fontSize:18,fontWeight: FontWeight.w600,color: Colors.black),
           ),
         ),
-      ),
-      title: Padding(
-        padding: const EdgeInsets.only(left: 45.0),
-        child: Text(
-          text,
-          style:  GoogleFonts.poppins(fontSize:18,fontWeight: FontWeight.w600,color: Colors.black),
-        ),
-      ),
+      ],
     );
   }
 
@@ -234,6 +270,10 @@ class _MyfavappbarState extends State<Myfavappbar> {
       ),
       actions: [
       IconButton(
+
+        style: ButtonStyle(
+          overlayColor: MaterialStateProperty.all(Colors.white)
+        ),
         onPressed: () {
           setState(() {
 

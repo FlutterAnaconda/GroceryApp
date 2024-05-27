@@ -23,7 +23,7 @@ class _VendorRegistrationState extends State<VendorRegistration> {
     _contentPageController.addListener(() {
       setState(() {
         _currentPage = _contentPageController.page!.toInt();
-        // print("Currrnet page $_currentPage");
+        print("Currrnet page $_currentPage");
       });
     });
   }

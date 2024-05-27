@@ -96,6 +96,7 @@ class _TopsellingListviewState extends State<TopsellingListview> {
       height: 82,
       //own height was 77
       child: ListView.builder(
+        padding:  const EdgeInsets.only(left: 12),
         scrollDirection: Axis.horizontal,
         itemCount: list.length,
         clipBehavior: Clip.none,

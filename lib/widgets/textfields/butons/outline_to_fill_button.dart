@@ -81,7 +81,7 @@ class _MytrialbuttonState extends State<Mytrialbutton> {
         child: Container(
 
           alignment: Alignment.center,
-          width: MediaQuery.of(context).size.width*0.9,
+          width: MediaQuery.of(context).size.width*0.85,
           height: 64,
 
           decoration: BoxDecoration(

@@ -1,3 +1,4 @@
+import 'package:dotcoder1/widgets/customappbar.dart';
 import 'package:flutter/Material.dart';
 
 import '../../../widgets/textfields/butons/Myfilledbutton.dart';
@@ -48,6 +49,8 @@ class _AddCardScreenState extends State<AddCardScreen> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
+        backgroundColor: Colors.white,
+        appBar: MYDetailsappbar(text: 'Add Card', onpressed: (){ Navigator.pop(context);}),
         body: SingleChildScrollView(
           child: Column(
             children: [

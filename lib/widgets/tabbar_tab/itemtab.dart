@@ -23,13 +23,17 @@ final List<ProductModel> list = [
       location: '91 park st,12',
       price: 50,
       discount: true,
+      outofstock: true,
       status: 'pending'),
+
+
   ProductModel(
       title: 'norm',
       image: 'images/Group 1171276027.png',
       rating: 3,
       location: '91 park st,12',
       price: 25,
+      outofstock: true,
       status: 'delivered'),
   ProductModel(
       title: 'pharse',
@@ -44,6 +48,7 @@ final List<ProductModel> list = [
       rating: 3,
       location: '91 park st,12',
       price: 25,
+      outofstock: true,
       status: 'pending'),
   ProductModel(
       title: 'master',
@@ -52,6 +57,7 @@ final List<ProductModel> list = [
       location: '91 park st,12',
       price: 25,
       discount: true,
+      outofstock: true,
       status: 'delivered'),
 
   ProductModel(
@@ -75,6 +81,7 @@ final List<ProductModel> list = [
       rating: 3,
       location: '91 park st,12',
       price: 25,
+      outofstock: true,
       status: 'completed'),
   ProductModel(
       title: 'pinki peerni',
@@ -88,7 +95,8 @@ final List<ProductModel> list = [
       image: 'images/Group 1171276027.png',
       rating: 3,
       location: '91 park st,12',
-      price: 25,
+      price: 25,outofstock: true,
+
       status: 'completed'),
   ProductModel(
       title: 'candyland',
@@ -104,6 +112,7 @@ final List<ProductModel> list = [
       rating: 3,
       location: '91 park st,12',
       price: 25,
+      outofstock: true,
       status: 'delivered'),
   ProductModel(
       title: 'pizzahot',
@@ -119,6 +128,7 @@ final List<ProductModel> list = [
       rating: 3,
       location: '91 park st,12',
       price: 25,
+      outofstock: true,
       status: 'delivered'),
   ProductModel(
       title: 'cucumber juice',
@@ -460,6 +470,7 @@ Widget active() {
 Widget All() {
   // Implement the content for each tab here
   return ListView.builder(
+    padding: const EdgeInsets.symmetric(horizontal: 4),
     scrollDirection: Axis.vertical,
     itemCount: list.length,
     itemBuilder: (context, index) {
@@ -481,8 +492,9 @@ Widget All() {
       return GestureDetector(
         onTap: () => {},
         child: Container(
+
           decoration: cardcontainerdecoration,
-          margin: const EdgeInsets.all(8),
+          margin: const EdgeInsets.symmetric(horizontal: 16,vertical: 5),
           child: SizedBox(
             height: 132, // Replace with your desired fixed width
             child: Stack(
@@ -574,6 +586,7 @@ Widget All() {
 Widget Pending() {
   // Implement the content for each tab here
   return ListView.builder(
+    padding: const EdgeInsets.symmetric(horizontal: 4),
     scrollDirection: Axis.vertical,
     itemCount: list.length,
     itemBuilder: (context, index) {
@@ -686,6 +699,7 @@ Widget Pending() {
 Widget inprogress() {
   // Implement the content for each tab here
   return ListView.builder(
+    padding: const EdgeInsets.symmetric(horizontal: 4),
     scrollDirection: Axis.vertical,
     itemCount: list.length,
     itemBuilder: (context, index) {
@@ -797,6 +811,7 @@ Widget inprogress() {
 Widget Delivered() {
   // Implement the content for each tab here
   return ListView.builder(
+    padding: const EdgeInsets.symmetric(horizontal: 4),
     scrollDirection: Axis.vertical,
     itemCount: list.length,
     itemBuilder: (context, index) {

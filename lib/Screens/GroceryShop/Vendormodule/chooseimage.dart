@@ -5,7 +5,7 @@ class ImageContainer extends StatelessWidget {
   final double heigth;
   final String text;
   final double radius;
-  const ImageContainer({super.key, required this.width, required this.heigth, required this.text, required this.radius});
+   ImageContainer({super.key, required this.width, required this.heigth, required this.text, required this.radius});
 
   @override
   Widget build(BuildContext context) {

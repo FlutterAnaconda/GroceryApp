@@ -68,7 +68,7 @@ class AddReviewScreen extends StatelessWidget {
                               children: [
                                 Image.asset('images/star1.png',width: 14.25,height:  14.25,),
                                 Padding(
-                                  padding: const EdgeInsets.only(left: 5),
+                                  padding: const EdgeInsets.symmetric(horizontal: 5 ),
                                   child: Text(
                                     '5.0',
                                     style: GoogleFonts.poppins(
@@ -77,6 +77,9 @@ class AddReviewScreen extends StatelessWidget {
                                     ),
                                   ),
                                 ),
+
+                                Text('(19)',
+                                    style: k12Grey86400style),
                               ],
                             ),
                             const SizedBox(height: 5  ,),
@@ -84,6 +87,7 @@ class AddReviewScreen extends StatelessWidget {
                               '\$${price.toStringAsFixed(1)}',
                               style: k14B600style,
                             ),
+
                           ],
                         ),
                       )
@@ -91,10 +95,10 @@ class AddReviewScreen extends StatelessWidget {
                   ),
                 ),
               ),
-              const SizedBox(height: 20,),
+              const SizedBox(height: 5,),
               const RatingCard(),
               const SizedBox(
-                height:20,
+                height:10,
               ),
               const Padding(
                 padding: EdgeInsets.symmetric(horizontal: 8.0),

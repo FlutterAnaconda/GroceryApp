@@ -1,4 +1,5 @@
 import 'package:flutter/Material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 // ignore: must_be_immutable
 class Mystepper extends StatelessWidget {
@@ -25,14 +26,14 @@ class Mystepper extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   // _buildStepperIcon(0),
-                  isdummyneeded?_buildDummyStepper(context):_buildStepperIcon(0, context),
+                  isdummyneeded?_buildDummyStepper(context):_buildStepperIcon(0, context,isdummyneeded),
                   Expanded(
                     child: Divider(
                         thickness: 3, color: (isdummyneeded || currentindex! > 0)
                         ? Theme.of(context).primaryColor
                         : Colors.grey.withOpacity(0.3)),
                   ),
-                  _buildStepperIcon(1, context),
+                  _buildStepperIcon(1, context,isdummyneeded),
                   Expanded(
                     child: Divider(
                       thickness: 3,
@@ -45,7 +46,7 @@ class Mystepper extends StatelessWidget {
                           : Colors.grey.withOpacity(0.3)
                     ),
                   ),
-                  _buildStepperIcon(2, context),
+                  _buildStepperIcon(2, context,isdummyneeded),
                 ],
               ),
               const SizedBox(
@@ -58,15 +59,15 @@ class Mystepper extends StatelessWidget {
                   children: [
                     Text(
                       firsttext,
-                      style: _getStepperTextStyle(0, context),
+                      style: _getStepperTextStyle(isdummyneeded,0, context),
                     ),
                     Text(
                       secondtext,
-                      style: _getStepperTextStyle(1, context),
+                      style: _getStepperTextStyle(isdummyneeded,1, context,),
                     ),
                     Text(
                       thridtext,
-                      style: _getStepperTextStyle(2, context),
+                      style: _getStepperTextStyle(isdummyneeded,2, context),
                     ),
                   ],
                 ),
@@ -100,51 +101,55 @@ class Mystepper extends StatelessWidget {
         ));
   }
 
-  Widget _buildStepperIcon(int stepIndex, BuildContext context) {
-    bool isCompleted = currentindex! >= stepIndex;
-    // bool isInProgress = _currentPage! == stepIndex;
+  Widget _buildStepperIcon(int stepIndex, BuildContext context,bool isdummy) {
+
+    bool isCompleted = isdummy? currentindex! > stepIndex - 1:currentindex! > stepIndex  ;
+    bool isInProgress = isdummy? currentindex! == stepIndex-1:currentindex! == stepIndex;
+    bool isnext = isdummy?currentindex! < stepIndex - 1:currentindex! < stepIndex  ;
 
     return Container(
-      height: 40,
-      width: 40,
+      height: 35,
+      width: 35,
       decoration: BoxDecoration(
-          color: isCompleted ? null : Colors.white,
-          gradient:isCompleted? LinearGradient(
+          color: isCompleted || isInProgress ? Colors.white :Colors.grey.withOpacity(0.3),
+          gradient:isInProgress||isnext?null: LinearGradient(
             colors: [
               const Color(0xff07CD6E),
               const Color(0xFF059F55).withOpacity(0.86),
             ],
             begin: Alignment.topCenter,
             end: Alignment.bottomCenter,
-          ):null,
+          ),
           borderRadius: BorderRadius.circular(15),
-          border:isCompleted? null:Border.all(
+          border:isInProgress? Border.all(
             width: 2,
             color: Theme.of(context).primaryColor,
-          )),
-      child: isCompleted
-          ? const Center(
-              child: Icon(
-                Icons.check,
-                color: Colors.white,
-                size: 20,
-              ),
-            )
-          : Icon(
-              Icons.circle,
-              color: Theme.of(context).primaryColor,
-              size: 22,
-            ),
+          ): null,
+      ),
+      child: isInProgress
+          ? Icon(
+        Icons.circle,
+        color: Theme.of(context).primaryColor,
+        size: 22,
+      )
+
+          : isCompleted?const Center(
+        child: Icon(
+          Icons.check,
+          color: Colors.white,
+          size: 20,
+        ),
+      ):null,
     );
   }
 
-  TextStyle _getStepperTextStyle(int stepIndex, BuildContext context) {
-    bool isCompleted = currentindex! > stepIndex;
-
-    return TextStyle(
-      fontSize: 16,
-      fontWeight: FontWeight.w500,
-      color: isCompleted ? Theme.of(context).primaryColor : Colors.black45,
+  TextStyle _getStepperTextStyle(bool isdummy, int stepIndex, BuildContext context) {
+    bool isCompleted = isdummy? currentindex! > stepIndex - 1:currentindex! > stepIndex  ;
+    bool isInProgress = isdummy? currentindex! == stepIndex-1:currentindex! == stepIndex;
+    return GoogleFonts.poppins(
+      fontSize: 12,
+      fontWeight: FontWeight.w600,
+      color: isCompleted || isInProgress ? Colors.black : Colors.black45,
     );
   }
 }

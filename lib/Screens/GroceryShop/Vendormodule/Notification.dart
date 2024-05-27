@@ -71,14 +71,16 @@ Widget noticardlist(BuildContext context) {
               width: MediaQuery.of(context).size.width *
                   0.8, // Replace with your desired fixed width
               child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
+
                 children: [
+                  const SizedBox(width: 8,),
                   const CircleAvatar(
                     radius: 30,
                     backgroundImage: NetworkImage(
                       'https://i.pinimg.com/originals/74/d3/83/74d383636f4f7d29b95ba18c9d66cfb4.jpg',
                     ),
                   ),
+                  const SizedBox(width: 18,),
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
@@ -91,6 +93,7 @@ Widget noticardlist(BuildContext context) {
                           style: GoogleFonts.poppins(
                             fontSize: 14,
                             fontWeight: FontWeight.w500,
+                            color: Colors.black,
                           ),
                         ),
                       ),
@@ -98,17 +101,19 @@ Widget noticardlist(BuildContext context) {
                         children: [
                           const Icon(
                             Icons.location_on,
-                            color: Color(0xff737373),
+                            color: Color(0xff727171),
                             size: 15,
                           ),
                           Text(
                             '91 park st road',
                             style: GoogleFonts.poppins(
-                                color: Colors.black45, fontSize: 12),
+                                color: const Color(0xffD6D6D6), fontSize: 10,fontWeight: FontWeight.w300),
                           ),
                         ],
                       ),
-                      Text(list[index].ischeck ==true ? 'This user want to buy something...':'Has given review on your product',style: k12B500style,),
+                      Text(list[index].ischeck ==true ? 'This user want to buy something...':'Has given review on your product',style:  GoogleFonts.poppins(
+                          color: const Color(0xff727171), fontSize: 12,fontWeight: FontWeight.w500),
+                      ),
                       Row(
                         children: [
                           Text(
@@ -116,7 +121,7 @@ Widget noticardlist(BuildContext context) {
                             style: GoogleFonts.poppins(
                               fontSize: 11.09,
                               fontWeight: FontWeight.w300,
-                              color: const Color(0xff909090),
+                              color: const Color(0xff9796A1),
                             ),
                           ),
                           Text(
@@ -131,14 +136,14 @@ Widget noticardlist(BuildContext context) {
                       ),
                       list[index].ischeck ==true ? Padding(
                         padding: const EdgeInsets.only(right: 20),
-                        child: Container(width: 207,color: const Color(0xff9AA0B8).withOpacity(0.2),height: 1,),
+                        child: Container(width: 210,color: const Color(0xff9AA0B8).withOpacity(0.2),height: 1,),
                       ):const SizedBox(),
                       const SizedBox(height: 5,),
               list[index].ischeck ==true ? Row(
-
+mainAxisAlignment: MainAxisAlignment.end,
 
                         children: [
-                          const SizedBox(width: 80,),
+                          const SizedBox(width: 85,),
                           SizedBox(width: 60,height: 24,child: Myoutlinebutton(isbold: false,fontsize: 10,height: 24,onTap: (){}, text: 'Reject')),
                          const SizedBox(width: 5,),
                           SizedBox(width: 60,child: GradientElevatedButton(text: 'Accept',isbold: false,fontsize: 10,height: 24, onPressed: (){})),
@@ -148,11 +153,15 @@ Widget noticardlist(BuildContext context) {
                     ],
                   ),
 
-              list[index].ischeck ==true ? const SizedBox():Image.asset(
-                    'images/settingicons/arrow.png',
-                    width: 5,
-                    height: 12,
-                  ),
+              list[index].ischeck ==true ? const SizedBox():Padding(
+                padding: const EdgeInsets.only(left: 30.0),
+                child: Image.asset(
+                      'images/settingicons/arrow.png',
+                      width: 6,
+                      height: 13,
+                  fit: BoxFit.contain,
+                    ),
+              ),
                 ],
               ),
             ),

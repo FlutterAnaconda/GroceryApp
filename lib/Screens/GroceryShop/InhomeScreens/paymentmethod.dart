@@ -45,22 +45,23 @@ class _PaymentScreenState extends State<PaymentScreen> {
       SizedBox(
         height: 178,
         child: ListView.builder(
+
           itemCount: imagepath.length,
           scrollDirection: Axis.horizontal,
           // physics: const NeverScrollableScrollPhysics(),
           itemBuilder: (BuildContext context, int index) {
-            return Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 8.0),
-              child: Container(
-                margin: const EdgeInsets.only(left: 10),
-                  width: MediaQuery.of(context).size.width * 0.8,
-                  child: Image.asset(imagepath[index])),
-            );
+            return SizedBox(
+
+                width: MediaQuery.of(context).size.width * 0.8,
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(horizontal:12),
+                  child: Image.asset(imagepath[index]),
+                ));
           },
         ),
       ),
       const Padding(
-        padding: EdgeInsets.symmetric(horizontal: 8.0,vertical: 5),
+        padding: EdgeInsets.symmetric(horizontal: 12.0,vertical: 10),
         child: DottedBorderButton(),
       ),
       Padding(

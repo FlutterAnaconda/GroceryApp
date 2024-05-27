@@ -27,7 +27,7 @@ class CatergoryBuilder extends StatelessWidget {
     return SizedBox(
       height: 72,
       child: ListView.builder(
-
+        padding:  const EdgeInsets.only(left: 16),
         scrollDirection: Axis.horizontal,
         itemCount: imagepath.length,
         itemBuilder: (context, index) {
@@ -35,7 +35,7 @@ class CatergoryBuilder extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Container(
-                margin: EdgeInsets.only(left: 10,right: 10),
+                margin: const EdgeInsets.only(right: 10),
                 decoration: BoxDecoration(
 
                   borderRadius: const BorderRadius.all(

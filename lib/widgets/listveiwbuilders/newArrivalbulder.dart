@@ -48,6 +48,7 @@ class NewarrivalListview extends StatelessWidget {
     return SizedBox(
       height: 260,
       child: ListView.builder(
+        padding:  const EdgeInsets.only(left: 8),
         scrollDirection: Axis.horizontal,
         itemCount: list.length,
         itemBuilder: (context, index) {

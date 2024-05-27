@@ -22,7 +22,7 @@ class OrderStatus extends StatelessWidget {
         itemCount: list.length,
         itemBuilder: (context, index) {
           return Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 12.0,vertical: 4),
+            padding: const EdgeInsets.symmetric(horizontal: 16.0,vertical: 4),
             child: Container(
               height: 80,
               width: 342,

@@ -8,6 +8,8 @@ class ProductModel {
   bool isfav;
   String? status;
   bool? discount;
+  bool? outofstock;
+  int? quantity;
 
   ProductModel(
       {this.title,
@@ -17,6 +19,8 @@ class ProductModel {
       this.location,
       this.subtitle,
       this.status,
+        this.outofstock=false,
+        this.quantity=25,
         this.discount=false,
       this.isfav = false});
 }

@@ -9,7 +9,7 @@ class VendorStore extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       height: 72,
-      width: 163,
+
       decoration: BoxDecoration(
         color: const Color(0xffEFF9F2),
         borderRadius: BorderRadius.circular(22),

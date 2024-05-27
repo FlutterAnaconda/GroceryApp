@@ -1,7 +1,9 @@
 import 'package:dotcoder1/widgets/customappbar.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:provider/provider.dart';
 
+import '../../../../Providers/usertype.dart';
 import '../../../../models/messagemodel.dart';
 import '../../../../widgets/text/constants.dart';
 
@@ -19,7 +21,10 @@ class ConversationScreen extends StatefulWidget {
 class _ConversationScreenState extends State<ConversationScreen> {
   @override
   Widget build(BuildContext context) {
+    final whichtext = Provider.of<Usertype>(context);
+
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: Mytypingappbar(
         text: widget.storetitle,
         onpressed: () => Navigator.pop(context),

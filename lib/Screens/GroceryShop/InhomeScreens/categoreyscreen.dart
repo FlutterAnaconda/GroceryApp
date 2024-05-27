@@ -67,7 +67,7 @@ class AllCategory extends StatelessWidget {
                       ),
                     ),
                   ),
-                   const SizedBox(height: 3,),
+                   const SizedBox(height: 8,),
                    Text(imagepath[index].title!, style: GoogleFonts.poppins(
             fontSize: 12,
             fontWeight: FontWeight.w300,

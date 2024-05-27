@@ -16,11 +16,12 @@ class ImageSlider extends StatelessWidget {
   Widget build(BuildContext context) {
     // final mediaquery = MediaQuery.of(context).size;
     return CarouselSlider(
+
       options: CarouselOptions(
         // clipBehavior: Clip.none,
-        // padEnds: true,
+        padEnds: true,
 
-        viewportFraction: 0.98,
+        viewportFraction: 0.965,
         height: 150,
 
         // viewportFraction: 0.95,
@@ -36,10 +37,12 @@ class ImageSlider extends StatelessWidget {
         return Builder(
           builder: (BuildContext context) {
             return Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 8),
+              padding: const EdgeInsets.only(left: 8,right: 18),
               child: Container(
+
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(8),
+                  // color: Colors.amber,
                 ),
                 height: 150,
                 width: 500,
@@ -47,7 +50,7 @@ class ImageSlider extends StatelessWidget {
                   borderRadius: BorderRadius.circular(8),
                   child: Image.asset(
                     imagepath,
-                    fit: BoxFit.fill,
+                    fit: BoxFit.cover,
                   ),
                 ),
               ),

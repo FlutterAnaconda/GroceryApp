@@ -13,6 +13,7 @@ class OutofStockScreen extends StatelessWidget {
       backgroundColor: Colors.white,
       appBar: MYDetailsappbar(text: 'Out of Stock',onpressed: (){Navigator.pop(context);}),
       body: ListView.builder(
+        padding: const EdgeInsets.only(top: 20),
         scrollDirection: Axis.vertical,
         itemCount: list.length,
         itemBuilder: (context, index) {
@@ -32,7 +33,7 @@ class OutofStockScreen extends StatelessWidget {
                   ),
                 ],
               ),
-              margin: const EdgeInsets.all(8),
+              margin: const EdgeInsets.symmetric(horizontal: 16,vertical: 8),
               child: SizedBox(
                 height: 100, // Replace with your desired fixed width
                 child: Row(
@@ -98,7 +99,7 @@ class OutofStockScreen extends StatelessWidget {
                               padding: const EdgeInsets.only(top:10.0),
                               child: Text('Out of Stock',style: k11_09Grey400style,),
                             ),
-                            const SizedBox(width: 100,),
+                            const SizedBox(width: 90,),
                             Text(
                               '\$${list[index].price!.toStringAsFixed(1)}',
                               style: GoogleFonts.poppins(
